@@ -618,12 +618,26 @@ export default function Home() {
                     minHeight: '250px',
                 }}>
                     <Box sx={{
-                        borderRadius: '20px',
                         flex: '1 1 300px',
                         display: 'flex',
                         alignItems: 'center',
                         flexWrap: 'nowrap',
                         overflowX: 'hidden',
+                        position: 'relative',
+                        '&:before, &:after': {
+                            content: '""',
+                            display: 'block',
+                            background: 'linear-gradient(90deg, white, transparent)',
+                            height: '-webkit-fill-available',
+                            width: '40px',
+                            position: 'absolute',
+                            top: 0,
+                            zIndex: 9,
+                        },
+                        '&:after': {
+                            background: 'linear-gradient(90deg, transparent, white)',
+                            right: 0,
+                        },
                     }}>
                         <Box sx={{
                             display: 'flex',
