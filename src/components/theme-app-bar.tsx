@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import {alpha, useTheme} from "@mui/material";
 import {NavLink} from "react-router-dom";
 import squareLogo from '../assets/images/eternity-forwarders-logo-square.svg'
-import logo from '../assets/images/eternity-forwarders-logo.svg'
+import longLogo from '../assets/images/long-logo.svg'
 
 
 const menus = [
@@ -25,7 +25,7 @@ const menus = [
     {name: 'Support', link: 'support'},
     {name: 'Track Lr', link: ''},
 ]
-const userMenus = ['Profile', 'Logout'];
+const userMenus = ['Profile', 'Logout']
 
 export default function ThemeAppBar() {
 
@@ -81,8 +81,8 @@ export default function ThemeAppBar() {
                                     color: theme.palette.secondary.main
 
                                 }}>
-                        <img src={squareLogo} className={'squareLogo'}/>
-                        Eternity
+                        <img src={longLogo} className={'squareLogo'}/>
+                        {/*Eternity*/}
                     </Typography>
 
                     <Box sx={{

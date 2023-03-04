@@ -1,12 +1,22 @@
 import React, {useLayoutEffect, useRef, useState} from 'react'
-import {alpha, Box, Button, TextField, Typography, useMediaQuery, useTheme} from "@mui/material"
+import {alpha, Avatar, Box, Button, TextField, Typography, useMediaQuery, useTheme} from "@mui/material"
 import heroImage from '../assets/images/logistic-1.png'
 import PageContainer from "../components/page-container"
 import shipWithUs from '../assets/images/ship-with-us.png'
+import demo from '../assets/images/logistic-1.png'
 import onTime from '../assets/images/on-time.png'
 import {useParallax} from "react-scroll-parallax";
-import {InsightsRounded} from "@mui/icons-material";
+import {FormatQuoteRounded, InsightsRounded, KeyboardDoubleArrowRightRounded} from "@mui/icons-material";
 
+
+import logo1 from '../assets/images/clients/ajio.png'
+import logo2 from '../assets/images/clients/bharat.png'
+import logo3 from '../assets/images/clients/nurture.png'
+import logo4 from '../assets/images/clients/upl.png'
+import logo5 from '../assets/images/clients/orpat.png'
+import logo6 from '../assets/images/clients/zeera.png'
+
+const clients = [logo1, logo2, logo3, logo4, logo5, logo6,]
 
 export default function Home() {
 
@@ -335,7 +345,7 @@ export default function Home() {
             </Box>
 
             <Box sx={{
-                mt: {xs: 6, sm: 1},
+                mt: 6,
                 minHeight: 'min(80vh, 550px)',
             }}>
                 <Typography variant={'h2'} sx={outlinedTextSx}>Ship with Us</Typography>
@@ -355,7 +365,7 @@ export default function Home() {
                 }}>
 
                     <Box flex={1} sx={{
-                        alignSelf: 'flex-start',
+                        // alignSelf: 'flex-start',
                         '& .hook': {
                             mb: 1,
                             borderRadius: '8px',
@@ -382,11 +392,11 @@ export default function Home() {
                             },
                         },
                     }}>
-                        <Typography variant={'h3'} sx={{
-                            fontSize: 'clamp(1rem, 8vw, 1.5rem)',
-                            px: {xs: 3, sm: 0},
-                            textAlign: {xs: 'center', sm: 'left'},
-                        }}>Managed Delivery in All Over India</Typography>
+                        {/*<Typography variant={'h3'} sx={{*/}
+                        {/*    fontSize: 'clamp(1rem, 8vw, 1.5rem)',*/}
+                        {/*    px: {xs: 3, sm: 0},*/}
+                        {/*    textAlign: {xs: 'center', sm: 'left'},*/}
+                        {/*}}>Managed Delivery in All Over India</Typography>*/}
                         <Typography variant={'body1'} sx={{
                             mt: 2, mb: 2,
                             textIndent: '1rem',
@@ -416,48 +426,48 @@ export default function Home() {
                             </Typography>
                         </Box>
 
-                        {/*<Button variant={'outlined'} sx={{*/}
-                        {/*    borderRadius: '12px',*/}
-                        {/*    borderWidth: '2px',*/}
-                        {/*    textTransform: 'none',*/}
-                        {/*    minWidth: '140px',*/}
-                        {/*    height: 40,*/}
-                        {/*    fontSize: '1rem',*/}
-                        {/*    fontWeight: 600,*/}
-                        {/*    letterSpacing: '0.5px',*/}
-                        {/*    display: 'flex',*/}
-                        {/*    position: 'relative',*/}
-                        {/*    pr: 3,*/}
-                        {/*    m: '2rem 1rem',*/}
-                        {/*    mx: {xs: 'auto', sm: '1rem'},*/}
-                        {/*    '&:hover': {*/}
-                        {/*        borderWidth: '2px',*/}
-                        {/*        '& svg': {*/}
-                        {/*            animation: 'none',*/}
-                        {/*            opacity: 1,*/}
-                        {/*            right: '0.3rem',*/}
-                        {/*        },*/}
-                        {/*    },*/}
-                        {/*    '& svg': {*/}
-                        {/*        opacity: 1,*/}
-                        {/*        right: '0.3rem',*/}
-                        {/*        position: 'absolute',*/}
-                        {/*        animation: 'flowRight 800ms linear infinite',*/}
-                        {/*    },*/}
-                        {/*    ['@keyframes flowRight']: {*/}
-                        {/*        '0%': {*/}
-                        {/*            opacity: 0,*/}
-                        {/*            right: '1.2rem',*/}
-                        {/*        },*/}
-                        {/*        '100%': {*/}
-                        {/*            opacity: 1,*/}
-                        {/*            right: '0.3rem',*/}
-                        {/*        }*/}
-                        {/*    }*/}
-                        {/*}}>*/}
-                        {/*    Ship Now*/}
-                        {/*    <KeyboardDoubleArrowRightRounded/>*/}
-                        {/*</Button>*/}
+                        <Button variant={'outlined'} sx={{
+                            borderRadius: '12px',
+                            borderWidth: '2px',
+                            textTransform: 'none',
+                            minWidth: '140px',
+                            height: 40,
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            letterSpacing: '0.5px',
+                            display: 'flex',
+                            position: 'relative',
+                            pr: 3,
+                            m: '2rem 1rem',
+                            mx: {xs: 'auto', sm: '1rem'},
+                            '&:hover': {
+                                borderWidth: '2px',
+                                '& svg': {
+                                    animation: 'none',
+                                    opacity: 1,
+                                    right: '0.3rem',
+                                },
+                            },
+                            '& svg': {
+                                opacity: 1,
+                                right: '0.3rem',
+                                position: 'absolute',
+                                animation: 'flowRight 800ms linear infinite',
+                            },
+                            ['@keyframes flowRight']: {
+                                '0%': {
+                                    opacity: 0,
+                                    right: '1.2rem',
+                                },
+                                '100%': {
+                                    opacity: 1,
+                                    right: '0.3rem',
+                                }
+                            }
+                        }}>
+                            Ship Now
+                            <KeyboardDoubleArrowRightRounded/>
+                        </Button>
 
 
                     </Box>
@@ -470,17 +480,259 @@ export default function Home() {
 
 
             <Box sx={{
-                mt: {xs: 6, sm: 1},
+                mt: {xs: 6},
                 minHeight: 'min(90vh, 550px)',
                 // background: `url(${onTime})`,
                 // backgroundAttachment: 'fixed',
                 // backgroundSize: 'contain'
-            }}>x
+                '& .featureContainer': {
+                    mt: 5,
+                    '& .featureBlock': {
+                        maxWidth: '768px',
+                        mx: 'auto',
+                        borderRadius: '12px',
+                        p: 2,
+                        display: "flex",
+                        gap: 2,
+                        flexWrap: 'wrap',
+                        my: 3,
+                        boxShadow: '0 3px 12px -4px #83838361',
+                        transition: 'all 240ms ease-in-out',
+                        '&:hover': {
+                            boxShadow: '0 3px 17px -4px #83838390',
+                        },
+                        '& .featureImage': {
+                            width: {xs: '100%', sm: '200px'},
+                            display: 'grid',
+                            placeItems: 'center',
+                            // borderRadius: '8px',
+                            // background: '#f16334',
+                            '& img': {
+                                maxHeight: '100px',
+                                mx: 'auto',
+                            },
+                        },
+                        '& .feature': {
+                            flex: `1 1 300px`,
+                            textAlign: {xs: 'center', sm: 'left'},
+                            '& .title': {
+                                fontWeight: 500,
+                                fontSize: '1rem',
+                                color: theme.palette.secondary.main,
+                            },
+                            '& .des': {
+                                fontSize: '0.9rem',
+                                color: alpha(theme.palette.text.primary, 0.7),
+                            },
+                        },
+                    },
+                },
+            }}>
                 <Typography variant={'h2'} sx={outlinedTextSx}>Why Us</Typography>
+                <Typography variant={'body2'} sx={{
+                    textAlign: 'center',
+                    maxWidth: '500px',
+                    mx: 'auto',
+                    color: theme.palette.text.secondary,
+                }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </Typography>
 
-                <Box>
-                    ssss
+                <Box className={'featureContainer'}>
+                    <Box className={'featureBlock'}>
+                        <Box className={'featureImage'}><img src={demo}/></Box>
+                        <Box className={'feature'}>
+                            <Typography variant={'h6'} className={'title'}>
+                                Widespread Urban & Rural Reach
+                            </Typography>
+                            <Typography className={'des'}>
+                                Eternity has developed its rural reach to the village level and has been able to deliver
+                                to almost every pin code in the 9 states for its Drop Ship model.
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box className={'featureBlock'}>
+                        <Box className={'feature'}>
+                            <Typography variant={'h6'} className={'title'}>
+                                Tech Enabled
+                            </Typography>
+                            <Typography className={'des'}>
+                                Offering its state of the art in-house developed technology helps smoothen the operation
+                                and enables faster deliveries.
+                            </Typography>
+                        </Box>
+                        <Box className={'featureImage'} sx={{order: {xs: -1, sm: 2}}}><img src={demo}/></Box>
+                    </Box>
+                    <Box className={'featureBlock'}>
+                        <Box className={'featureImage'}><img src={demo}/></Box>
+                        <Box className={'feature'}>
+                            <Typography variant={'h6'} className={'title'}>
+                                Wide Range of Services
+                            </Typography>
+                            <Typography className={'des'}>
+                                We offer a wide range of services starting FTL, Drop Ship and Warehousing services
+                                spread across a wide terriroty,
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box className={'featureBlock'}>
+                        <Box className={'feature'}>
+                            <Typography variant={'h6'} className={'title'}>
+                                Rapidly Growing
+                            </Typography>
+                            <Typography className={'des'}>
+                                Eternity is rapidly growing and aiming to cover almost all pin codes across territories
+                                to enable deliveries for our esteemed customers to every corner of the country.
+                            </Typography>
+                        </Box>
+                        <Box className={'featureImage'} sx={{order: {xs: -1, sm: 2}}}><img src={demo}/></Box>
+                    </Box>
+                    <Box className={'featureBlock'}>
+                        <Box className={'featureImage'}><img src={demo}/></Box>
+                        <Box className={'feature'}>
+                            <Typography variant={'h6'} className={'title'}>
+                                On Time, Every Time!
+                            </Typography>
+                            <Typography className={'des'}>
+                                Our team thrives on the moto of delivery your products – on time, everytime!
+                            </Typography>
+                        </Box>
+                    </Box>
                 </Box>
+            </Box>
+
+
+            <Box className={'esteemedClients'} sx={{
+                mt: 6,
+            }}>
+
+                <Typography variant={'h2'} sx={outlinedTextSx}>Clients & Reviews</Typography>
+
+                <Box sx={{
+                    my: 7,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    rowGap: 3,
+                    flexWrap: 'wrap',
+                    minHeight: '250px',
+                }}>
+                    <Box sx={{
+                        borderRadius: '20px',
+                        flex: '1 1 300px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexWrap: 'nowrap',
+                        overflowX: 'hidden',
+                    }}>
+                        <Box sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexWrap: 'nowrap',
+                            animation: `dddd ${clients.length}000ms linear infinite`,
+                            '&:hover': {
+                                animationPlayState: 'paused',
+                            },
+                            '& img': {
+                                height: '50px',
+                                minWidth: '150px',
+                                objectFit: 'contain',
+                                filter: 'grayscale(1)',
+                                transition: 'all 200ms',
+                                '&:hover': {
+                                    filter: 'grayscale(0)',
+                                },
+                            },
+                            ['@keyframes dddd']: {
+                                '0%': {transform: 'translateX(20%)'},
+                                '100%': {transform: 'translateX(-100%)'},
+                            },
+                        }}>
+                            {clients.map((client, index) => <img src={client} key={index}/>)}
+                        </Box>
+                    </Box>
+
+                    <Box sx={{
+                        borderRadius: '20px',
+                        flex: '1 1 300px',
+                    }}>
+                        <Box sx={{
+                            position: 'relative',
+                            border: '2px solid #83838370',
+                            borderRadius: '12px',
+                            minHeight: '160px',
+                            flex: '1 1 300px',
+                            maxWidth: '400px',
+                            mx: 'auto',
+                            p: '3rem 1rem 4rem',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            '& .quote': {
+                                position: 'absolute',
+                                background: '#fff',
+                                color: '#83838370',
+                                fontSize: '4rem',
+                                '&.first': {
+                                    top: '-1.5rem',
+                                    left: '-1.5rem',
+                                    transform: 'scaleX(-1)',
+                                },
+                                '&.second': {
+                                    bottom: '-1.5rem',
+                                    right: '-1.5rem',
+                                },
+                            },
+                            '& .reviewer': {
+                                position: 'absolute',
+                                bottom: '-1rem',
+                                left: '1rem',
+                                display: 'flex',
+                                gap: 1,
+                                '& .MuiTypography-root': {
+                                    pt: '16px',
+                                    display: 'flex',
+                                    justifyContent: 'flex-start',
+                                    justifyItems: 'flex-start',
+                                    flexFlow: 'column',
+                                    fontSize: '0.9rem',
+                                    lineHeight: '1rem',
+                                    fontWeight: 500,
+                                    fontFamily: theme.typography.h2.fontFamily,
+                                    '& span': {
+                                        fontSize: '0.75rem',
+                                        lineHeight: '0.75rem',
+                                        color: theme.palette.text.secondary
+                                    },
+                                },
+                                '& .MuiAvatar-root': {
+                                    height: '4rem',
+                                    width: '4rem',
+                                    borderRadius: '50vh',
+                                },
+
+                            },
+                        }}>
+                            <FormatQuoteRounded className={'quote first'}/>
+                            <FormatQuoteRounded className={'quote second'}/>
+                            <Box className={'reviewer'}>
+                                <Avatar/>
+                                <Typography>
+                                    Reviewer Name<span>Designation, Company</span>
+                                </Typography>
+                            </Box>
+
+                            <Typography sx={{
+                                textAlign: 'center',
+                            }}>
+                                Eternity is rapidly growing and aiming to cover almost all pin codes across territories
+                                to enable deliveries for our esteemed customers to every corner of the country. Eternity
+                                is rapidly growing and aiming to cover almost all pin codes across territories
+                                to enable deliveries.
+                            </Typography>
+                        </Box>
+                    </Box>
+                </Box>
+
             </Box>
 
 

@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import {alpha, useScrollTrigger, useTheme} from "@mui/material";
 import {NavLink} from "react-router-dom";
 import squareLogo from '../assets/images/eternity-forwarders-logo-square.svg'
-import logo from '../assets/images/eternity-forwarders-logo.svg'
+import longLogo from '../assets/images/long-logo.svg'
 import UserMenu from "./user-menu";
 
 
@@ -76,8 +76,8 @@ export default function AppBar2(props: any) {
                                     flex: {xs: 1, md: '0 0 150px'},
                                     color: theme.palette.secondary.main
                                 }}>
-                        <img src={squareLogo} className={'squareLogo'}/>
-                        Eternity
+                        <img src={longLogo} className={'squareLogo'}/>
+                        {/*Eternity*/}
                     </Typography>
 
                     <Box sx={{
