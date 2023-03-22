@@ -19,7 +19,7 @@ import {
     SupportAgentRounded,
     TimelineRounded
 } from "@mui/icons-material";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 
 interface DrawerItemsProps {
@@ -41,6 +41,7 @@ export default function DrawerItems(props: DrawerItemsProps) {
     const {toggleDrawer} = props
 
     const theme = useTheme()
+    const navigate = useNavigate()
 
     return (
         <Box role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}
@@ -97,16 +98,28 @@ export default function DrawerItems(props: DrawerItemsProps) {
                 {drawerMenus.map((drawerMenu, index) => {
                     const MyIcon = drawerMenu.icon
                     return (
-                        <NavLink to={drawerMenu.link} className={({isActive}) => isActive ? 'active' : ''}>
-                            <ListItem key={drawerMenu.name} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        <MyIcon/>
-                                    </ListItemIcon>
-                                    <ListItemText primary={drawerMenu.name}/>
-                                </ListItemButton>
-                            </ListItem>
-                        </NavLink>
+                        drawerMenu.name == 'Services'
+                            ? <a key={drawerMenu.name} href={'#serviceSection'} onClick={() => navigate('/')}>
+                                <ListItem disablePadding>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <MyIcon/>
+                                        </ListItemIcon>
+                                        <ListItemText primary={drawerMenu.name}/>
+                                    </ListItemButton>
+                                </ListItem>
+                            </a>
+                            : <NavLink key={drawerMenu.name} to={drawerMenu.link}
+                                       className={({isActive}) => isActive ? 'active' : ''}>
+                                <ListItem disablePadding>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <MyIcon/>
+                                        </ListItemIcon>
+                                        <ListItemText primary={drawerMenu.name}/>
+                                    </ListItemButton>
+                                </ListItem>
+                            </NavLink>
                     )
                 })}
             </List>

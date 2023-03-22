@@ -1,18 +1,22 @@
-import React, {ReactNode} from 'react'
-import {Box, Container} from "@mui/material"
+import React from 'react'
+import {Box, useTheme} from "@mui/material"
 
-
-interface PageContainerProps {
-    children: ReactNode
-}
 
 export default function PageContainer(props: any) {
+
+    const theme = useTheme()
 
     return (
         <Box sx={{
             p: 2,
             mt: {xs: '60px', sm: '100px'},
-            // background: '#f16334'
+            '& .heading': {
+                fontSize: 'clamp(1.3rem, 10vw, 4rem)',
+                fontWeight: 700,
+                textAlign: 'center',
+                color: theme.palette.primary.main,
+                fontFamily: theme.typography.body2.fontFamily,
+            },
         }}>
             {props.children}
         </Box>

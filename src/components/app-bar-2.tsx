@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,14 +7,10 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import {alpha, useScrollTrigger, useTheme} from "@mui/material";
-import {NavLink} from "react-router-dom";
-import squareLogo from '../assets/images/eternity-forwarders-logo-square.svg'
+import {NavLink, useNavigate} from "react-router-dom";
 import longLogo from '../assets/images/long-logo.svg'
 import UserMenu from "./user-menu";
 
@@ -29,10 +25,10 @@ const menus = [
 ]
 const userMenus = ['Profile', 'Logout'];
 
-
 export default function AppBar2(props: any) {
 
     const theme = useTheme()
+    const navigate = useNavigate()
 
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
@@ -54,10 +50,12 @@ export default function AppBar2(props: any) {
                 boxShadow: scrolled ? `0px -4px 19px 0 ${theme.palette.primary.main}` : 0,
                 '& *': {},
                 '& img.longLogo': {
-                    maxHeight: '50px'
+                    minHeight: {xs: '28px', sm: '40px'},
+                    maxHeight: {xs: '35px', sm: '50px'},
                 },
                 '& img.squareLogo': {
-                    maxHeight: '30px'
+                    minHeight: {xs: '28px', sm: '40px'},
+                    maxHeight: {xs: '30px', sm: '40px'},
                 },
             }}>
             <Container maxWidth="xl">
@@ -73,11 +71,10 @@ export default function AppBar2(props: any) {
                                     justifyContent: {xs: 'center', md: 'flex-start'},
                                     gap: '8px',
                                     minWidth: 'max-content',
-                                    flex: {xs: 1, md: '0 0 150px'},
+                                    flex: {xs: 1, md: '0 0 180px'},
                                     color: theme.palette.secondary.main
                                 }}>
                         <img src={longLogo} className={'squareLogo'}/>
-                        {/*Eternity*/}
                     </Typography>
 
                     <Box sx={{
@@ -139,11 +136,13 @@ export default function AppBar2(props: any) {
                         }
                     }}>
                         {menus.map((menu) => (
-                            <NavLink key={menu.name} to={`${menu.link}`}
-                                     className={({isActive}) => isActive ? 'active' : ''}>
-                                {menu.name}
-                                <span/>
-                            </NavLink>
+                            menu.name == 'Services'
+                                ? <a key={menu.name} href={'#serviceSection'} onClick={() => navigate('/')}>Services</a>
+                                : <NavLink key={menu.name} to={`${menu.link}`}
+                                           className={({isActive}) => isActive ? 'active' : ''}>
+                                    {menu.name}
+                                    <span/>
+                                </NavLink>
                         ))}
                     </Box>
 
