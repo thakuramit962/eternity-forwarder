@@ -6,13 +6,18 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import About from "../pages/About";
 import Group from "../pages/group";
 import TermsAndConditions from "../pages/TermsAndConditions";
+import ComingSoonPage from "../ComingSoonPage";
+import ThemeAppBar from "../components/theme-app-bar";
 
 
 export default function WebRoutes() {
 
     return (
         <Routes>
-            <Route path="/" element={<Layout/>}>
+            <Route path="/" element={<><ThemeAppBar/><ComingSoonPage/></>}/>
+            <Route path="/privacy-policy" element={<><ThemeAppBar/><PrivacyPolicy/></>}/>
+            <Route path="/terms-and-conditions" element={<><ThemeAppBar/><TermsAndConditions/></>}/>
+            <Route path="/amit" element={<Layout/>}>
                 <Route path="" element={<Home/>}/>
                 <Route path="about" element={<About/>}/>
                 <Route path="group" element={<Group/>}/>

@@ -13,82 +13,46 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {alpha, useTheme} from "@mui/material";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import squareLogo from '../assets/images/eternity-forwarders-logo-square.svg'
 import longLogo from '../assets/images/long-logo.svg'
 
 
 const menus = [
-    {name: 'About', link: 'about'},
-    {name: 'Services', link: 'services'},
-    {name: 'Group', link: 'group'},
-    {name: 'Support', link: 'support'},
-    {name: 'Track Lr', link: ''},
+    {name: 'Privacy Policy', link: 'privacy-policy'},
+    {name: 'Terms & Conditions', link: 'terms-and-conditions'},
 ]
-const userMenus = ['Profile', 'Logout']
 
 export default function ThemeAppBar() {
 
     const theme = useTheme()
-
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
+    const navigate = useNavigate()
 
     return (
         <AppBar position="fixed" sx={{
             background: 'transparent',
-            // background: theme.palette.background.paper,
-            // background: alpha(theme.palette.background.paper, 0.3),
             backdropFilter: 'blur(50px)',
             boxShadow: 0,
             '& *': {},
             '& img.longLogo': {
-                maxHeight: '50px'
+                maxHeight: {xs: '30px', sm: '50px'}
             },
-            '& img.squareLogo': {
-                maxHeight: '30px'
-            },
+
         }}>
             <Container maxWidth="xl">
-                <Toolbar disableGutters sx={{gap: 2}}>
-                    {/*<img src={logo} className={'longLogo'}/>*/}
-                    <IconButton sx={{
-                        display: {xs: 'flex', md: 'none'},
-                        order: -1
-                    }}><MenuIcon/></IconButton>
-                    <Typography variant="h6"
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: {xs: 'center', md: 'flex-start'},
-                                    gap: '8px',
-                                    flex: {xs: 1, md: 0},
-                                    color: theme.palette.secondary.main
+                <Toolbar disableGutters sx={{
+                    py: {xs: 2, sm: 0},
+                    gap: 2,
+                    flexWrap: {xs: 'wrap', md: 'nowrap'},
+                    justifyContent: {xs: 'center', md: 'space-between'},
 
-                                }}>
-                        <img src={longLogo} className={'squareLogo'}/>
-                        {/*Eternity*/}
-                    </Typography>
+                }}>
+                    <img src={longLogo} className={'longLogo'} onClick={()=>navigate('/')}/>
 
                     <Box sx={{
                         flexGrow: 1,
-                        display: {xs: 'none', md: 'flex'},
-                        justifyContent: 'center',
+                        display: 'flex',
+                        justifyContent: {xs: 'center', md: 'flex-end'},
                         alignItems: 'center',
                         gap: 1.5,
                         '& a': {
@@ -141,59 +105,12 @@ export default function ThemeAppBar() {
                         }
                     }}>
                         {menus.map((menu) => (
-                            <NavLink key={menu.name} to={`${menu.link}`}
+                            <NavLink key={menu.name} to={`/${menu.link}`}
                                      className={({isActive}) => isActive ? 'active' : ''}>
                                 {menu.name}
                                 <span/>
                             </NavLink>
                         ))}
-                    </Box>
-
-                    <Box sx={{
-                        flexGrow: 0,
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                        alignItems: 'center',
-                        gap: 2,
-                        ml: 3,
-                    }}>
-                        <Button variant={'outlined'} sx={{
-                            borderRadius: '12px',
-                            borderWidth: '2px',
-                            textTransform: 'none',
-                            width: '100px',
-                            fontWeight: 600,
-                            letterSpacing: '0.5px',
-                            display: {xs: 'none', sm: 'flex'},
-                            '&:hover':{
-                                borderWidth: '2px',
-                            },
-                        }}>Ship Now</Button>
-                        <Tooltip title="Open userMenus">
-                            <IconButton sx={{p: 0}}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
-                            </IconButton>
-                        </Tooltip>
-                        <Menu sx={{mt: '45px'}}
-                              id="menu-appbar"
-                              anchorEl={anchorElUser}
-                              anchorOrigin={{
-                                  vertical: 'top',
-                                  horizontal: 'right',
-                              }}
-                              keepMounted
-                              transformOrigin={{
-                                  vertical: 'top',
-                                  horizontal: 'right',
-                              }}
-                              open={Boolean(anchorElUser)}
-                              onClose={handleCloseUserMenu}>
-                            {userMenus.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
                     </Box>
                 </Toolbar>
             </Container>

@@ -11,49 +11,6 @@ export default function Layout() {
 
     // const initialMode = useSelector((state: RootState) => state.colorMode.mode)
 
-    const theme = useMemo(() =>
-            createTheme({
-                palette: {
-                    primary: {
-                        main: '#FBB810',
-                    },
-                    secondary: {
-                        main: '#535353',
-                    },
-                    // mode: 'dark',
-                    // mode: initialMode,
-                },
-                typography: {
-                    h1: {fontFamily: "Prompt, sans-serif"},
-                    h2: {fontFamily: "Prompt, sans-serif"},
-                    h3: {fontFamily: "Prompt, sans-serif"},
-                    h4: {fontFamily: "Prompt, sans-serif"},
-                    h5: {fontFamily: "Prompt, sans-serif"},
-                    h6: {fontFamily: "Prompt, sans-serif"},
-                    body2: {fontFamily: "Nunito, sans-serif"},
-                    button: {
-                        fontFamily: "Nunito, sans-serif",
-                        fontWeight: 500,
-                    },
-                    fontFamily: "Nunito, sans-serif"
-                },
-                components: {
-                    MuiMenu: {
-                        styleOverrides: {
-                            paper: {
-                                borderRadius: '16px !important'
-                            },
-                        },
-                    },
-                    MuiButton: {
-                        defaultProps: {
-                            size: 'small',
-                        }
-                    },
-                },
-            }),
-        [],
-    )
     const location = useLocation()
 
     const isMobile = useMediaQuery('(max-width:600px)')
@@ -69,7 +26,7 @@ export default function Layout() {
     }, [location])
 
     return (
-        <ThemeProvider theme={theme}>
+        <React.Fragment>
             <AppBar2 toggleDrawer={toggleDrawer}/>
             {isMobile && <ThemeDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>}
             <Container sx={{
@@ -111,6 +68,6 @@ export default function Layout() {
                 </TransitionGroup>
                 <ThemeFooter2/>
             </Container>
-        </ThemeProvider>
+        </React.Fragment>
     )
 }
