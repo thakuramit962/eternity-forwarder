@@ -144,20 +144,6 @@ const AboutSection = () => {
 
         }}>
             <Typography variant={'h2'} className={'heading'}>About Us</Typography>
-            {/*<Typography variant={'body1'} sx={{*/}
-            {/*    textAlign: 'center',*/}
-            {/*    // maxWidth: '500px',*/}
-            {/*    mx: 'auto',*/}
-            {/*    color: theme.palette.text.secondary,*/}
-            {/*    width: {xs: '100%', sm: '90%', md: '80%'},*/}
-            {/*    fontSize: theme.typography.pxToRem(15),*/}
-            {/*}}>*/}
-            {/*    Founded in 2012, with a prime moto of digitising Logistics in the country, today, Eternity has*/}
-            {/*    placed its name prominently in the Indian Logistics Market. Eternity efficiently working in the PTL*/}
-            {/*    and FTL space with its core focus to connect every pin code in India by 2025. Operational in 20+*/}
-            {/*    States PAN India, Eternity has been adding value to the Logistics Industry in many ways.*/}
-            {/*</Typography>*/}
-
             <Box sx={{
                 position: 'relative',
                 display: 'flex',
@@ -183,12 +169,10 @@ const AboutSection = () => {
                     maxHeight: '60vw',
                 },
             }}>
-                {/*<img src={blob} className={'blob'}/>*/}
                 <img src={aboutIllustrationNew} className={'illustration'}/>
                 <Typography variant={'body1'} className={'bodyText'} sx={{
                     mt: 3, mb: 3,
                     textAlign: 'center',
-                    // width: {xs: '100%', sm: '90%', md: '80%'},
                 }}>
                     Founded in 2012, with a prime moto of digitising Logistics in the country, today, Eternity has
                     placed its name prominently in the Indian Logistics Market. Eternity efficiently working in the PTL

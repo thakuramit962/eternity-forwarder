@@ -15,7 +15,7 @@ const EsteemedClients = () => {
     const theme = useTheme()
 
     return (
-        <Box className={'esteemedClients'} sx={{
+        <Box id={'clientSection'} className={'esteemedClients'} sx={{
             mt: 6,
         }}>
 

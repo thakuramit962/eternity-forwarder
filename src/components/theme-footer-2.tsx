@@ -4,10 +4,12 @@ import logo from '../assets/images/eternity-forwarders-logo.svg'
 import moment from "moment"
 import PlayStoreCta from "./play-store-cta"
 import {FacebookRounded, Instagram, LinkedIn, Twitter} from "@mui/icons-material"
+import {useNavigate} from "react-router-dom";
 
 export default function ThemeFooter2() {
 
     const theme = useTheme()
+    const navigate = useNavigate()
 
     return (
         <Box component={'footer'} sx={{
@@ -54,7 +56,7 @@ export default function ThemeFooter2() {
                         mb: 2,
                         width: 'max-content',
                     },
-                    '& .footerLink': {
+                    '& .footerLink, & a': {
                         mb: 0.5,
                         textIndent: '10px',
                         fontSize: '0.85rem',
@@ -62,8 +64,13 @@ export default function ThemeFooter2() {
                         transition: 'all 180ms ease',
                         width: 'max-content',
                         color: theme.palette.text.secondary,
-                        '&:hover': {
+                        textDecoration: 'none',
+                        '&:hover':{
                             color: theme.palette.primary.main,
+                        },
+                    },
+                    '& .footerLink':{
+                        '&:hover': {
                             letterSpacing: 0.5,
                             position: 'relative',
                             '&:before': {
@@ -109,10 +116,10 @@ export default function ThemeFooter2() {
 
                 <Box className={'footerWidget'}>
                     <Typography className={'footerHeading'} variant={'h6'}>Company</Typography>
-                    <Typography className={'footerLink'}>About Us</Typography>
-                    <Typography className={'footerLink'}>Group</Typography>
-                    <Typography className={'footerLink'}>Services</Typography>
-                    <Typography className={'footerLink'}>Clients</Typography>
+                    <Typography className={'footerLink'} onClick={()=>navigate('/about')}>About Us</Typography>
+                    <Typography className={'footerLink'} onClick={()=>navigate('/group')}>Group</Typography>
+                    <Typography className={'footerLink'} ><a href={'#serviceSection'} onClick={() => navigate('/')}>Services</a></Typography>
+                    <Typography className={'footerLink'}><a href={'#clientSection'} onClick={() => navigate('/')}>Clients</a></Typography>
                 </Box>
 
                 <Box className={'footerWidget'}>
@@ -125,9 +132,11 @@ export default function ThemeFooter2() {
 
                 <Box className={'footerWidget'}>
                     <Typography className={'footerHeading'} variant={'h6'}>Important Links</Typography>
-                    <Typography className={'footerLink'}>Privacy Policy</Typography>
+                    <Typography className={'footerLink'} onClick={() => navigate('/privacy-policy')}>Privacy
+                        Policy</Typography>
                     <Typography className={'footerLink'}>Disclaimer</Typography>
-                    <Typography className={'footerLink'}>Terms & Conditions</Typography>
+                    <Typography className={'footerLink'} onClick={() => navigate('/terms-and-conditions')}>Terms &
+                        Conditions</Typography>
                     <Typography className={'footerLink'}>EEO Policy</Typography>
                 </Box>
             </Box>

@@ -2,9 +2,10 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Layout from "../layout";
 import Home from "../pages/home/Home";
-import Service from "../pages/Service";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 import About from "../pages/About";
 import Group from "../pages/group";
+import TermsAndConditions from "../pages/TermsAndConditions";
 
 
 export default function WebRoutes() {
@@ -14,9 +15,10 @@ export default function WebRoutes() {
             <Route path="/" element={<Layout/>}>
                 <Route path="" element={<Home/>}/>
                 <Route path="about" element={<About/>}/>
-                <Route path="services" element={<Service/>}/>
                 <Route path="group" element={<Group/>}/>
                 <Route path="support" element={<h2>Support</h2>}/>
+                <Route path="privacy-policy" element={<PrivacyPolicy/>}/>
+                <Route path="terms-and-conditions" element={<TermsAndConditions/>}/>
             </Route>
         </Routes>
     )
