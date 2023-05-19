@@ -14,17 +14,21 @@ export default function WebRoutes() {
 
     return (
         <Routes>
-            <Route path="/" element={<><ThemeAppBar/><ComingSoonPage/></>}/>
-            <Route path="/privacy-policy" element={<><ThemeAppBar/><PrivacyPolicy/></>}/>
-            <Route path="/terms-and-conditions" element={<><ThemeAppBar/><TermsAndConditions/></>}/>
-            <Route path="/amit" element={<Layout/>}>
+            <Route path="/" element={<Layout/>}>
                 <Route path="" element={<Home/>}/>
                 <Route path="about" element={<About/>}/>
                 <Route path="group" element={<Group/>}/>
                 <Route path="support" element={<h2>Support</h2>}/>
                 <Route path="privacy-policy" element={<PrivacyPolicy/>}/>
                 <Route path="terms-and-conditions" element={<TermsAndConditions/>}/>
+
+                <Route path="privacy-policy" element={<PrivacyPolicy/>}/>
+                <Route path="terms-and-conditions" element={<TermsAndConditions/>}/>
             </Route>
+
+            <Route path="/coming-soon" element={<><ThemeAppBar/><ComingSoonPage/></>}/>
+
+            <Route path="*" element={<h1>No page found</h1>}/>
         </Routes>
     )
 }

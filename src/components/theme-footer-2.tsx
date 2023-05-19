@@ -107,14 +107,14 @@ export default function ThemeFooter2() {
                     display: 'flex',
                     flexFlow: 'column',
                     justifyContent: 'space-between',
-                }}>
+                }} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                     <img src={logo} alt={'eternity forwarders'}/>
 
                     <Typography className={'footerDescription'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod</Typography>
                 </Box>
 
-                <Box className={'footerWidget'}>
+                <Box className={'footerWidget'} data-aos="fade-up" data-aos-anchor-placement="center-bottom" >
                     <Typography className={'footerHeading'} variant={'h6'}>Company</Typography>
                     <Typography className={'footerLink'} onClick={()=>navigate('/about')}>About Us</Typography>
                     <Typography className={'footerLink'} onClick={()=>navigate('/group')}>Group</Typography>
@@ -122,7 +122,7 @@ export default function ThemeFooter2() {
                     <Typography className={'footerLink'}><a href={'#clientSection'} onClick={() => navigate('/')}>Clients</a></Typography>
                 </Box>
 
-                <Box className={'footerWidget'}>
+                <Box className={'footerWidget'} data-aos="fade-up" data-aos-anchor-placement="center-bottom" >
                     <Typography className={'footerHeading'} variant={'h6'}>Connect</Typography>
                     <Typography className={'footerLink'}>Support</Typography>
                     <Typography className={'footerLink'}>Raise a Query</Typography>
@@ -130,7 +130,7 @@ export default function ThemeFooter2() {
                     <Typography className={'footerLink'}>Careers</Typography>
                 </Box>
 
-                <Box className={'footerWidget'}>
+                <Box className={'footerWidget'} data-aos="fade-up" data-aos-anchor-placement="center-bottom" >
                     <Typography className={'footerHeading'} variant={'h6'}>Important Links</Typography>
                     <Typography className={'footerLink'} onClick={() => navigate('/privacy-policy')}>Privacy
                         Policy</Typography>
@@ -151,7 +151,7 @@ export default function ThemeFooter2() {
                 display: 'flex',
                 flexFlow: 'column',
                 alignItems: 'center'
-            }}>
+            }} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                 <Box sx={{
                     display: 'flex',
                     alignItems: 'center',

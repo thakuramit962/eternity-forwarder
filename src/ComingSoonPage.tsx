@@ -8,8 +8,11 @@ import websiteBanner from './assets/images/app-banner.png'
 
 export default function ComingSoonPage() {
 
+    const navigate = useNavigate()
+
     return (
         <Box sx={{
+            position: 'relative',
             display: 'flex',
             flexFlow: 'column',
             justifyContent: 'center',
@@ -31,6 +34,32 @@ export default function ComingSoonPage() {
                 fontWeight: 600,
             }}>
                 Website is under construction
+            </Typography>
+
+
+            <Typography sx={{
+                fontSize: '0.9rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 1,
+                position: 'absolute',
+                bottom: '1rem',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                '& span':{
+                    cursor: 'pointer',
+                    color: '#222',
+                    '&:hover':{
+                        color: '#000',
+                        fontWeight: 600,
+                    },
+                },
+            }}>
+                <span onClick={()=>navigate('/privacy-policy')}>Privacy Policy</span>
+                |
+                <span onClick={()=>navigate('/terms-and-conditions')}>Terms & Conditions</span>
             </Typography>
 
         </Box>

@@ -10,9 +10,6 @@ const WhyUs = () => {
         <Box sx={{
             mt: {xs: 6},
             minHeight: 'min(90vh, 550px)',
-            // background: `url(${onTime})`,
-            // backgroundAttachment: 'fixed',
-            // backgroundSize: 'contain'
             '& .bodyText': {
                 fontSize: theme.typography.pxToRem(15),
             },

@@ -23,7 +23,7 @@ const ShipWithUs = () => {
                 '& img': {
                     maxHeight: {xs: '150px', sm: '200px', md: '300px'},
                     filter: 'opacity(0.9)',
-                    transform: 'scaleX(-1)',
+                    // transform: 'scaleX(-1)',
                     mx: 'auto'
                 },
             }}>
@@ -55,12 +55,8 @@ const ShipWithUs = () => {
 
                         },
                     },
-                }}>
-                    {/*<Typography variant={'h3'} sx={{*/}
-                    {/*    fontSize: 'clamp(1rem, 8vw, 1.5rem)',*/}
-                    {/*    px: {xs: 3, sm: 0},*/}
-                    {/*    textAlign: {xs: 'center', sm: 'left'},*/}
-                    {/*}}>Managed Delivery in All Over India</Typography>*/}
+                }} data-aos="fade-right"
+                     data-aos-anchor-placement="top-bottom">
                     <Typography variant={'body1'} sx={{
                         mt: 2, mb: 2,
                         textIndent: '1rem',
@@ -136,7 +132,8 @@ const ShipWithUs = () => {
 
                 </Box>
 
-                <img src={shipWithUs} alt={'ship with us'}/>
+                <img src={shipWithUs} alt={'ship with us'} data-aos="fade-right"
+                     data-aos-anchor-placement="top-bottom"/>
 
             </Box>
 

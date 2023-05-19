@@ -81,7 +81,8 @@ const EsteemedClients = () => {
                 <Box sx={{
                     borderRadius: '20px',
                     flex: '1 1 300px',
-                }}>
+                }} data-aos="fade-up"
+                     data-aos-anchor-placement="center-bottom">
                     <Box sx={{
                         position: 'relative',
                         border: '2px solid #83838370',

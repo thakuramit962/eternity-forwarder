@@ -10,7 +10,7 @@ export default function PlayStoreCta() {
     const theme = useTheme()
 
     return (
-        <Box sx={{
+        <Box data-aos="fade-up" data-aos-anchor-placement="center-bottom" sx={{
             minHeight: '300px',
             borderRadius: '20px',
             display: 'flex',
@@ -80,7 +80,7 @@ export default function PlayStoreCta() {
                     <img src={qr} className={'qr'} alt={'play store link qr'}/>
                 </Box>
             </Box>
-            <img src={mobileMockup} className={'mockup'}/>
+            <img src={mobileMockup} className={'mockup'} data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
         </Box>
     )
 }

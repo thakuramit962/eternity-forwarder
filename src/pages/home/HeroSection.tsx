@@ -20,8 +20,8 @@ const HeroSection = () => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
     const scalingY = useParallax<HTMLDivElement>(
-        isMobile ? {opacity: [1.11, 0.4, 'easeInQuad']} : {})
-        // isMobile ? {scale: [1.11, 0.6, 'easeInQuad'], opacity: [1.11, 0.4, 'easeInQuad']} : {})
+        // isMobile ? {opacity: [1.11, 0.4, 'easeInQuad']} : {})
+        isMobile ? {scale: [1.11, 0.6, 'easeInQuad']} : {})
 
     const [trackingType, setTrackingType] = useState('shipmentId')
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setTrackingType((e.target.value))
