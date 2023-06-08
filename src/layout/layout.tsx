@@ -1,16 +1,21 @@
-import React, {useEffect, useMemo, useState} from 'react'
+import React, {useEffect, useMemo, useRef, useState} from 'react'
 import {Outlet, useLocation} from 'react-router-dom'
-import {Box, Container, createTheme, ThemeProvider, useMediaQuery} from "@mui/material"
+import {Box, Container, createTheme, ThemeProvider, useMediaQuery, useTheme} from "@mui/material"
 import AppBar2 from "../components/app-bar-2";
 import ThemeFooter2 from "../components/theme-footer-2"
 import ThemeDrawer from "../components/theme-drawer"
 import {CSSTransition, TransitionGroup} from "react-transition-group"
+import Header from "./header/header";
+import Toolbar from "@mui/material/Toolbar";
+import AppBar from "@mui/material/AppBar";
+import Sidebar from "./sidebar/sidebar";
 
 
 export default function Layout() {
 
     // const initialMode = useSelector((state: RootState) => state.colorMode.mode)
 
+    const theme = useTheme()
     const location = useLocation()
 
     const isMobile = useMediaQuery('(max-width:600px)')
@@ -21,22 +26,40 @@ export default function Layout() {
 
     const currentKey = location?.pathname || "/"
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [location])
+    const cursorRounded = useRef()
+
+
+    const moveCursor = (e: MouseEvent) => {
+        const mouseY = e.clientY
+        const mouseX = e.clientX
+        // cursorRounded?.current?.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
+        // cursorRounded?.current?.style.backgroundColor = "red";
+    }
+
+    window.addEventListener('mousemove', moveCursor)
+
 
     return (
         <React.Fragment>
-            <AppBar2 toggleDrawer={toggleDrawer}/>
-            {isMobile && <ThemeDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>}
-            <Container sx={{
+            <Sidebar open={isDrawerOpen} closeDrawer={toggleDrawer}/>
+
+            <Header toggleDrawer={toggleDrawer}/>
+            <Box sx={{
                 display: 'flex',
                 flexFlow: 'column',
                 minHeight: '100vh',
-                width: '100%',
                 px: 0,
                 '& main': {
                     flex: 1,
+                },
+                '& .MuiButton-root': {
+                    '&:hover': {
+                        cursor: 'none',
+                        '&.MuiButton-outlined': {
+                            background: theme.palette.primary.main,
+                            color: theme.palette.primary.contrastText,
+                        },
+                    },
                 },
                 '& .page-enter': {
                     opacity: 0,
@@ -59,15 +82,17 @@ export default function Layout() {
                     transition: 'opacity 300ms, transform 300ms',
                 },
             }}>
-                <TransitionGroup component={null}>
-                    <CSSTransition key={currentKey} classNames="page" timeout={300}>
-                        <Box component={'main'} className={'page'}>
-                            <Outlet/>
-                        </Box>
-                    </CSSTransition>
-                </TransitionGroup>
+                <Box component={'main'} className={'page'}>
+                    <Outlet/>
+                </Box>
                 <ThemeFooter2/>
-            </Container>
+            </Box>
+            <Box ref={cursorRounded} className="cursor rounded" sx={{
+                width: '30px',
+                height: '30px',
+                border: '2px solid #fff',
+                borderRadius: '50%',
+            }}/>
         </React.Fragment>
     )
 }
