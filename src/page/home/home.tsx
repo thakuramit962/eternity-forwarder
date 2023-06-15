@@ -21,6 +21,8 @@ import Hero from "./hero";
 import ServicesSection from "./services-section";
 import PartnerWithUsSection from "./partner-with-us-section";
 import ServiceOption2 from "./service-option-2";
+import Strengths from "./strengths";
+import Clients from "./clients";
 
 
 export default function Home() {
@@ -34,8 +36,10 @@ export default function Home() {
         <NewPageContainer>
             <Hero/>
             <ServiceOption2/>
-            <ServicesSection/>
+            <Strengths/>
             <PartnerWithUsSection/>
+            <Clients/>
+            <ServicesSection/>
         </NewPageContainer>
     )
 }
