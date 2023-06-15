@@ -1,45 +1,38 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
+import React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
 import {
     alpha,
     List,
     ListItem,
-    ListItemButton, ListItemIcon,
+    ListItemButton,
     useMediaQuery,
     useScrollTrigger,
     useTheme
-} from "@mui/material";
-import {NavLink, useNavigate} from "react-router-dom";
+} from "@mui/material"
+import {NavLink, useNavigate, useMatch} from "react-router-dom"
 import whiteLogo from '../../assets/images/long-logo-white.svg'
 import blackLogo from '../../assets/images/long-logo.svg'
-import UserMenu from "./user-menu";
 
 
 const menus = [
     {
-        name: 'Company', link: '', submenu: [
-            {name: 'About Us', link: 'services'},
-            {name: 'Contact', link: 'group'},
-            {name: 'Career', link: 'group'},
-        ]
-    },
-    {
-        name: 'Services', link: 'services', submenu: [
+        name: 'Our Services', link: 'services', submenu: [
             {name: 'Logistic Solutions', link: 'services'},
             {name: '3PL/ Warehousing', link: 'group'},
             {name: 'Other Services', link: 'group'},
         ]
     },
-    {name: 'Tracking', link: 'group'},
+    {
+        name: 'Ship Now', link: 'ship-with-us', submenu: [
+            {name: 'Eternity for Business', link: 'services'},
+            {name: 'Eternity Shipmate', link: 'group'},
+            {name: 'Register your Interest', link: 'group'},
+        ]
+    },
     {
         name: 'Partner With Us', link: 'partner-with-us', submenu: [
             {name: 'Last Mile Partner', link: 'services'},
@@ -47,22 +40,19 @@ const menus = [
         ]
     },
     {
-        name: 'Ship With Us', link: 'ship-with-us', submenu: [
-            {name: 'Eternity for Business', link: 'services'},
-            {name: 'Eternity Shipmate', link: 'group'},
-            {name: 'Register your Interest', link: 'group'},
+        name: 'Company', link: 'company', submenu: [
+            {name: 'About Us', link: 'services'},
+            {name: 'Contact', link: 'group'},
+            {name: 'Career', link: 'group'},
         ]
-    },
+    }
 ]
-
-function ListItemText(props: { primary: string }) {
-    return null;
-}
 
 export default function Header(props: any) {
 
     const theme = useTheme()
     const navigate = useNavigate()
+    const isHomeScreen = useMatch('/')
     const isSmallScreen = useMediaQuery('(max-width:1023px)')
 
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
@@ -71,21 +61,21 @@ export default function Header(props: any) {
 
     const scrolled = useScrollTrigger({
         disableHysteresis: true,
-        threshold: 100,
-        // target: window
-    });
+        threshold: 60,
+    })
 
     return (
         <AppBar
             position={'fixed'}
             sx={{
-                backgroundColor: scrolled ? theme.palette.background.paper : 'transparent',
+                backgroundColor: scrolled ? theme.palette.background.paper : (isHomeScreen ? 'transparent' : theme.palette.background.paper),
                 boxShadow: 0,
                 borderBottom: `1px solid ${theme.palette.text.disabled}`,
                 justifyContent: 'space-between',
                 '& img.longLogo': {
                     maxWidth: '100%',
                     maxHeight: {xs: '36px', sm: '44px'},
+                    cursor: 'pointer',
                 },
             }}>
             <Toolbar disableGutters sx={{
@@ -101,7 +91,7 @@ export default function Header(props: any) {
                     justifyContent: 'flex-start',
                     px: 2,
                 }}>
-                    <img src={scrolled ? blackLogo : whiteLogo} className={'longLogo'}/>
+                    <img src={scrolled ? blackLogo : (isHomeScreen ? whiteLogo : blackLogo)} onClick={() => navigate('/')} className={'longLogo'}/>
                 </Box>
 
                 <Box sx={{
@@ -116,7 +106,7 @@ export default function Header(props: any) {
                         textAlign: 'center',
                         textDecoration: 'none',
                         fontSize: '18px',
-                        color: scrolled ? theme.palette.secondary.main : theme.palette.secondary.contrastText,
+                        color: scrolled ? theme.palette.secondary.main : (isHomeScreen ? theme.palette.secondary.contrastText : theme.palette.secondary.main),
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -140,9 +130,10 @@ export default function Header(props: any) {
                             left: 0,
                             width: 'max-content',
                             minWidth: '150px',
-                            background: '#fff',
-                            color: '#000',
+                            background: theme.palette.background.paper,
+                            color: theme.palette.text.primary,
                             display: 'none',
+                            boxShadow: '0 0 12px #83838360',
                             animation: 'fadeUp 500ms ease-in-out both',
                         },
                         '&:hover': {
@@ -210,7 +201,9 @@ export default function Header(props: any) {
                     gap: 2,
                     ml: 3,
                 }}>
-                    <Box sx={{
+
+                    <IconButton onClick={props.toggleDrawer} sx={{
+                        borderRadius: 0,
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -220,7 +213,10 @@ export default function Header(props: any) {
                         position: 'relative',
                         overflow: 'hidden',
                         transition: 'all 500ms ease-in-out',
-                        background: scrolled ? theme.palette.secondary.main : alpha(theme.palette.background.default, 0),
+                        cursor: 'none',
+                        color: theme.palette.background.default,
+                        fontSize: '1.5rem',
+                        background: scrolled ? theme.palette.secondary.main  : (isHomeScreen ? alpha(theme.palette.background.default, 0) : theme.palette.secondary.main),
                         '&:before': {
                             content: '""',
                             position: 'absolute',
@@ -230,16 +226,11 @@ export default function Header(props: any) {
                             transform: 'scale(0)',
                             transition: 'all 400ms ease-in-out',
                             background: theme.palette.primary.main,
+                            zIndex: -1,
                         },
-                        '& .MuiIconButton-root': {
-                            cursor: 'none',
-                            color: theme.palette.background.default,
-                            fontSize: '1.5rem',
-                            p: 0,
-                            '& svg': {
-                                height: '2.2rem',
-                                width: '2.2rem',
-                            },
+                        '& svg': {
+                            height: '2.2rem',
+                            width: '2.2rem',
                         },
                         '&:hover': {
                             cursor: 'none',
@@ -248,29 +239,11 @@ export default function Header(props: any) {
                             },
                         },
                     }}>
-                        <IconButton disableRipple onClick={props.toggleDrawer}>
-                            <MenuIcon/>
-                        </IconButton>
-                    </Box>
+                        <MenuIcon/>
+                    </IconButton>
                 </Box>
 
             </Toolbar>
         </AppBar>
     )
 }
-
-// <Button variant={'contained'} sx={{
-//     borderRadius: '8px',
-//     borderWidth: '2px',
-//     textTransform: 'none',
-//     fontSize: '15px',
-//     fontWeight: 600,
-//     letterSpacing: '0.5px',
-//     boxShadow: 0,
-//     height: '40px',
-//     // px: 2,
-//     display: {xs: 'none', sm: 'flex'},
-//     '&:hover': {
-//         boxShadow: 0,
-//     },
-// }}>Ship With Us</Button>

@@ -3,7 +3,7 @@ import {useParallax} from "react-scroll-parallax";
 import truckIllustration from "../../assets/images/truck-illustration.svg";
 import React from "react";
 
-const ServicesSection = () => {
+const ServiceSection = () => {
 
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.up('sm'))
@@ -196,4 +196,4 @@ const ServicesSection = () => {
     )
 }
 
-export default ServicesSection
+export default ServiceSection

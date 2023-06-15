@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, useTheme} from "@mui/material"
+import {alpha, Box, useTheme} from "@mui/material"
 
 
 export default function NewPageContainer(props: any) {
@@ -8,12 +8,17 @@ export default function NewPageContainer(props: any) {
 
     return (
         <Box sx={{
+            background: alpha(theme.palette.action.hover, 0.05),
             '& .heading': {
                 fontSize: 'clamp(1.3rem, 10vw, 4rem)',
                 fontWeight: 700,
                 textAlign: 'center',
-                color: theme.palette.primary.main,
-                fontFamily: theme.typography.body2.fontFamily,
+                color: 'transparent',
+                // color: theme.palette.secondary.light,
+                fontFamily: theme.typography.h1.fontFamily,
+                letterSpacing: '2px',
+                WebkitTextStroke: '2px',
+                WebkitTextStrokeColor: alpha(theme.palette.secondary.light, 0.1)
             },
         }}>
             {props.children}

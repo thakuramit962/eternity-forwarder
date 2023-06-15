@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import PageContainer from "../../components/page-container"
 import HeroSection from "./HeroSection"
-import ServicesSection from "./ServiceSection"
+import ServiceSection from "./ServiceSection"
 import ShipWithUs from "./ShipWithUs"
 import EsteemedClients from "./EsteemedClients"
 import AboutSection from "./AboutSection"
@@ -19,7 +19,7 @@ export default function Home() {
         <PageContainer>
             <HeroSection/>
             <AboutSection/>
-            <ServicesSection/>
+            <ServiceSection/>
             <ShipWithUs/>
             {/*<WhyUs/>*/}
             <EsteemedClients/>

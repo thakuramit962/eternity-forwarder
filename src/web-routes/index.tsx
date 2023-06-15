@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo} from 'react'
 import {Routes, Route, useLocation, BrowserRouter} from 'react-router-dom'
-import Home from "../pages/home/Home";
+import Home2 from "../pages/home/Home"
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import About from "../pages/About";
 import Group from "../pages/group";
@@ -12,6 +12,8 @@ import TestPage from "../pages/text-page";
 import {createTheme, ThemeProvider} from "@mui/material";
 import Layout2 from "../layout2";
 
+import Home from "../page/home/home"
+import TrackingPage from "../page/tracking-page/tracking-page";
 
 export default function WebRoutes() {
 
@@ -30,18 +32,19 @@ export default function WebRoutes() {
                     // mode: initialMode,
                 },
                 typography: {
-                    h1: {fontFamily: "Prompt, sans-serif"},
-                    h2: {fontFamily: "Prompt, sans-serif"},
-                    h3: {fontFamily: "Prompt, sans-serif"},
-                    h4: {fontFamily: "Prompt, sans-serif"},
-                    h5: {fontFamily: "Prompt, sans-serif"},
-                    h6: {fontFamily: "Prompt, sans-serif"},
-                    body2: {fontFamily: "Nunito, sans-serif"},
+                    h1: {fontFamily: "Roboto, sans-serif"},
+                    h2: {fontFamily: "Roboto, sans-serif"},
+                    h3: {fontFamily: "Roboto, sans-serif"},
+                    h4: {fontFamily: "Roboto, sans-serif"},
+                    h5: {fontFamily: "Roboto, sans-serif"},
+                    h6: {fontFamily: "Roboto, sans-serif"},
+                    body1: {fontFamily: "Roboto, sans-serif"},
+                    body2: {fontFamily: "Roboto, sans-serif"},
                     button: {
-                        fontFamily: "Nunito, sans-serif",
+                        fontFamily: "Roboto, sans-serif",
                         fontWeight: 500,
                     },
-                    fontFamily: "Nunito, sans-serif"
+                    fontFamily: "Roboto, sans-serif"
                 },
                 components: {
                     MuiMenu: {
@@ -70,12 +73,13 @@ export default function WebRoutes() {
         <ThemeProvider theme={theme}>
             <Routes>
                 <Route path="/" element={<Layout/>}>
-                    <Route path="" element={<TestPage/>}/>
+                    <Route path="" element={<Home/>}/>
+                    <Route path="track" element={<TrackingPage/>}/>
                 </Route>
 
 
                 <Route path="/layout-2" element={<Layout2/>}>
-                    <Route path="" element={<Home/>}/>
+                    <Route path="" element={<Home2/>}/>
                     <Route path="about" element={<About/>}/>
                     <Route path="group" element={<Group/>}/>
                     <Route path="support" element={<h2>Support</h2>}/>
