@@ -18,11 +18,11 @@ import 'swiper/css'
 
 import NewPageContainer from "../../components/new-page-container"
 import Hero from "./hero";
-import ServicesSection from "./services-section";
 import PartnerWithUsSection from "./partner-with-us-section";
 import ServiceOption2 from "./service-option-2";
 import Strengths from "./strengths";
 import Clients from "./clients";
+import MobileStrengths from "./mobile-strengths";
 
 
 export default function Home() {
@@ -30,16 +30,15 @@ export default function Home() {
     const theme = useTheme()
     const navigate = useNavigate()
 
-    const isMobile = useMediaQuery(`(max-width: 500px)`)
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
     return (
         <NewPageContainer>
             <Hero/>
             <ServiceOption2/>
-            <Strengths/>
+            {isMobile ? <MobileStrengths/> : <Strengths/>}
             <PartnerWithUsSection/>
             <Clients/>
-            <ServicesSection/>
         </NewPageContainer>
     )
 }

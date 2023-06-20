@@ -7,7 +7,7 @@ import {
     useScrollTrigger,
     useTheme, Tab, Tabs, Button, InputBase, TextField, InputAdornment
 } from "@mui/material"
-import bg from '../../assets/images/hero-banner-.png'
+import bg from '../../assets/images/demo-banner.jpg'
 // import bg from '../../assets/images/bg-1.png'
 import {MyLocation, Place} from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
@@ -30,7 +30,7 @@ const Hero = (props: any) => {
     const handleChange = (event: React.SyntheticEvent, newValue: string) => setValue(newValue)
 
     return (
-        <Box className={'animate__animated animate__fadeIn'} sx={{
+        <Box  component={'section'} className={'animate__animated animate__fadeIn'} sx={{
             minHeight: '90vh',
             backgroundImage: `linear-gradient(${alpha(theme.palette.text.primary, 0.2)}, ${alpha(theme.palette.text.primary, 0.7)}), url(${bg})`,
             backgroundColor: theme.palette.background.default,

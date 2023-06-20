@@ -12,7 +12,7 @@ import {
 } from "@mui/icons-material";
 
 
-export default function Strengths() {
+export default function MobileStrengths() {
 
     const theme = useTheme()
 
@@ -103,7 +103,7 @@ export default function Strengths() {
                 <Box sx={{
                     position: {xs: 'relative', sm: 'absolute'},
                     left: {xs: 'auto', sm: '10%'},
-                }} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                }}>
                     <Typography className={'heading'}>Strengths</Typography>
                 </Box>
                 <Box sx={{
@@ -262,7 +262,7 @@ export default function Strengths() {
                         },
                     },
                 }}>
-                    <Box className={'titleBlock'} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                    <Box className={'titleBlock'}>
                         <Box className={'carouselBlock'}>
                             {strengths.map((strength, index) => (
                                 <Box key={index}
@@ -286,7 +286,7 @@ export default function Strengths() {
                         </Box>
                     </Box>
 
-                    <Box className={'desBlock'} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                    <Box className={'desBlock'}>
                         {strengths.map((strength, index) => (
                             <Box key={index} className={`carousel_des animate__animated ${isMobile ? 'animate__fadeIn' : 'animate__pulse'}`} sx={{
                                 display: activeCarousel == index ? 'flex' : 'none',
@@ -308,8 +308,6 @@ export default function Strengths() {
                             </Box>
                         ))}
                     </Box>
-
-
                 </Box>
             </Box>
         </Box>

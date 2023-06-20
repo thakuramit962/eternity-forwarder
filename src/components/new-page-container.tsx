@@ -8,17 +8,38 @@ export default function NewPageContainer(props: any) {
 
     return (
         <Box sx={{
-            background: alpha(theme.palette.action.hover, 0.05),
             '& .heading': {
-                fontSize: 'clamp(1.3rem, 10vw, 4rem)',
+                mx: 'auto',
+                width: 'max-content',
+                fontSize: {xs: '2rem', sm: 'clamp(1.3rem, 10vw, 2.8rem)'},
                 fontWeight: 700,
                 textAlign: 'center',
-                color: 'transparent',
-                // color: theme.palette.secondary.light,
+                color: theme.palette.secondary.light,
                 fontFamily: theme.typography.h1.fontFamily,
-                letterSpacing: '2px',
-                WebkitTextStroke: '2px',
-                WebkitTextStrokeColor: alpha(theme.palette.secondary.light, 0.1)
+                position: 'relative',
+                mb: 3,
+                '&:after': {
+                    content: '""',
+                    width: '50%',
+                    height: '1px',
+                    background: theme.palette.primary.main,
+                    position: 'absolute',
+                    bottom: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    opacity: 0,
+                    transition: 'all 250ms ease-in-out',
+                },
+            },
+            '& section:hover': {
+                '& .heading': {
+                    '&:after': {
+                        width: '110%',
+                        height: '4px',
+                        bottom: '4px',
+                        opacity: 1,
+                    },
+                },
             },
         }}>
             {props.children}

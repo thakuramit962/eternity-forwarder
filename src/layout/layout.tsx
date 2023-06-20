@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react'
 import {Outlet, useLocation} from 'react-router-dom'
-import {Box, Container, createTheme, ThemeProvider, useMediaQuery, useTheme} from "@mui/material"
+import {alpha, Box, Container, createTheme, ThemeProvider, useMediaQuery, useTheme} from "@mui/material"
 import AppBar2 from "../components/app-bar-2";
 import ThemeFooter2 from "../components/theme-footer-2"
 import ThemeDrawer from "../components/theme-drawer"
@@ -9,7 +9,9 @@ import Header from "./header/header";
 import Toolbar from "@mui/material/Toolbar";
 import AppBar from "@mui/material/AppBar";
 import Sidebar from "./sidebar/sidebar";
-
+import 'aos/dist/aos.css';
+import Aos from "aos";
+import Footer from "./footer/footer";
 
 export default function Layout() {
 
@@ -38,6 +40,9 @@ export default function Layout() {
 
     window.addEventListener('mousemove', moveCursor)
 
+    useEffect(() => {
+        Aos.init()
+    }, [])
 
     return (
         <React.Fragment>
@@ -49,8 +54,10 @@ export default function Layout() {
                 flexFlow: 'column',
                 minHeight: '100vh',
                 px: 0,
+                background: alpha(theme.palette.secondary.main, 0.05),
                 '& main': {
                     flex: 1,
+                    background: 'transparent',
                 },
                 '& .MuiButton-root': {
                     '&:hover': {
@@ -85,13 +92,14 @@ export default function Layout() {
                 <Box component={'main'} className={'page'}>
                     <Outlet/>
                 </Box>
-                <ThemeFooter2/>
+                <Footer/>
             </Box>
             <Box ref={cursorRounded} className="cursor rounded" sx={{
                 width: '30px',
                 height: '30px',
                 border: '2px solid #fff',
                 borderRadius: '50%',
+                display: 'none',
             }}/>
         </React.Fragment>
     )

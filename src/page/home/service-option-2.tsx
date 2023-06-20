@@ -10,7 +10,7 @@ export default function ServiceOption2() {
     const theme = useTheme()
 
     return (
-        <Box className={'animate__animated animate__fadeIn'}
+        <Box  component={'section'} className={'animate__animated animate__fadeIn'}
              sx={{
                  minHeight: 'min(90vh, 450px)',
                  maxWidth: '1100px',
@@ -126,11 +126,11 @@ const ServiceCard = (props:any) => {
                     fontWeight: 400
                 },
             }}>
-                <Typography variant={'h3'} className={'animate__animated animate__fadeInUp animate__fast'}>{service.name}</Typography>
+                <Typography variant={'h3'} data-aos="fade-up" data-aos-anchor-placement="center">{service.name}</Typography>
 
-                <Typography className={'des animate__animated animate__fadeInUp animate__slow'}>{service.des}</Typography>
+                <Typography className={'des'} data-aos="fade-up" data-aos-anchor-placement="center">{service.des}</Typography>
 
-                <Button className={'button animate__animated animate__fadeInUp animate__slower'}
+                <Button className={'button'} data-aos="fade-up" data-aos-anchor-placement="center"
                         onClick={() => navigate(`/${service.link}`)}>
                     <Box className={'iconBox'}>
                         <KeyboardArrowRightRounded className={'firstSvg'}/>

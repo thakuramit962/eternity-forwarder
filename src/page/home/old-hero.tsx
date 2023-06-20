@@ -26,7 +26,7 @@ export default function Hero() {
     const isMobile = useMediaQuery(`(max-width: 500px)`)
 
     return (
-        <Box sx={{
+        <Box  component={'section'} sx={{
             minHeight: {xs: 'calc(100vh - 256px)', sm: '100vh'},
             position: 'relative',
             display: 'flex',

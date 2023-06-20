@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './style.css'
+import './tracking-page.module.css'
 import {Toolbar} from "@mui/material"
 
 

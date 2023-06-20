@@ -15,7 +15,7 @@ export default function ServicesSection() {
     const handleChange = (event: React.SyntheticEvent, newValue: number) => setValue(newValue)
 
     return (
-        <Box sx={{
+        <Box component={'section'} sx={{
             minHeight: 'min(100vh, 550px)',
             pt: 6,
             pb: 3,
