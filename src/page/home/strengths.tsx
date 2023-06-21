@@ -100,12 +100,53 @@ export default function Strengths() {
                     textAlign: 'center',
                 },
             }}>
+
+                <Typography data-aos="fade-up" data-aos-anchor-placement="center-bottom" variant={'h3'} sx={{
+                    fontSize: 'clamp(1.5rem, 8vw, 3.5rem)',
+                    lineHeight: '2.5rem',
+                    fontWeight: 600,
+                    color: theme.palette.secondary.main,
+                    // textAlign: 'center',
+                    '& span': {
+                        color: theme.palette.primary.main,
+                        '&.why':{
+                            fontSize: '18px',
+                            fontWeight: 400,
+                            color: theme.palette.secondary.light,
+                            // textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            textDecoration: 'underline',
+                            textDecorationColor: theme.palette.primary.main,
+                        },
+                    },
+                }}>
+                    <span className={'why'}>Why</span><br/>
+                    We are <span>Awesome</span>
+                </Typography>
+
                 <Box sx={{
                     position: {xs: 'relative', sm: 'absolute'},
-                    left: {xs: 'auto', sm: '10%'},
+                    // left: {xs: 'auto', sm: '10%'},
+                    top: 0,
+                    left: 0,
+                    display: 'none',
+                    '& h3': {
+                        fontSize: 'clamp(1.5rem, 8vw, 3.5rem)',
+                        fontWeight: 600,
+                        color: theme.palette.secondary.main,
+                        '& span': {
+                            color: theme.palette.primary.main,
+                        },
+                    },
+
                 }} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-                    <Typography className={'heading'}>Strengths</Typography>
+                    {/*<Typography className={'heading'}>Strengths</Typography>*/}
+                    <Typography>Why</Typography>
+                    <Typography variant={'h3'}>
+                        We are <br/><span>Awesome</span>
+                    </Typography>
                 </Box>
+
                 <Box sx={{
                     my: 8,
                     minHeight: {xs: 'auto', sm: 'min(90vh, 600px)'},
@@ -230,7 +271,7 @@ export default function Strengths() {
                         '& .carousel_des': {
                             minHeight: '350px',
                             height: {xs: '95%', sm: '350px'},
-                            width:  {xs: '95%', sm: '350px'},
+                            width: {xs: '95%', sm: '350px'},
                             p: 2,
                             textAlign: 'center',
                             fontSize: '14px',
@@ -288,9 +329,11 @@ export default function Strengths() {
 
                     <Box className={'desBlock'} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                         {strengths.map((strength, index) => (
-                            <Box key={index} className={`carousel_des animate__animated ${isMobile ? 'animate__fadeIn' : 'animate__pulse'}`} sx={{
-                                display: activeCarousel == index ? 'flex' : 'none',
-                            }}>
+                            <Box key={index}
+                                 className={`carousel_des animate__animated ${isMobile ? 'animate__fadeIn' : 'animate__pulse'}`}
+                                 sx={{
+                                     display: activeCarousel == index ? 'flex' : 'none',
+                                 }}>
                                 <Typography className={'animate__animated animate__fadeInUp'}>
                                     {strength.des}
                                 </Typography>
