@@ -7,7 +7,7 @@ import {
     useScrollTrigger,
     useTheme, Tab, Tabs, Button, InputBase, TextField, InputAdornment
 } from "@mui/material"
-import bg from '../../assets/images/demo-banner.jpg'
+import bg from '../../assets/images/hero-banner-1.jpg'
 // import bg from '../../assets/images/bg-1.png'
 import {MyLocation, Place} from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
@@ -32,7 +32,7 @@ const Hero = (props: any) => {
     return (
         <Box  component={'section'} className={'animate__animated animate__fadeIn'} sx={{
             minHeight: '90vh',
-            backgroundImage: `linear-gradient(${alpha(theme.palette.text.primary, 0.2)}, ${alpha(theme.palette.text.primary, 0.7)}), url(${bg})`,
+            backgroundImage: `linear-gradient(${alpha(theme.palette.text.primary, 0.1)}, ${alpha(theme.palette.text.primary, 0.4)}), url(${bg})`,
             backgroundColor: theme.palette.background.default,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',

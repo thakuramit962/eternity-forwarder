@@ -13,11 +13,11 @@ export default function PartnerWithUsSection() {
 
     return (
         <Box component={'section'} sx={{
-            background: `url(${bg})`,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'bottom left',
-            backgroundAttachment: 'fixed'
+            // background: `url(${bg})`,
+            // backgroundSize: 'cover',
+            // backgroundRepeat: 'no-repeat',
+            // backgroundPosition: 'bottom left',
+            // backgroundAttachment: 'fixed'
 
         }}>
             <Box sx={{
@@ -85,7 +85,7 @@ export default function PartnerWithUsSection() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         '& img': {
-                            maxHeight: '300px',
+                            maxHeight: '400px',
                         },
                     },
                 }}>

@@ -1,5 +1,6 @@
 import React from 'react'
 import {alpha, Box, useTheme} from "@mui/material"
+import bg from "../assets/images/bg.png";
 
 
 export default function NewPageContainer(props: any) {
@@ -8,6 +9,11 @@ export default function NewPageContainer(props: any) {
 
     return (
         <Box sx={{
+            background: `url(${bg})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'bottom left',
+            backgroundAttachment: 'fixed',
             '& .heading': {
                 mx: 'auto',
                 width: 'max-content',

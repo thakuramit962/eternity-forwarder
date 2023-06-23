@@ -23,6 +23,8 @@ import ServiceOption2 from "./service-option-2";
 import Strengths from "./strengths";
 import Clients from "./clients";
 import MobileStrengths from "./mobile-strengths";
+import PageContainer from "../../components/page-container";
+import StrengthSection from "./strength-section";
 
 
 export default function Home() {
@@ -36,7 +38,8 @@ export default function Home() {
         <NewPageContainer>
             <Hero/>
             <ServiceOption2/>
-            {isMobile ? <MobileStrengths/> : <Strengths/>}
+            <StrengthSection/>
+            {/*{isMobile ? <MobileStrengths/> : <Strengths/>}*/}
             <PartnerWithUsSection/>
             <Clients/>
         </NewPageContainer>
