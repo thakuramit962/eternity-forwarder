@@ -13,6 +13,8 @@ export default function PartnerWithUsSection() {
 
     return (
         <Box component={'section'} sx={{
+            width: '100%',
+            background: theme.palette.text.primary,
             // background: `url(${bg})`,
             // backgroundSize: 'cover',
             // backgroundRepeat: 'no-repeat',
@@ -48,12 +50,13 @@ export default function PartnerWithUsSection() {
                         '& h3': {
                             fontSize: 'clamp(1.5rem, 8vw, 3.5rem)',
                             fontWeight: 600,
-                            color: theme.palette.secondary.main,
+                            color: theme.palette.secondary.contrastText,
                             '& span': {
                                 color: theme.palette.primary.main,
                             },
                         },
                         '& p': {
+                            color: alpha(theme.palette.secondary.contrastText, 0.8),
                             fontSize: theme.typography.pxToRem(15),
                             textIndent: {xs: 0, sm: '1.5rem'},
                             maxWidth: '450px',
@@ -70,12 +73,15 @@ export default function PartnerWithUsSection() {
                                 borderRadius: '12px',
                                 textTransform: 'none',
                                 fontWeight: 600,
-                                color: theme.palette.secondary.main,
-                                borderColor: theme.palette.secondary.main,
+                                color: theme.palette.secondary.contrastText,
+                                borderColor: theme.palette.secondary.contrastText,
                                 width: '100%',
                                 maxWidth: '200px',
                                 fontSize: '1.2rem',
                                 // py: 1,
+                                '&:hover':{
+                                    color: theme.palette.secondary.main,
+                                },
                             },
                         },
                     },

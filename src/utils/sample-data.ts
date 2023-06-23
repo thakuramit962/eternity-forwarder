@@ -1,9 +1,10 @@
 import demoImage from "../assets/images/hero-banner-.png"
+import logisticImage from "../assets/images/logistic.jpg"
 
 export const services = [
     {
         name: 'Logistics',
-        image: demoImage,
+        image: logisticImage,
         heading: 'Heading for Service!',
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
         link: 'services',
