@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './tracking-page.module.css'
+import './tracking-page.css'
 import {Toolbar} from "@mui/material"
 
 
@@ -13,7 +13,9 @@ export default function TrackingPage() {
                 transition: 'all 300ms ease-in-out',
             }}/>
 
-            <main>
+            <main style={{
+                padding: '0 1rem'
+            }}>
                 <div className="content">
                     <div className="statusBlock">
                         <div className="deliveryStatus">
@@ -266,10 +268,8 @@ export default function TrackingPage() {
                                     stroke-linejoin="round"
                                     className="feather feather-file"
                                 >
-                                    <path
-                                        d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
-                                    ></path>
-                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                                    <polyline points="13 2 13 9 20 9"/>
                                 </svg>
                                 Order Details
                             </p>
