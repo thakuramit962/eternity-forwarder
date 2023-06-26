@@ -28,22 +28,22 @@ const menus = [
     },
     {
         name: 'Ship Now', link: 'ship-with-us', submenu: [
-            {name: 'Eternity for Business', link: 'services'},
-            {name: 'Eternity Shipmate', link: 'group'},
-            {name: 'Register your Interest', link: 'group'},
+            {name: 'Order Booking', link: 'services'},
+            {name: 'Connectivity Menu', link: 'group'},
         ]
     },
     {
         name: 'Partner With Us', link: 'partner-with-us', submenu: [
             {name: 'Last Mile Partner', link: 'services'},
             {name: 'Carrier Partner', link: 'group'},
+            {name: 'Agent', link: 'group'},
         ]
     },
     {
-        name: 'Company', link: 'company', submenu: [
-            {name: 'About Us', link: 'services'},
-            {name: 'Contact', link: 'group'},
+        name: 'About Us', link: 'company', submenu: [
+            {name: 'Company', link: 'services'},
             {name: 'Career', link: 'group'},
+            {name: 'Contact Us', link: 'group'},
         ]
     }
 ]

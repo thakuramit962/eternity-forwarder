@@ -1,4 +1,5 @@
-import demoImage from "../assets/images/hero-banner-.png"
+import other from "../assets/images/other.jpg"
+import warehouse from "../assets/images/warehouse.jpg"
 import logisticImage from "../assets/images/logistic.jpg"
 
 export const services = [
@@ -20,7 +21,7 @@ export const services = [
     },
     {
         name: '3PL / Warehousing',
-        image: demoImage,
+        image: warehouse,
         heading: 'Heading for Service!',
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
         link: 'services',
@@ -36,7 +37,7 @@ export const services = [
     },
     {
         name: 'Other Services',
-        image: demoImage,
+        image: other,
         heading: 'Heading for Service!',
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
         link: 'services',

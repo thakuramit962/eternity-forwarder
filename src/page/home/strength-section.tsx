@@ -59,7 +59,7 @@ const strengths = [
 ]
 
 
-const StrengthSection2 = () => {
+export const StrengthSectionDesktop = () => {
 
     const theme = useTheme()
 
@@ -280,7 +280,7 @@ const StrengthSection2 = () => {
                                             color: theme.palette.primary.main,
                                         },
                                     }}>
-                            Why<br/>We Are<br/><span>Awesome</span>
+                            How<br/>We Are<br/><span>Awesome</span>
                         </Typography>
 
 
@@ -543,4 +543,110 @@ const StrengthSection = () => {
     )
 }
 
-export default StrengthSection2
+export const StrengthSectionMobile = ()=> {
+
+    const theme = useTheme()
+
+    const [active, setActive] = useState(0)
+
+    return(
+        <Box component={'section'} id={'serviceSection'} sx={{
+            mt: 6,
+            py: 6,
+            minHeight: '100vh',
+            display: 'flex',
+            flexFlow: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            position: 'relative',
+            width: '100%',
+            background: theme.palette.text.primary,
+            '& .bodyText': {
+                fontSize: theme.typography.pxToRem(15),
+            },
+            '& .heading': {
+                mt: 4,
+                color: theme.palette.secondary.contrastText,
+                '& span': {
+                    color: theme.palette.primary.main,
+                }
+            },
+        }}>
+            <Typography variant={'h2'}
+                        data-aos="zoom-in" data-aos-anchor-placement="center-bottom"
+                        sx={{
+                            // display: isHovered ? 'none' : 'block',
+                            textAlign: 'center',
+                            fontWeight: 600,
+                            color: theme.palette.background.default,
+                            '& span': {
+                                color: theme.palette.primary.main,
+                            },
+                        }}>
+                How<br/>We Are<br/><span>Awesome</span>
+            </Typography>
+
+
+            <Box sx={{
+                display: 'flex',
+                flexFlow: 'column',
+                gap: 2,
+                alignItems: 'center',
+                justifyContent: 'center',
+                mt: 6,
+            }}>
+
+                {strengths.map((strength, index)=>(
+                    <Box key={index}
+                         // data-aos="fade-up"
+                         // data-aos-anchor-placement="center-bottom"
+                         onClick={()=> setActive(index)}
+                         className={'mobileStrength'}
+                    sx={{
+                        width: 'calc(100% - 2rem)',
+                        display: 'flex',
+                        flexFlow: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        // gap: 1,
+                        minHeight: '60px',
+                        mx: 2,
+                        textAlign: 'center',
+                        boxShadow: `0 0 12px -3px ${index == active ? theme.palette.primary.main : theme.palette.secondary.light}`,
+                        outline: `1px solid ${index == active ? theme.palette.primary.main : theme.palette.secondary.light}`,
+                        borderRadius: '20px',
+                        p: '6px',
+                        transition: 'all 300ms ease-in-out',
+                        '& .title':{
+                            py: 2,
+                            mx: 2,
+                            fontSize: '1.4rem',
+                            lineHeight: '1.4rem',
+                            fontWeight: 600,
+                            color: index == active ? theme.palette.primary.main : theme.palette.secondary.contrastText,
+                            transition: 'all 300ms ease-in-out',
+                        },
+                        '& .des':{
+                            borderRadius: '16px',
+                            background: alpha(theme.palette.background.default, 0.1),
+                            // display: active == index ? 'block' : 'none',
+                            color: alpha(theme.palette.secondary.contrastText, 0.6),
+                            height: active == index ? 'auto' : 0,
+                            overflow: 'hidden',
+                            px: 1,
+                            py: active == index ? 2 : 0,
+                            transition: 'all 300ms ease-in-out',
+                        },
+                    }}>
+                        <Typography className={'title'}>{strength.title}</Typography>
+                        <Typography className={'des'}>{strength.des}</Typography>
+                    </Box>
+                ))}
+            </Box>
+
+        </Box>
+    )
+}
+
+
+// export default StrengthSection2
