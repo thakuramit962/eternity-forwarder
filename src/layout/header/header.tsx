@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import {
-    alpha,
+    alpha, Button,
     List,
     ListItem,
     ListItemButton,
@@ -13,51 +13,54 @@ import {
     useScrollTrigger,
     useTheme
 } from "@mui/material"
-import {NavLink, useNavigate, useMatch} from "react-router-dom"
+import {NavLink, useNavigate, useMatch, useLocation} from "react-router-dom"
 import whiteLogo from '../../assets/images/long-logo-white.svg'
 import blackLogo from '../../assets/images/long-logo.svg'
 
 
 const menus = [
     {
-        name: 'Our Services', link: 'services', submenu: [
-            {name: 'Logistic Solutions', link: 'services'},
-            {name: '3PL/ Warehousing', link: 'group'},
-            {name: 'Other Services', link: 'group'},
+        name: 'Our Services', link: 'services', clickable: false, submenu: [
+            {name: 'Logistic Solutions', link: 'services/logistic-solutions'},
+            {name: '3PL/ Warehousing', link: 'services/3pl-warehousing-services'},
+            {name: 'Other Services', link: 'services/other-services'},
         ]
     },
+    // {
+    // name: 'Ship Now', link: 'ship-with-us', submenu: [
+    // {name: 'Order Booking', link: 'services'},
+    // {name: 'Connectivity Menu', link: 'group'},
+    // ]
+    // },
     {
-        name: 'Ship Now', link: 'ship-with-us', submenu: [
-            {name: 'Order Booking', link: 'services'},
-            {name: 'Connectivity Menu', link: 'group'},
-        ]
-    },
-    {
-        name: 'Partner With Us', link: 'partner-with-us', submenu: [
+        name: 'Partner With Us', link: 'partner-with-us', clickable: false, submenu: [
             {name: 'Last Mile Partner', link: 'services'},
             {name: 'Carrier Partner', link: 'group'},
             {name: 'Agent', link: 'group'},
         ]
     },
     {
-        name: 'About Us', link: 'company', submenu: [
+        name: 'About Us', link: 'about-us', clickable: true, submenu: [
             {name: 'Company', link: 'services'},
             {name: 'Career', link: 'group'},
             {name: 'Contact Us', link: 'group'},
         ]
-    }
+    },
+    {name: 'Ship Now', link: 'book-service', clickable: true,}
 ]
 
 export default function Header(props: any) {
 
     const theme = useTheme()
     const navigate = useNavigate()
-    const isHomeScreen = useMatch('/')
+
+    const homePage = useMatch('/')
+    const partnerPage = useMatch('/partner-with-us')
+    const service = useMatch('/services/*')
+
+    const withOutBanner = (homePage || service || partnerPage)
+
     const isSmallScreen = useMediaQuery('(max-width:1023px)')
-
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
-
-    const handleCloseUserMenu = () => setAnchorElUser(null)
 
     const scrolled = useScrollTrigger({
         disableHysteresis: true,
@@ -68,7 +71,7 @@ export default function Header(props: any) {
         <AppBar
             position={'fixed'}
             sx={{
-                backgroundColor: scrolled ? theme.palette.background.paper : (isHomeScreen ? 'transparent' : theme.palette.background.paper),
+                backgroundColor: scrolled ? theme.palette.background.paper : (withOutBanner ? 'transparent' : theme.palette.background.paper),
                 boxShadow: 0,
                 borderBottom: `1px solid ${theme.palette.text.disabled}`,
                 justifyContent: 'space-between',
@@ -91,7 +94,9 @@ export default function Header(props: any) {
                     justifyContent: 'flex-start',
                     px: 2,
                 }}>
-                    <img src={scrolled ? blackLogo : (isHomeScreen ? whiteLogo : blackLogo)} onClick={() => navigate('/')} className={'longLogo'}/>
+                    <img
+                        src={scrolled ? blackLogo : (withOutBanner ? whiteLogo : blackLogo)}
+                        onClick={() => navigate('/')} className={'longLogo'}/>
                 </Box>
 
                 <Box sx={{
@@ -101,28 +106,49 @@ export default function Header(props: any) {
                     alignItems: 'stretch',
                     gap: 1.5,
                     transition: scrolled ? 'all 250ms ease-in-out' : 'all 300ms ease-in-out',
-                    '& a': {
-                        px: 1,
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                        fontSize: '18px',
-                        color: scrolled ? theme.palette.secondary.main : (isHomeScreen ? theme.palette.secondary.contrastText : theme.palette.secondary.main),
+                    '& .menuBox': {
+                        position: 'relative',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         flexFlow: 'column',
-                        position: 'relative',
-                        '& span.decoration': {
-                            position: 'absolute',
-                            top: 0,
+                        '& a': {
+                            px: 1,
+                            textAlign: 'center',
+                            textDecoration: 'none',
+                            fontSize: '18px',
+                            // color: scrolled ? theme.palette.secondary.main : theme.palette.secondary.contrastText,
+                            color: scrolled ? theme.palette.secondary.main : (withOutBanner ? theme.palette.secondary.contrastText : theme.palette.secondary.main),
                             display: 'flex',
-                            content: "''",
-                            height: '0',
-                            borderRadius: '50vh',
-                            width: '100%',
-                            transition: 'all 350ms ease-in-out',
-                            background: theme.palette.primary.main,
-                            zIndex: -1,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexFlow: 'column',
+                            '& span.decoration': {
+                                position: 'absolute',
+                                top: 0,
+                                display: 'flex',
+                                content: "''",
+                                height: '0',
+                                borderRadius: '50vh',
+                                width: '100%',
+                                transition: 'all 350ms ease-in-out',
+                                background: theme.palette.primary.main,
+                                zIndex: -1,
+                            },
+                        },
+                        '&:has(a.active)': {
+                            backgroundImage: `linear-gradient( ${alpha(theme.palette.primary.main, 0.2)}, ${alpha(theme.palette.text.secondary, 0)})`,
+                            '& span.decoration': {
+                                height: '5px',
+                                mx: 'auto',
+                                borderRadius: '0',
+
+                            },
+                            '&:hover': {
+                                '& a span.decoration': {
+                                    height: '2px',
+                                },
+                            }
                         },
                         '& .submenu': {
                             position: 'absolute',
@@ -138,59 +164,104 @@ export default function Header(props: any) {
                         },
                         '&:hover': {
                             backgroundImage: `linear-gradient( ${alpha(theme.palette.primary.main, 0.2)}, ${alpha(theme.palette.text.secondary, 0)})`,
-                            '& span.decoration': {
-                                height: '5px',
-                                mx: 'auto',
-                                borderRadius: '0',
+                            '& a': {
+                                '& span.decoration': {
+                                    height: '5px',
+                                    mx: 'auto',
+                                    borderRadius: '0',
+                                },
                             },
                             '& .submenu': {
                                 display: 'block',
                             },
                         },
-                        '&.active': {
-                            backgroundImage: `linear-gradient( ${alpha(theme.palette.primary.main, 0.2)}, ${alpha(theme.palette.text.secondary, 0)})`,
-                            '& span.decoration': {
-                                height: '5px',
-                                mx: 'auto',
-                                borderRadius: '0',
-
-                            },
-                            '&:hover': {
-                                '& span.decoration': {
-                                    height: '2px',
-                                },
-                            }
+                    },
+                    ['@keyframes fadeUp']: {
+                        '0%': {
+                            opacity: 0,
+                            transform: 'translate3d(0, 20px, 0)',
                         },
-                        ['@keyframes fadeUp']: {
-                            '0%': {
-                                opacity: 0,
-                                transform: 'translate3d(0, 20px, 0)',
-                            },
-                            '100%': {
-                                opacity: 1,
-                                transform: 'translate3d(0, 0, 0)',
-                            },
+                        '100%': {
+                            opacity: 1,
+                            transform: 'translate3d(0, 0, 0)',
                         },
-                    }
+                    },
                 }}>
                     {menus.map((menu) => (
-                        <NavLink key={menu.name} to={`${menu.link}`}
-                                 className={({isActive}) => isActive ? 'active' : ''}>
-                            {menu.name}
-                            <span className={'decoration'}/>
-
+                        <Box key={menu.name} className={'menuBox'}>
+                            <NavLink key={menu.name} to={`${menu.link}`}
+                                     className={({isActive}) => isActive ? 'active' : ''}
+                                     style={{
+                                         pointerEvents: menu.clickable ? 'auto' : 'none'
+                                     }}>
+                                {menu.name}
+                                <span className={'decoration'}/>
+                            </NavLink>
                             {menu.submenu &&
+                            menu.submenu.length > 0 &&
                             <List className={'submenu animate__animated animate__fadeInUps'}>
                                 {menu.submenu?.map((m, index) => (
-                                    <ListItem key={index} sx={{p: 0}}><ListItemButton sx={{
-                                        fontWeight: 500,
-                                        fontSize: '15px',
-                                        color: theme.palette.secondary.main,
-                                    }}>{m?.name}</ListItemButton></ListItem>
+                                    <ListItem key={index} sx={{p: 0}} onClick={() => navigate(m.link)}>
+                                        <ListItemButton sx={{
+                                            fontWeight: 500,
+                                            fontSize: '15px',
+                                            color: theme.palette.secondary.main,
+                                        }}>
+                                            {m?.name}
+                                        </ListItemButton>
+                                    </ListItem>
                                 ))}
                             </List>}
-                        </NavLink>
+                        </Box>
                     ))}
+
+                    <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 2,
+                        '& .shipButton': {
+                            borderWidth: '2px',
+                            borderRadius: '12px',
+                            // textTransform: 'none',
+                            fontWeight: 600,
+                            color: scrolled ? theme.palette.secondary.main : theme.palette.primary.main,
+                            borderColor: scrolled ? theme.palette.secondary.main : theme.palette.primary.main,
+                            // width: '100px',
+                            width: '110px',
+                            maxWidth: '200px',
+                            fontSize: '1.1rem',
+                            lineHeight: '1.7rem',
+                            background: scrolled ? theme.palette.primary.main : 'transparent',
+                            '&:hover': {
+                                background: theme.palette.primary.main,
+                                color: theme.palette.secondary.main,
+                            },
+                        },
+                        '& .trackButton': {
+                            borderWidth: '1px',
+                            borderRadius: '12px',
+                            textTransform: 'none',
+                            fontWeight: 500,
+                            color: scrolled ? theme.palette.secondary.main : theme.palette.primary.main,
+                            border: 0,
+                            // borderColor: scrolled ? theme.palette.secondary.main : theme.palette.primary.main,
+                            // width: '100px',
+                            maxWidth: '200px',
+                            fontSize: '1.1rem',
+                            lineHeight: '1.7rem',
+                            background: scrolled ? theme.palette.primary.main : 'transparent',
+                            '&:hover': {
+                                background: theme.palette.primary.main,
+                                color: theme.palette.secondary.main,
+                            },
+                        },
+
+                    }}>
+                        {/*<Button variant={'outlined'} size={'medium'} className={'trackButton'}>Track</Button>*/}
+                        <Button variant={'outlined'} size={'medium'} className={'shipButton'}
+                                onClick={() => navigate('track')}>Track</Button>
+                    </Box>
                 </Box>
 
                 <Box sx={{
@@ -216,7 +287,8 @@ export default function Header(props: any) {
                         cursor: 'none',
                         color: theme.palette.background.default,
                         fontSize: '1.5rem',
-                        background: scrolled ? theme.palette.secondary.main  : (isHomeScreen ? alpha(theme.palette.background.default, 0) : theme.palette.secondary.main),
+                        // background: scrolled ? theme.palette.secondary.main : alpha(theme.palette.background.default, 0),
+                        background: scrolled ? theme.palette.secondary.main : (withOutBanner ? alpha(theme.palette.background.default, 0) : theme.palette.secondary.main),
                         '&:before': {
                             content: '""',
                             position: 'absolute',

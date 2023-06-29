@@ -1,5 +1,6 @@
 import React from 'react'
-import {Box, Drawer, useTheme} from "@mui/material";
+import {alpha, Box, Drawer, useMediaQuery, useTheme} from "@mui/material";
+import MobileSidebarItems from "./mobile-sidebar-items";
 
 
 export default function Sidebar(props: any) {
@@ -7,18 +8,23 @@ export default function Sidebar(props: any) {
     const {open, closeDrawer} = props
 
     const theme = useTheme()
+    const isMobile = useMediaQuery('(max-width:600px)')
 
     return (
         <Drawer
-            anchor={'right'}
+            anchor={isMobile ? 'bottom' : 'right'}
             open={open}
             onClose={closeDrawer}
             sx={{
                 flexShrink: 0,
+                // background: '#f1633420',
                 '& .MuiDrawer-paper': {
-                    width: 350,
+                    background: alpha(theme.palette.background.paper, 1),
+                    // backdropFilter: 'blur(12px)',
+                    width: isMobile ? '100%' : 350,
                     boxSizing: 'border-box',
                     border: 'none',
+                    // borderRadius: '20px',
                 },
                 '& a': {
                     color: theme.palette.text.primary,
@@ -37,7 +43,8 @@ export default function Sidebar(props: any) {
                 },
             }}
         >
-            <p>Drawer View</p>
+            {isMobile ? <MobileSidebarItems toggleDrawer={closeDrawer}/> : 'not mobile'}
+
         </Drawer>
     )
 }
