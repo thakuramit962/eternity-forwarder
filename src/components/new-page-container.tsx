@@ -47,6 +47,7 @@ export default function NewPageContainer(props: any) {
                     },
                 },
             },
+            ...props.sx
         }}>
             {props.children}
         </Box>

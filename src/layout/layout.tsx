@@ -1,21 +1,15 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Outlet, useLocation} from 'react-router-dom'
-import {alpha, Box, Container, createTheme, ThemeProvider, useMediaQuery, useTheme} from "@mui/material"
-import AppBar2 from "../components/app-bar-2";
-import ThemeFooter2 from "../components/theme-footer-2"
-import ThemeDrawer from "../components/theme-drawer"
-import {CSSTransition, TransitionGroup} from "react-transition-group"
+import {alpha, Box, useMediaQuery, useTheme} from "@mui/material"
 import Header from "./header/header";
-import Toolbar from "@mui/material/Toolbar";
-import AppBar from "@mui/material/AppBar";
 import Sidebar from "./sidebar/sidebar";
 import 'aos/dist/aos.css';
 import Aos from "aos";
 import Footer from "./footer/footer";
+import MobileSidebar from "./sidebar/mobile-sidebar";
 
 export default function Layout() {
 
-    // const initialMode = useSelector((state: RootState) => state.colorMode.mode)
 
     const theme = useTheme()
     const location = useLocation()
@@ -46,7 +40,11 @@ export default function Layout() {
 
     return (
         <React.Fragment>
-            <Sidebar open={isDrawerOpen} closeDrawer={toggleDrawer}/>
+            {/*{isMobile*/}
+            {/*    ? <MobileSidebar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>*/}
+            {/*    : */}
+                <Sidebar open={isDrawerOpen} closeDrawer={toggleDrawer}/>
+            {/*}*/}
 
             <Header toggleDrawer={toggleDrawer}/>
             <Box sx={{
