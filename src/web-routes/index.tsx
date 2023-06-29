@@ -14,6 +14,13 @@ import Layout2 from "../layout2";
 
 import Home from "../page/home/home"
 import TrackingPage from "../page/tracking-page/tracking-page";
+import ServiceLayout from "../page/services/service-layout";
+import NewPageContainer from "../components/new-page-container";
+import LogisticSolutions from "../page/services/logistic-solutions/logistic-solutions";
+import WarehouseService from "../page/services/warehouse-service/warehouse-service";
+import OtherServices from "../page/services/other-services/other-services";
+import BookService from "../page/book-service";
+import AboutUs from "../page/about-us";
 
 export default function WebRoutes() {
 
