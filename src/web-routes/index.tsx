@@ -81,6 +81,13 @@ export default function WebRoutes() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route path="" element={<Home/>}/>
+                    <Route path="/services" element={<ServiceLayout/>}>
+                        <Route path="logistic-solutions" element={<LogisticSolutions/>}/>
+                        <Route path="3pl-warehousing-services" element={<WarehouseService/>}/>
+                        <Route path="other-services" element={<OtherServices/>}/>
+                    </Route>
+                    <Route path="about-us" element={<AboutUs/>}/>
+                    <Route path="book-service" element={<BookService/>}/>
                     <Route path="track" element={<TrackingPage/>}/>
                 </Route>
 
