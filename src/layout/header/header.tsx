@@ -33,10 +33,10 @@ const menus = [
     // ]
     // },
     {
-        name: 'Partner With Us', link: 'partner-with-us', clickable: false, submenu: [
-            {name: 'Last Mile Partner', link: 'services'},
-            {name: 'Carrier Partner', link: 'group'},
-            {name: 'Agent', link: 'group'},
+        name: 'Partner With Us', link: 'partner-with-us', clickable: true, submenu: [
+            {name: 'Last Mile Partner', link: 'partner-with-us/last-mile-partner'},
+            {name: 'Carrier Partner', link: 'partner-with-us/carrier'},
+            {name: 'Agent', link: 'partner-with-us/agent-driver'},
         ]
     },
     {
@@ -57,8 +57,9 @@ export default function Header(props: any) {
     const homePage = useMatch('/')
     const partnerPage = useMatch('/partner-with-us')
     const service = useMatch('/services/*')
+    const partner = useMatch('/partner-with-us/*')
 
-    const withOutBanner = (homePage || service || partnerPage)
+    const withOutBanner = (homePage || service)
 
     const isSmallScreen = useMediaQuery('(max-width:1023px)')
 
