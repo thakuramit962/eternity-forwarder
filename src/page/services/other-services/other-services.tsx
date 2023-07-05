@@ -14,11 +14,13 @@ import {
 import demoImg from '../../../assets/images/ship-with-us.png'
 import {KeyboardArrowRightRounded} from "@mui/icons-material"
 import {servicesDetails} from "../../../utils/sample-data";
+import {useNavigate} from "react-router-dom";
 
 
 export default function OtherServices() {
 
     const theme = useTheme()
+    const navigate = useNavigate()
 
     const [activeDes, setActiveDes] = useState<number | undefined>()
 
@@ -111,7 +113,8 @@ export default function OtherServices() {
                 },
             },
         }}>
-            <Typography variant={'h3'} className={'heading  animate__animated animate__fadeInUp'}>{servicesDetails.other?.name}</Typography>
+            <Typography variant={'h3'}
+                        className={'heading  animate__animated animate__fadeInUp'}>{servicesDetails.other?.name}</Typography>
 
             <Typography variant={'body1'} className={'serviceMainDes  animate__animated animate__fadeInUp'}>
                 {servicesDetails.other?.des}
@@ -136,14 +139,11 @@ export default function OtherServices() {
                         }}>{service.shortDes}
                         </Typography>
 
-                        <Box className={'ctaBlock animate__animated animate__fadeInUp'}
-                             sx={{
-                                 '& .MuiButton-root': {
-                                     background: activeDes == index ? theme.palette.primary.main : 'transparent',
-                                 }
-                             }}>
-                            <Button variant={'outlined'} data-aos="fade-up"
-                                    data-aos-anchor-placement="center-bottom">Book Order</Button>
+                        <Box className={'ctaBlock animate__animated animate__fadeInUp'}>
+                            <Button variant={'outlined'} data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+                                    onClick={() => navigate('/contact-us')}>
+                                Contact Us
+                            </Button>
                         </Box>
                     </Box>
                 ))}

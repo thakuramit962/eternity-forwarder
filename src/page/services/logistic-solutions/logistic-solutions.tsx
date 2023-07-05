@@ -3,24 +3,25 @@ import {
     alpha,
     Box,
     Button,
-    Container,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
+    Container, IconButton,
     Typography,
     useTheme
 } from "@mui/material"
 import demoImg from '../../../assets/images/ship-with-us.png'
-import {KeyboardArrowRightRounded} from "@mui/icons-material"
+import {Close} from "@mui/icons-material"
 import {servicesDetails} from "../../../utils/sample-data";
+import ThemeDialog from "../../../components/dialog-box/theme-dialog";
+import {useNavigate} from "react-router-dom";
 
 
 export default function LogisticSolutions() {
 
     const theme = useTheme()
+    const navigate = useNavigate()
 
     const [activeDes, setActiveDes] = useState<number | undefined>()
+
+    const [openDialog, setOpenDialog] = useState(false)
 
     return (
         <Container sx={{
@@ -132,78 +133,117 @@ export default function LogisticSolutions() {
                         >
                             {service.name}
                         </Typography>
-                        {/*<List dense>*/}
-                        {/*    {service.shortDes?.map((des, index) => (*/}
-                        {/*        <ListItem*/}
-                        {/*            className={`shortDes animate__animated ${activeDes != index && 'animate__fadeIn'}`}>*/}
-                        {/*            <ListItemIcon><KeyboardArrowRightRounded/></ListItemIcon>*/}
-                        {/*            <ListItemText*/}
-                        {/*                primary={des}/>*/}
-                        {/*        </ListItem>*/}
-                        {/*    ))}*/}
-                        {/*</List>*/}
 
-                        <Typography sx={{mb: 2, mx: 2,}} className={`animate__animated ${activeDes != index && 'animate__fadeIn'}`}>
+                        <Typography sx={{mb: 2, mx: 2,}}
+                                    className={`animate__animated ${activeDes != index && 'animate__fadeIn'}`}>
                             {service.shortDes}
                         </Typography>
 
-                        <Typography className={'readMore'} onClick={() => setActiveDes(index)}>read more...</Typography>
+                        <Typography className={'readMore'} onClick={() => {
+                            setOpenDialog(true)
+                            setActiveDes(index)
+                        }}>read more...</Typography>
+                        {/*<Typography className={'readMore'} onClick={() => setActiveDes(index)}>read more...</Typography>*/}
 
-                        <Box
-                            className={`animate__animated ${activeDes == index ? 'animate__fadeInUp' : 'animate__fadeInDown'}`}
-                            sx={{
-                                display: activeDes == index ? 'block' : 'none',
-                                zIndex: 1,
-                                position: 'absolute',
-                                inset: 0,
-                                width: '100%',
-                                background: theme.palette.background.paper,
-                                py: 2,
-                                borderRadius: '20px 20px 0 0',
-                                maxHeight: '90%',
-                                overflow: 'auto',
-                                '& .MuiTypography-h4': {
-                                    fontSize: '16px',
-                                    color: theme.palette.text.primary,
-                                    position: 'sticky',
-                                    top: '-1.05rem',
-                                    background: theme.palette.background.paper,
-                                    py: 2,
-                                },
-                                '& .MuiTypography-body2': {
-                                    m: 2,
-                                    fontSize: '13px',
-                                    color: theme.palette.text.secondary,
-                                },
-                                '& .readMore': {
-                                    pb: '60px',
-                                },
-                            }}>
-                            <Typography variant={'h4'} onClick={() => setActiveDes(undefined)}>
-                                {service.name}
-                            </Typography>
+                        {(openDialog && activeDes === index) &&
+                        <ThemeDialog open={openDialog && activeDes === index}
+                                     onClickClose={() => {
+                                         setOpenDialog(false)
+                                     }}
+                                     dialogBody={
+                                         <ServiceDescriptionBox
+                                             service={service}
+                                             closeDialog={() => setOpenDialog(false)}/>
+                                     }/>}
 
-                            <Typography variant={'body2'}>
-                                {service.longDes}
-                            </Typography>
-
-                            <Typography className={'readMore'} onClick={() => setActiveDes(undefined)}>
-                                close</Typography>
-
-                        </Box>
-
-                        <Box className={'ctaBlock'}
-                             sx={{
-                                 '& .MuiButton-root': {
-                                     background: activeDes == index ? theme.palette.primary.main : 'transparent',
-                                 }
-                             }}>
-                            <Button variant={'outlined'} data-aos="fade-up" data-aos-anchor-placement="center-bottom">Book
-                                Order</Button>
+                        <Box className={'ctaBlock'}>
+                            <Button variant={'outlined'} data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+                                    onClick={() => navigate('/contact-us')}>
+                                Contact Us
+                            </Button>
                         </Box>
                     </Box>
                 ))}
             </Box>
         </Container>
+    )
+}
+
+
+const ServiceDescriptionBox = (props: any) => {
+
+    const {service, closeDialog} = props
+
+    const theme = useTheme()
+    const navigate = useNavigate()
+
+    return (
+        <Box sx={{
+            maxWidth: '600px',
+            px: {xs: 1, sm: 2},
+            pb: 0,
+            position: 'relative',
+            '& .MuiIconButton-root': {
+                position: 'absolute',
+                top: '-1rem',
+                right: 0,
+                zIndex: theme.zIndex.modal + 10,
+            },
+            '& h3': {
+                fontSize: '1.3rem',
+                textAlign: 'center',
+                fontWeight: 500,
+                color: theme.palette.secondary.light,
+                textDecoration: 'underline',
+                textDecorationColor: theme.palette.primary.main,
+                mb: 2,
+            },
+            '& .des': {
+                fontSize: '15px',
+                lineHeight: '24px',
+                textAlign: 'justify',
+                textIndent: '1rem',
+            },
+            '& .ctaBlock': {
+                pt: 2,
+                textAlign: 'center',
+                '& .MuiButton-root': {
+                    border: `2px solid ${theme.palette.secondary.main}`,
+                    color: theme.palette.secondary.main,
+                    borderRadius: '16px',
+                    height: '40px',
+                    width: '120px',
+                    outline: `2px solid ${alpha(theme.palette.primary.main, 0)}`,
+                    outlineOffset: 0,
+                    transition: 'all 300ms ease-in-out',
+                    cursor: 'pointer',
+                },
+            },
+            '&:hover': {
+                '& .ctaBlock': {
+                    '& .MuiButton-root': {
+                        background: theme.palette.primary.main,
+                        border: `2px solid ${theme.palette.secondary.main}`,
+                    },
+                },
+            },
+
+        }}>
+            <IconButton onClick={closeDialog}>
+                <Close/>
+            </IconButton>
+            <Typography variant={'h3'} className={'animate__animated animate__fadeIn'}>
+                {service.name}
+            </Typography>
+            <Typography className={'des animate__animated animate__fadeIn animate__slow'}>
+                {service.longDes}
+            </Typography>
+            <Box className={'ctaBlock'}>
+                <Button variant={'outlined'} className={'animate__animated animate__fadeIn animate__slow'}
+                        onClick={() => navigate('/contact-us')}>
+                    Contact Us
+                </Button>
+            </Box>
+        </Box>
     )
 }

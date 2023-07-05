@@ -59,7 +59,7 @@ export default function Layout() {
                 },
                 '& .MuiButton-root': {
                     '&:hover': {
-                        cursor: 'none',
+                        // cursor: 'none',
                         '&.MuiButton-outlined': {
                             background: theme.palette.primary.main,
                             color: theme.palette.primary.contrastText,

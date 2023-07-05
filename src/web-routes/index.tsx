@@ -25,6 +25,8 @@ import PartnerWithUs from "../page/partner-with-us";
 import LastMilePartner from "../page/partner-with-us/last-mile-partner";
 import Carrier from "../page/partner-with-us/carrier";
 import AgentRequest from "../page/partner-with-us/agent-request";
+import PartnerWithUsLayout from "../page/partner-with-us/partner-with-us-layout";
+import ContactUs from "../page/contact-us";
 
 export default function WebRoutes() {
 
@@ -85,18 +87,21 @@ export default function WebRoutes() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route path="" element={<Home/>}/>
+                    <Route path="contact-us" element={<ContactUs/>}/>
+                    <Route path="about-us" element={<AboutUs/>}/>
+                    <Route path="book-service" element={<BookService/>}/>
                     <Route path="/services" element={<ServiceLayout/>}>
                         <Route path="logistic-solutions" element={<LogisticSolutions/>}/>
                         <Route path="3pl-warehousing-services" element={<WarehouseService/>}/>
                         <Route path="other-services" element={<OtherServices/>}/>
                     </Route>
-                    <Route path="about-us" element={<AboutUs/>}/>
-                    <Route path="book-service" element={<BookService/>}/>
-                    <Route path="track" element={<TrackingPage/>}/>
                     <Route path="partner-with-us" element={<PartnerWithUs/>}/>
-                    <Route path="partner-with-us/last-mile-partner" element={<LastMilePartner/>}/>
-                    <Route path="partner-with-us/carrier" element={<Carrier/>}/>
-                    <Route path="partner-with-us/agent-driver" element={<AgentRequest/>}/>
+                    <Route path="partner-us" element={<PartnerWithUsLayout/>}>
+                        <Route path="last-mile-partner" element={<LastMilePartner/>}/>
+                        <Route path="carrier" element={<Carrier/>}/>
+                        <Route path="agent-driver" element={<AgentRequest/>}/>
+                    </Route>
+                    <Route path="track" element={<TrackingPage/>}/>
                     <Route path="track/:trackId" element={<TrackingResult/>}/>
                 </Route>
 
