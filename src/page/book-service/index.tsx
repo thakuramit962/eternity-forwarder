@@ -139,16 +139,35 @@ export default function BookService() {
 
                 <Box sx={{
                     display: 'flex',
-                    flexWrap: 'wrap',
+                    flexWrap: 'wrap-reverse',
                     alignItems: 'stretch',
                     flex: 1,
                     width: '100%',
+                    minHeight: 'min(90vh, 700px)',
                 }}>
+
+                    <Box sx={{
+                        flex: `2 1 400px`,
+                        // backgroundImage: `linear-gradient(150deg, #0c0901, #473619, #af920b)`,
+                        // background: theme.palette.secondary.main,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '& img': {
+                            height: '90%',
+                            width: '90%',
+                            maxHeight: 'min(80vh, 500px)',
+                            objectFit: 'contain',
+                        },
+                    }}>
+                        <img src={map} alt={'connectivity map'}/>
+                    </Box>
 
                     <Box sx={{
                         flex: '1 1 300px',
                         background: '#fff',
                         boxShadow: '0 0 17px #83838370',
+                        minHeight: {xs: '80vh', sm: 'auto'},
                     }}>
                         <Box sx={{
                             height: '100%',
@@ -458,20 +477,6 @@ export default function BookService() {
 
                     </Box>
 
-                    <Box sx={{
-                        flex: `2 1 400px`,
-                        // backgroundImage: `linear-gradient(150deg, #0c0901, #473619, #af920b)`,
-                        // background: theme.palette.secondary.main,
-                        textAlign: 'center',
-                        '& img': {
-                            height: '90%',
-                            width: '90%',
-                            maxHeight: 'min(80vh, 500px)',
-                            objectFit: 'contain',
-                        },
-                    }}>
-                        <img src={map} alt={'connectivity map'}/>
-                    </Box>
                 </Box>
 
 

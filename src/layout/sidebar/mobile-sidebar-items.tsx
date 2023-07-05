@@ -21,37 +21,6 @@ import {
 } from "@mui/icons-material";
 import {NavLink, useNavigate} from "react-router-dom";
 
-const menus = [
-    {
-        name: 'Our Services', link: 'services', submenu: [
-            {name: 'Logistic Solutions', link: 'services'},
-            {name: '3PL/ Warehousing', link: 'group'},
-            {name: 'Other Services', link: 'group'},
-        ]
-    },
-    // {
-    // name: 'Ship Now', link: 'ship-with-us', submenu: [
-    // {name: 'Order Booking', link: 'services'},
-    // {name: 'Connectivity Menu', link: 'group'},
-    // ]
-    // },
-    {
-        name: 'Partner With Us', link: 'partner-with-us', submenu: [
-            {name: 'Last Mile Partner', link: 'services'},
-            {name: 'Carrier Partner', link: 'group'},
-            {name: 'Agent', link: 'group'},
-        ]
-    },
-    {
-        name: 'About Us', link: 'company', submenu: [
-            {name: 'Company', link: 'services'},
-            {name: 'Career', link: 'group'},
-            {name: 'Contact Us', link: 'group'},
-        ]
-    },
-    {name: 'Track', link: 'track'}
-]
-
 interface MobileSidebarItemsProps {
     toggleDrawer: () => void
 }
@@ -60,17 +29,16 @@ export default function MobileSidebarItems(props: MobileSidebarItemsProps) {
 
     const drawerMenus = [
         {name: 'Home', icon: Home, link: '',},
-        {name: 'About', icon: BusinessRounded, link: 'about',},
-        {name: 'Services', icon: DeblurRounded, link: 'services',},
-        {name: 'Group', icon: Diversity2Rounded, link: 'group',},
-        {name: 'Support', icon: SupportAgentRounded, link: 'support',},
-        {name: 'Track Lr', icon: TimelineRounded, link: 'support',},
-        {name: 'Home', icon: Home, link: '',},
-        {name: 'About', icon: BusinessRounded, link: 'about',},
-        {name: 'Services', icon: DeblurRounded, link: 'services',},
-        {name: 'Group', icon: Diversity2Rounded, link: 'group',},
-        {name: 'Support', icon: SupportAgentRounded, link: 'support',},
-        {name: 'Track Lr', icon: TimelineRounded, link: 'support',},
+        {name: 'Logistic Solutions', icon: DeblurRounded, link: 'services/logistic-solutions',},
+        {name: '3Pl/ Warehouse Services', icon: Diversity2Rounded, link: 'services/3pl-warehousing-services',},
+        {name: 'Other Services', icon: SupportAgentRounded, link: 'services/other-services',},
+        {name: 'Last Mile Partner', icon: TimelineRounded, link: 'partner-us/last-mile-partner',},
+        {name: 'Carrier Partner', icon: Home, link: 'partner-us/carrier',},
+        {name: 'Register as Driver', icon: BusinessRounded, link: 'partner-us/agent-driver',},
+        {name: 'About Company', icon: DeblurRounded, link: 'about-us',},
+        {name: 'Contact Us', icon: Diversity2Rounded, link: 'contact-us'},
+        {name: 'Ship Now', icon: SupportAgentRounded, link: 'book-service',},
+        {name: 'Track', icon: TimelineRounded, link: 'track',},
     ]
 
 

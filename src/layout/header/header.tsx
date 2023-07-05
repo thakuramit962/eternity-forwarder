@@ -43,7 +43,7 @@ const menus = [
         name: 'About Us', link: 'about-us', clickable: true, submenu: [
             {name: 'Company', link: 'services'},
             {name: 'Career', link: 'group'},
-            {name: 'Contact Us', link: 'group'},
+            {name: 'Contact Us', link: 'contact-us'},
         ]
     },
     {name: 'Ship Now', link: 'book-service', clickable: true,}
@@ -55,12 +55,13 @@ export default function Header(props: any) {
     const navigate = useNavigate()
 
     const homePage = useMatch('/')
-    const about = useMatch('/about-us')
+    const trackPage = useMatch('/track')
+    const about = useMatch('/about-us*')
     const service = useMatch('/services/*')
     const partner = useMatch('/partner-with-us/*')
     const partnerUs = useMatch('/partner-us/*')
 
-    const withOutBanner = (homePage || service || partner || partnerUs)
+    const withOutBanner = (homePage || service || partner || partnerUs || trackPage || about)
 
     const isSmallScreen = useMediaQuery('(max-width:1023px)')
 

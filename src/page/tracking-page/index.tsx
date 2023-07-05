@@ -1,13 +1,34 @@
 import React, {ChangeEvent, useState} from 'react'
 import NewPageContainer from "../../components/new-page-container";
-import {Box, Button, TextField, Toolbar, Typography, useTheme} from "@mui/material";
+import {
+    alpha,
+    Box,
+    Button,
+    FormControl,
+    FormControlLabel, Radio,
+    RadioGroup,
+    TextField,
+    Toolbar,
+    Typography,
+    useTheme
+} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import bg from "../../assets/images/hero-banner-1.jpg";
 
 
 export default function TrackingPage() {
 
+    const theme = useTheme()
+
     return (
-        <NewPageContainer>
+        <NewPageContainer sx={{
+            backgroundImage: `linear-gradient(${alpha(theme.palette.text.primary, 0.1)}, ${alpha(theme.palette.text.primary, 0.4)}), url(${bg})`,
+            backgroundColor: theme.palette.background.default,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center top',
+            minHeight: {xs: '100vh', sm: 'min(100vh, 800px)'},
+        }}>
             <Toolbar disableGutters sx={{
                 height: '110px',
                 transition: 'all 300ms ease-in-out',
@@ -24,6 +45,13 @@ const TrackPage = () => {
 
     const [trackingNo, setTrackingNo] = useState('')
     const [helperText, setHelperText] = useState('')
+
+    const [value, setValue] = React.useState('female');
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue((event.target as HTMLInputElement).value);
+    };
+
 
     const checkTrackingNo = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setTrackingNo(e.target.value)
@@ -45,25 +73,21 @@ const TrackPage = () => {
     }
 
     return (
-        <Box sx={{
-            minHeight: {xs: '70vh', sm: 'min(80vh, 500px)'},
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}>
             <Box sx={{
+                minHeight: {xs: '70vh', sm: 'min(70vh, 500px)'},
                 width: '90%',
                 maxWidth: '767px',
                 mx: 'auto',
-                minHeight: '400px',
                 textAlign: 'center',
                 display: 'flex',
                 flexFlow: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: '20px',
-                boxShadow: {xs: `1px 2px 0px 5px ${theme.palette.text.primary}`, sm: 'none'},
-                background: {xs: theme.palette.primary.main, sm: 'none'},
+                boxShadow: 'none',
+                background: 'none',
+                // boxShadow: {xs: `1px 2px 0px 5px ${theme.palette.text.primary}`, sm: 'none'},
+                // background: {xs: theme.palette.primary.main, sm: 'none'},
                 '& img': {
                     maxHeight: '200px',
                 },
@@ -77,18 +101,18 @@ const TrackPage = () => {
                 }}>
                     <Typography variant={'h3'} className={'animate__animated animate__fadeInUp'}
                                 sx={{
-                        fontSize: 'clamp(2rem, 8vw, 3rem)',
-                        fontWeight: 500,
-                        color: theme.palette.secondary.main,
-                        textAlign: 'center',
-                    }}>
+                                    fontSize: 'clamp(2rem, 8vw, 3rem)',
+                                    fontWeight: 500,
+                                    color: theme.palette.primary.main,
+                                    textAlign: 'center',
+                                }}>
                         Track Your Order
                     </Typography>
 
                     <Typography variant={'h3'} className={'animate__animated animate__fadeInUp'} sx={{
                         mt: 2,
                         fontSize: '1rem',
-                        color: theme.palette.text.secondary,
+                        color: alpha(theme.palette.secondary.contrastText, 0.9),
                         textAlign: 'center',
                         maxWidth: '600px',
                         width: '90%',
@@ -97,13 +121,43 @@ const TrackPage = () => {
                         Eternity Solutions is committed to being a trusted partner throughout India.
                     </Typography>
                 </Box>
+
+                <FormControl sx={{
+                    ml: 4,
+                    alignSelf: 'flex-start',
+                    '& .MuiFormControlLabel-root': {
+                        color: theme.palette.secondary.contrastText,
+                        '& .MuiButtonBase-root': {
+                            color: theme.palette.secondary.contrastText,
+                        },
+                        '&:has(.MuiButtonBase-root.Mui-checked)': {
+                            color: theme.palette.primary.main,
+                            '& .MuiButtonBase-root': {
+                                color: theme.palette.primary.main,
+                            },
+                        },
+                    },
+                }}>
+                    <RadioGroup row
+                                aria-labelledby="demo-controlled-radio-buttons-group"
+                                name="controlled-radio-buttons-group"
+                                value={value}
+                                onChange={handleChange}
+                    >
+                        <FormControlLabel value="female" control={<Radio/>} label="Shipment ID"/>
+                        <FormControlLabel value="male" control={<Radio/>} label="Order ID/ Ref ID"/>
+                    </RadioGroup>
+                </FormControl>
+
                 <Box className={'animate__animated animate__fadeInUp animate_fast'} sx={{
                     width: '90%',
                     maxWidth: '767px',
-                    my: 3,
+                    mb: 3,
                     borderRadius: '20px',
-                    boxShadow: {xs: 'none', sm: `1px 2px 0px 5px ${theme.palette.text.primary}`},
-                    background: {xs: 'none', sm: theme.palette.background.paper},
+                    // boxShadow: {xs: 'none', sm: `1px 2px 0px 5px ${theme.palette.text.primary}`},
+                    // background: {xs: 'none', sm: theme.palette.background.paper},
+                    boxShadow: `1px 2px 0px 5px ${theme.palette.primary.main}`,
+                    background: theme.palette.secondary.dark,
                     display: 'flex',
                     flexWrap: 'wrap',
                     alignItems: 'center',
@@ -149,7 +203,7 @@ const TrackPage = () => {
                             textTransform: 'uppercase',
                             fontWeight: 700,
                             letterSpacing: '1px',
-                            color: theme.palette.secondary.main,
+                            color: theme.palette.secondary.contrastText,
                             '&::placeholder': {
                                 textTransform: 'none',
                                 fontWeight: 400,
@@ -183,11 +237,10 @@ const TrackPage = () => {
 
                     <Button disableRipple variant={'contained'} fullWidth
                             className={'trackButton animate__animated animate__fadeInUp animate_slow'}
-                            disabled={!!helperText} color={'secondary'} onClick={onSubmit}>
+                            disabled={!!helperText} color={'primary'} onClick={onSubmit}>
                         Track
                     </Button>
                 </Box>
             </Box>
-        </Box>
     )
 }
