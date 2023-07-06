@@ -215,3 +215,31 @@ const sampleTracking = [
         "type": "2"
     }
 ]
+
+export const coreValues = [
+    {
+        name: 'Customer-Centric Approach',
+        des: 'We prioritize our customers\' needs and provide tailored logistics solutions that exceed their expectations. By building strong partnerships and understanding their unique requirements, we ensure their success is at the forefront of everything we do.'
+    },
+    {
+        name: 'Reliability and Efficiency',
+        des: 'We strive for operational excellence, leveraging advanced technologies and efficient processes to deliver reliable and timely logistics services. Our commitment to precision, accuracy, and attention to detail allows us to streamline supply chains and optimize resource utilization.'
+    },
+    {
+        name: 'Innovation and Adaptability',
+        des: 'As a forward-thinking company, we continuously embrace innovation and leverage emerging technologies to stay ahead of the curve. We foster a culture of creativity, encouraging our team to explore new ideas and implement cutting-edge solutions that drive efficiency, sustainability, and cost-effectiveness.'
+    },
+    {
+        name: 'Global Reach with Local Expertise',
+        des: 'We understand the intricacies of international logistics, and our extensive network of partners enables us to provide seamless end-to-end solutions worldwide. With a deep understanding of local regulations, customs procedures, and cultural nuances, we ensure smooth operations across borders.'
+    },
+    {
+        name: 'Environmental Responsibility',
+        des: 'We are committed to sustainable practices and reducing our environmental footprint. By integrating eco-friendly technologies, optimizing routes, and promoting responsible packaging and waste management, we strive to make a positive impact on the planet while delivering exceptional logistics services.'
+    },
+    // {
+    //     name: 'Environmental Responsibility',
+    //     des: 'We are committed to sustainable practices and reducing our environmental footprint. By integrating eco-friendly technologies, optimizing routes, and promoting responsible packaging and waste management, we strive to make a positive impact on the planet while delivering exceptional logistics services.\n' +
+    //         'With this vision, Eternity Forwarders aspires to be the logistics partner of choice, empowering businesses to expand their horizons, connect with global markets, and thrive in an ever-evolving world.\n'
+    // },
+]

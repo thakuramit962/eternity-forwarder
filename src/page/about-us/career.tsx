@@ -1,42 +1,43 @@
-import React, {ChangeEvent, KeyboardEventHandler, useState} from 'react'
-import NewPageContainer from "../../components/new-page-container";
+import React, {useState} from 'react'
 import {
     alpha,
     Box,
-    Button,
-    Checkbox, FormControl,
-    FormControlLabel, FormLabel,
-    InputAdornment, lighten, MenuItem, Stack,
-    Tab,
-    Tabs,
-    TextField,
+    Checkbox,
+    Container,
+    FormControl, FormLabel,
+    InputAdornment,
+    MenuItem,
+    Stack,
     Typography,
     useTheme
 } from "@mui/material";
-import map from "../../assets/images/map.png";
-import Toolbar from "@mui/material/Toolbar";
-import {Attachment, MyLocation, Password, PhoneRounded, Place} from "@mui/icons-material";
-import {Link, useNavigate} from "react-router-dom";
 import {Controller, useForm} from "react-hook-form";
 import {ThemeTextField} from "../../components/inputs/theme-text-field";
+import {Attachment} from "@mui/icons-material";
 import {LoadingButton} from "@mui/lab";
-import bg from "../../assets/images/hero-banner-1.jpg";
+import {servicesDetails} from "../../utils/sample-data";
+import {Link} from "react-router-dom";
+import joinUs from "../../assets/images/aboutIllustrationNew.png";
 
 
-export default function ContactUs() {
+export default function Career() {
 
-    const theme = useTheme()
-    const navigate = useNavigate()
 
     const {control, handleSubmit, formState: {errors}} = useForm()
+    const theme = useTheme()
+    const [submitted, setSubmitted] = useState(false)
 
     const onSubmit = (data: any) => {
-        console.log(data)
+        setTimeout(() => {
+            console.log(data)
+            setSubmitted(true)
+        }, 1000)
     }
 
     return (
         <Box component={'section'} id={'contactUs'} sx={{
             display: 'flex',
+            gap :2,
             flexWrap: 'wrap',
             alignItems: 'stretch',
             flex: 1,
@@ -44,7 +45,6 @@ export default function ContactUs() {
             px: {xs: 0, sm: 2},
             py: 2,
         }}>
-
             <Box sx={{
                 flex: `1 1 300px`,
                 display: 'flex',
@@ -57,22 +57,21 @@ export default function ContactUs() {
                     textIndent: '1.5rem',
                 },
                 '& img': {
-                    height: '90%',
+                    maxHeight: '300px',
                     width: '90%',
-                    maxHeight: 'min(80vh, 500px)',
                     objectFit: 'contain',
                 },
             }}>
                 <Typography className={'heading'} variant={'h3'} data-aos="fade-up"
                             data-aos-anchor-placement="center-bottom"
                             style={{margin: '0 0 1rem'}}>
-                    Our Locations
+                    Join Us
                 </Typography>
                 <Typography variant={'body2'} className={'headDes'}>
                     Established in 2012, Eternity is dedicated to revolutionizing the logistics landscape in
                     India by leveraging digital solutions.
                 </Typography>
-                <img src={map} alt={'connectivity map'} className={'animate__animated animate__fadeIn'}/>
+                <img src={joinUs} alt={'connectivity map'} className={'animate__animated animate__fadeIn'}/>
             </Box>
 
             <Box className={'animate__animated animate__fadeIn '} sx={{
@@ -81,7 +80,7 @@ export default function ContactUs() {
                 borderRadius: '20px',
                 background: '#fff',
                 boxShadow: `0 0 17px -3px #83838370`,
-                p:2,
+                p: 2,
                 py: 3,
                 '& .blockHead': {
                     minWidth: '90%',
@@ -97,7 +96,7 @@ export default function ContactUs() {
                     mb: 4,
                 },
             }}>
-                <Box sx={{
+                <Box component={'form'} className={'form'} sx={{
                     maxWidth: '500px',
                     mx: 'auto',
                     display: 'flex',
@@ -110,9 +109,11 @@ export default function ContactUs() {
                         fontSize: '1rem',
                     },
                 }}>
-                    <Typography className={'blockHead animate__animated animate__fadeInUp'}>We'd love to connect</Typography>
-                    <Typography className={'blockDes animate__animated animate__fadeInUp'}>
-                        Reach out and we'll get in touch within 24 hrs.
+                    <Typography variant={'h3'} className={'blockHead animate__animated animate__fadeInUp'}>
+                        Application Form
+                    </Typography>
+                    <Typography variant={'body1'} className={'blockDes animate__animated animate__fadeInUp'}>
+                        Some text to describe why one should join Eternity Forwarders
                     </Typography>
 
                     <>
@@ -128,7 +129,7 @@ export default function ContactUs() {
                                 error={Boolean(errors?.fullName)}
                                 helperText={(errors?.fullName?.message ?? '').toString()}
                                 size={'small'} label={'Full Name'}
-                                sx={{flex: '1 1 400px'}}
+                                sx={{flex: '1 1 300px'}}
                                 placeholder={'Your Name'}/>
                         )}/>
 
@@ -146,7 +147,7 @@ export default function ContactUs() {
                                     error={Boolean(errors?.phone)}
                                     helperText={(errors?.phone?.message ?? '').toString()}
                                     size={'small'} label={'Phone'}
-                                    sx={{flex: '1 1 200px'}}
+                                    sx={{flex: '1 1 300px'}}
                                     placeholder={'XXXX XXX XXX'}
                                 />
                             )}/>
@@ -167,12 +168,12 @@ export default function ContactUs() {
                                 error={Boolean(errors?.email)}
                                 helperText={(errors?.email?.message ?? '').toString()}
                                 size={'small'} label={'Email'}
-                                sx={{flex: '1 1 200px'}}
+                                sx={{flex: '1 1 300px'}}
                                 placeholder={'your@email.address'}/>
                         )}/>
 
                         <Controller
-                            name={`companyName`}
+                            name={`education`}
                             defaultValue={''}
                             control={control}
                             rules={{
@@ -180,104 +181,64 @@ export default function ContactUs() {
                             }} render={({field}) => (
                             <ThemeTextField
                                 {...field}
-                                error={Boolean(errors?.companyName)}
-                                helperText={(errors?.companyName?.message ?? '').toString()}
-                                size={'small'} label={'Company Name'}
-                                sx={{flex: '1 1 200px'}}
-                                placeholder={'company name'}/>
+                                error={Boolean(errors?.education)}
+                                helperText={(errors?.education?.message ?? '').toString()}
+                                size={'small'} label={'Qualification'}
+                                sx={{flex: '1 1 300px'}}
+                                placeholder={'Highest qualification'}/>
                         )}/>
                         <Controller
-                            name={`companyWebsite`}
+                            name={`location`}
                             defaultValue={''}
                             control={control}
                             rules={{
                                 required: {value: true, message: 'Required'},
                             }} render={({field}) => (
                             <ThemeTextField
-                                {...field} required type={'url'}
-                                error={Boolean(errors?.companyWebsite)}
-                                helperText={(errors?.companyWebsite?.message ?? '').toString()}
-                                size={'small'} label={'Company Website'}
-                                sx={{flex: '1 1 200px'}}
-                                placeholder={'eg.- company.domain'}/>
+                                {...field} required
+                                error={Boolean(errors?.location)}
+                                helperText={(errors?.location?.message ?? '').toString()}
+                                size={'small'} label={'Location'}
+                                sx={{flex: '1 1 300px'}}
+                                placeholder={'Location'}/>
                         )}/>
                         <Controller
-                            name={`serviceType`}
+                            name={`cv`}
                             defaultValue={''}
                             control={control}
                             rules={{
-                                required: {value: true, message: 'Required'},
+                                required: {value: false, message: 'Required'},
                             }} render={({field}) => (
                             <ThemeTextField
-                                {...field} required select
-                                error={Boolean(errors?.serviceType)}
-                                helperText={(errors?.serviceType?.message ?? '').toString()}
-                                size={'small'} label={'Service Type'}
-                                sx={{flex: '1 1 200px'}}
-                                placeholder={'type of service'}>
-                                <MenuItem value={'option1'}>Option 1</MenuItem>
-                                <MenuItem value={'option2'}>Option 2</MenuItem>
-                                <MenuItem value={'option3'}>Option 3</MenuItem>
-                            </ThemeTextField>
+                                {...field}
+                                error={Boolean(errors?.cv)}
+                                helperText={(errors?.cv?.message ?? '').toString()}
+                                size={'small'} label={'Upload CV'}
+                                type={'file'}
+                                InputProps={{
+                                    startAdornment: <InputAdornment
+                                        position="start"><Attachment/></InputAdornment>,
+                                }}
+                                inputProps={{accept: 'image/png, image/jpeg, image/jpg, application/pdf'}}
+                                sx={{flex: '1 1 300px'}}
+                            />
                         )}/>
-                        <Controller
-                            name={`state`}
-                            defaultValue={''}
-                            control={control}
-                            rules={{
-                                required: {value: true, message: 'Required'},
-                            }} render={({field}) => (
-                            <ThemeTextField
-                                {...field} required select
-                                error={Boolean(errors?.state)}
-                                helperText={(errors?.state?.message ?? '').toString()}
-                                size={'small'} label={'State or Region'}
-                                sx={{flex: '1 1 200px'}}
-                                placeholder={'Select state'}>
-                                <MenuItem value={'option1'}>Option 1</MenuItem>
-                                <MenuItem value={'option2'}>Option 2</MenuItem>
-                                <MenuItem value={'option3'}>Option 3</MenuItem>
-                            </ThemeTextField>
-                        )}/>
-
-
-                        <FormControl>
-                            <FormLabel>How would you prefer to be contacted to discuss your logistics
-                                requirements?</FormLabel>
-                            <Controller
-                                name={`connectionPreference`}
-                                defaultValue={''}
-                                control={control}
-                                rules={{
-                                    required: {value: true, message: 'Required'},
-                                }} render={({field}) => (
-                                <ThemeTextField
-                                    {...field} required type={'url'}
-                                    error={Boolean(errors?.connectionPreference)}
-                                    helperText={(errors?.connectionPreference?.message ?? '').toString()}
-                                    size={'small'}
-                                    placeholder={'eg.- phone call or email'}/>
-                            )}/>
-                        </FormControl>
-
-                        <Stack direction={'row'} sx={{
-                            alignItems: 'flex-start',
-                            mb: 2,
-                            '& .MuiTypography-root': {
-                                mt: 1,
-                            },
-
-                        }}>
-                            <Checkbox size={'small'}/>
-                            <Typography variant={'caption'}>
-                                By submitting this form, you consent to the collection and processing of your
-                                personal data for the purpose of addressing your logistics inquiry. Please tick
-                                the box to confirm your consent.
-                            </Typography>
-                        </Stack>
-
-
                     </>
+
+                    <Stack direction={'row'} sx={{
+                        alignItems: 'flex-start',
+                        mb: 2,
+                        '& .MuiTypography-root': {
+                            mt: 1,
+                        },
+
+                    }}>
+                        <Checkbox size={'small'}/>
+                        <Typography variant={'caption'}>
+                            I've read and accept the <Link to={'/'}>Privacy Policy</Link> and <Link to={'/'}>Terms od
+                            conditions</Link>
+                        </Typography>
+                    </Stack>
 
                     <LoadingButton
                         loading={false}
@@ -290,7 +251,6 @@ export default function ContactUs() {
                     </LoadingButton>
                 </Box>
             </Box>
-
         </Box>
     )
 }

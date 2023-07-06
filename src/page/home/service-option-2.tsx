@@ -23,7 +23,7 @@ export default function ServiceOption2() {
 
              }}>
 
-            {services.map((service, index) => <ServiceCard service={service}/>)}
+            {services.map((service, index) => <ServiceCard key={index} service={service}/>)}
 
         </Box>
     )

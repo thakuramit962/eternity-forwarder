@@ -21,9 +21,9 @@ import blackLogo from '../../assets/images/long-logo.svg'
 const menus = [
     {
         name: 'Our Services', link: 'services', clickable: false, submenu: [
-            {name: 'Logistic Solutions', link: 'services/logistic-solutions'},
-            {name: '3PL/ Warehousing', link: 'services/3pl-warehousing-services'},
-            {name: 'Other Services', link: 'services/other-services'},
+            {name: 'Logistic Solutions', link: 'services/logistic-solutions', sectionId: ''},
+            {name: '3PL/ Warehousing', link: 'services/3pl-warehousing-services', sectionId: ''},
+            {name: 'Other Services', link: 'services/other-services', sectionId: ''},
         ]
     },
     // {
@@ -34,16 +34,16 @@ const menus = [
     // },
     {
         name: 'Partner With Us', link: 'partner-with-us', clickable: true, submenu: [
-            {name: 'Last Mile Partner', link: 'partner-us/last-mile-partner'},
-            {name: 'Carrier Partner', link: 'partner-us/carrier'},
-            {name: 'Agent', link: 'partner-us/agent-driver'},
+            {name: 'Last Mile Partner', link: 'partner-us/last-mile-partner', sectionId: ''},
+            {name: 'Carrier Partner', link: 'partner-us/carrier', sectionId: ''},
+            {name: 'Agent', link: 'partner-us/agent-driver', sectionId: ''},
         ]
     },
     {
         name: 'About Us', link: 'about-us', clickable: true, submenu: [
-            {name: 'Company', link: 'services'},
-            {name: 'Career', link: 'group'},
-            {name: 'Contact Us', link: 'contact-us'},
+            {name: 'Company', link: 'about-us/company', sectionId: ''},
+            {name: 'Career', link: 'about-us/career', sectionId: ''},
+            {name: 'Contact Us', link: 'about-us/contact', sectionId: ''},
         ]
     },
     {name: 'Ship Now', link: 'book-service', clickable: true,}
@@ -115,7 +115,7 @@ export default function Header(props: any) {
                         justifyContent: 'center',
                         alignItems: 'center',
                         flexFlow: 'column',
-                        '& a': {
+                        '& a.navAnchor': {
                             px: 1,
                             textAlign: 'center',
                             textDecoration: 'none',
@@ -139,7 +139,7 @@ export default function Header(props: any) {
                                 zIndex: -1,
                             },
                         },
-                        '&:has(a.active)': {
+                        '&:has(.navAnchor.active)': {
                             backgroundImage: `linear-gradient( ${alpha(theme.palette.primary.main, 0.2)}, ${alpha(theme.palette.text.secondary, 0)})`,
                             '& span.decoration': {
                                 height: '5px',
@@ -167,7 +167,7 @@ export default function Header(props: any) {
                         },
                         '&:hover': {
                             backgroundImage: `linear-gradient( ${alpha(theme.palette.primary.main, 0.2)}, ${alpha(theme.palette.text.secondary, 0)})`,
-                            '& a': {
+                            '& a.navAnchor': {
                                 '& span.decoration': {
                                     height: '5px',
                                     mx: 'auto',
@@ -193,7 +193,7 @@ export default function Header(props: any) {
                     {menus.map((menu) => (
                         <Box key={menu.name} className={'menuBox'}>
                             <NavLink key={menu.name} to={`${menu.link}`}
-                                     className={({isActive}) => isActive ? 'active' : ''}
+                                     className={({isActive}) => isActive ? 'active navAnchor' : 'navAnchor'}
                                      style={{
                                          pointerEvents: menu.clickable ? 'auto' : 'none'
                                      }}>
@@ -204,12 +204,14 @@ export default function Header(props: any) {
                             menu.submenu.length > 0 &&
                             <List className={'submenu animate__animated animate__fadeInUps'}>
                                 {menu.submenu?.map((m, index) => (
-                                    <ListItem key={index} sx={{p: 0}} onClick={() => navigate(m.link)}>
-                                        <ListItemButton sx={{
-                                            fontWeight: 500,
-                                            fontSize: '15px',
-                                            color: theme.palette.secondary.main,
-                                        }}>
+                                    <ListItem key={index} sx={{p: 0}}>
+                                        <ListItemButton href={m?.sectionId ?? ''}
+                                                        onClick={() => navigate((m.link == '') ? menu.link : m.link)}
+                                                        sx={{
+                                                            fontWeight: 500,
+                                                            fontSize: '15px',
+                                                            color: theme.palette.secondary.main,
+                                                        }}>
                                             {m?.name}
                                         </ListItemButton>
                                     </ListItem>

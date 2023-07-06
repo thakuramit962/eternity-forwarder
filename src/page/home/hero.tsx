@@ -232,7 +232,6 @@ const Hero = (props: any) => {
                         <Tabs
                             value={value}
                             onChange={handleChange}
-                            textColor="secondary"
                             indicatorColor="secondary"
                             aria-label="secondary tabs example"
                             variant={'fullWidth'}>
@@ -240,10 +239,8 @@ const Hero = (props: any) => {
                             <Tab disableRipple value="shipTab" label="Ship Now"/>
 
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" className={'shape'}
-                                 x="0px" y="0px"
-                                 viewBox="0 0 512 256">
-                                <path className="st0"
-                                      d="M512,256H0c141.4,0,256-114.6,256-256C256,141.4,370.6,256,512,256z"/>
+                                 x="0px" y="0px" viewBox="0 0 512 256">
+                                <path className="st0" d="M512,256H0c141.4,0,256-114.6,256-256C256,141.4,370.6,256,512,256z"/>
                             </svg>
                         </Tabs>
 

@@ -27,6 +27,9 @@ import Carrier from "../page/partner-with-us/carrier";
 import AgentRequest from "../page/partner-with-us/agent-request";
 import PartnerWithUsLayout from "../page/partner-with-us/partner-with-us-layout";
 import ContactUs from "../page/contact-us";
+import AboutLayout from "../page/about-us/about-layout";
+import AboutCompany from "../page/about-us/about-company";
+import Career from "../page/about-us/career";
 
 export default function WebRoutes() {
 
@@ -87,8 +90,12 @@ export default function WebRoutes() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route path="" element={<Home/>}/>
-                    <Route path="contact-us" element={<ContactUs/>}/>
-                    <Route path="about-us" element={<AboutUs/>}/>
+                    {/*<Route path="contact-us" element={<ContactUs/>}/>*/}
+                    <Route path="/about-us" element={<AboutLayout/>}>
+                        <Route path="company" element={<AboutCompany/>}/>
+                        <Route path="career" element={<Career/>}/>
+                        <Route path="contact" element={<ContactUs/>}/>
+                    </Route>
                     <Route path="book-service" element={<BookService/>}/>
                     <Route path="/services" element={<ServiceLayout/>}>
                         <Route path="logistic-solutions" element={<LogisticSolutions/>}/>

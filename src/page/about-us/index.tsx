@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import NewPageContainer from "../../components/new-page-container";
-import {alpha, Box, Container, InputAdornment, Tab, Tabs, Typography, useTheme} from "@mui/material";
+import {alpha, Box, Container, InputAdornment, Tab, Tabs, Typography, useMediaQuery, useTheme} from "@mui/material";
 import aboutUsIllustration from "../../assets/images/aboutIllustrationNew.png";
 import Toolbar from "@mui/material/Toolbar";
-import {useLocation} from "react-router-dom";
+import {useLocation, useMatch, useNavigate} from "react-router-dom";
 import {useForm, Controller} from "react-hook-form";
 import {LoadingButton} from "@mui/lab";
 import {ThemeTextField} from "../../components/inputs/theme-text-field";
@@ -21,7 +21,17 @@ export default function AboutUs() {
 
     const theme = useTheme()
     const location = useLocation()
+    const navigate = useNavigate()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
+    const company = useMatch('/about-us#aboutCompany')
+    const career = useMatch('/about-us#career')
+
     const [submitted, setSubmitted] = useState(false)
+
+    const [value, setValue] = useState(company ? 0 : career ? 1 : 2)
+
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => setValue(newValue)
 
 
     const onSubmit = (data: any) => {
@@ -30,6 +40,13 @@ export default function AboutUs() {
             setSubmitted(true)
         }, 1000)
     }
+
+
+    useEffect(() => {
+        setValue(company ? 0 : career ? 1 : 2)
+    }, [location])
+
+
 
     return (
         <NewPageContainer sx={{background: 'none'}}>
@@ -76,11 +93,50 @@ export default function AboutUs() {
                     <Typography variant={'body2'} className={'headDes'}>Making the world a smaller place</Typography>
                 </Box>
 
+                <Tabs value={value} onChange={handleChange} aria-label="nav tabs example"
+                      orientation={isMobile ? 'vertical' : 'horizontal'}
+                      sx={{
+                          width: '94%',
+                          maxWidth: '600px',
+                          mt: 4,
+                          borderRadius: '20px',
+                          boxShadow: `0 0 12px -3px ${alpha(theme.palette.secondary.contrastText, 0.8)}`,
+                          minHeight: '36px',
+                          p: '4px',
+                          '& .MuiTabs-flexContainer': {
+                              gap: 1,
+                              '& .MuiTab-root': {
+                                  flex: 1,
+                                  color: theme.palette.secondary.contrastText,
+                                  borderRadius: '16px',
+                                  minHeight: '36px',
+                                  fontSize: '14px',
+                                  lineHeight: '14px',
+                                  '&.Mui-selected': {
+                                      color: theme.palette.secondary.main,
+                                      fontWeight: 600,
+                                  },
+                              },
+                          },
+                          '& .MuiTabs-indicator': {
+                              width: '100%',
+                              zIndex: -1,
+                              height: '100%',
+                              borderRadius: '16px',
+                              background: theme.palette.primary.main,
+                          },
+
+                      }}>
+                    <Tab label="Logistic Solution" onClick={() => navigate('logistic-solutions')}/>
+                    <Tab label="3PL/ Warehousing" onClick={() => navigate('3pl-warehousing-services')}/>
+                    <Tab label="Other Services" onClick={() => navigate('other-services')}/>
+                </Tabs>
+
             </Box>
 
 
             <Container>
-                <Box component={'section'} sx={{
+                <Box component={'section'} id={'aboutCompany'} sx={{
                     display: 'flex',
                     flexWrap: 'wrap',
                     '& .contentBlock': {
@@ -187,7 +243,7 @@ export default function AboutUs() {
                     </Box>
                 </Box>
 
-                <Box component={'section'} sx={{
+                <Box component={'section'} id={'companyVision'} sx={{
                     p: 3,
                     display: 'flex',
                     flexFlow: 'column',
@@ -251,7 +307,7 @@ export default function AboutUs() {
                         <Box className={'coreValue'}><Typography className={'title'}>Environmental
                             Responsibility</Typography></Box>
                     </Box>
-                    <Box className={'formBlock'}>
+                    <Box className={'formBlock'} id={'career'}>
                         <Box className={'formBox'}>
                             {
                                 submitted
