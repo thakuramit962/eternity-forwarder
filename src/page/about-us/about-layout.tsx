@@ -15,17 +15,17 @@ export default function AboutLayout() {
     const location = useLocation()
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-    const company = useMatch('/about-us/company')
+    const contact = useMatch('/about-us/contact')
     const career = useMatch('/about-us/career')
 
     const [submitted, setSubmitted] = useState(false)
 
-    const [value, setValue] = useState(company ? 0 : career ? 1 : 2)
+    const [value, setValue] = useState(contact ? 2 : career ? 1 : 0)
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => setValue(newValue)
 
     useEffect(() => {
-        setValue(company ? 0 : career ? 1 : 2)
+        setValue(contact ? 2 : career ? 1 : 0)
     }, [location])
 
     return (

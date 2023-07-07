@@ -14,6 +14,7 @@ import {
     useTheme
 } from "@mui/material";
 import map from "../../assets/images/map.png";
+import bannerBg from "../../assets/images/hero-banner-1.jpg"
 import Toolbar from "@mui/material/Toolbar";
 import LoadingElement from "../../components/loading-element/loading-element";
 import {MyLocation, Password, PhoneRounded, Place} from "@mui/icons-material";
@@ -120,11 +121,11 @@ export default function BookService() {
         }}>
             <Box component={'section'} className={'animate__animated animate__fadeIn'} sx={{
                 minHeight: 'min(100vh, 700px)',
-                // backgroundImage: `linear-gradient(${alpha(theme.palette.text.primary, 0.1)}, ${alpha(theme.palette.text.primary, 0.4)}), url(${map})`,
-                // backgroundColor: theme.palette.background.default,
-                // backgroundRepeat: 'no-repeat',
-                // backgroundSize: 'cover',
-                // backgroundPosition: 'center top',
+                backgroundImage: `linear-gradient(${alpha(theme.palette.text.primary, 0.1)}, ${alpha(theme.palette.text.primary, 0.4)}), url(${bannerBg})`,
+                backgroundColor: theme.palette.background.default,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center top',
                 display: 'flex',
                 flexFlow: 'column',
                 justifyContent: 'space-between',

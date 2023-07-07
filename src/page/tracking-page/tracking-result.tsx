@@ -1,11 +1,42 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import {Box, Button, Toolbar} from "@mui/material"
 import NewPageContainer from "../../components/new-page-container";
+import {useParams} from "react-router-dom";
+import moment from "moment";
 
 
 export default function TrackingResult() {
 
+
+    const params = useParams()
+    const {trackId} = params
+
+    const [fetching, setFetching] = useState(true)
+    const [trackingResult, setTrackingResult] = useState({})
+    const [timelineTrail, setTimelineTrail] = useState([])
+
+    useEffect(() => {
+        setFetching(true)
+        console.log(trackId, 'trackingId')
+        const url = `http://app.shipbuddy.co.in/api/get-lrtimeline/${trackId}`
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok')
+                return response.json()
+            })
+            .then(data => {
+                if (data.status == 'success') {
+                    console.log(data)
+                    setTrackingResult(data?.data)
+                    setTimelineTrail(data?.driver_trail)
+                } else {
+                    console.log('some error')
+                }
+            })
+            .catch(error => console.error('Error:', error))
+            .finally(() => setFetching(false))
+    }, [trackId])
 
     return (
         <NewPageContainer>
@@ -370,296 +401,170 @@ export default function TrackingResult() {
                 },
 
             }}>
-                <Box className="content">
-                    <Box className="statusBlock">
-                        <Box className="deliveryStatus">
-                            <p className="dateLine">Delivery Date</p>
-                            <Box className="dateBlock">
-                                <span className="day">Saturday</span>
-                                <span className="month">January</span>
-                                <Box className="date">
-                                    <span>07</span>
-                                    <span className="year">2023</span>
-                                </Box>
-                            </Box>
-
-                            <span className="statusHead">Status:</span>
+                {
+                    fetching
+                        ? 'Wait Data is loading'
+                        : <TrackingData data={trackingResult} timelineData={timelineTrail}/>
+                }
+            </Box>
+        </NewPageContainer>
+    )
+}
 
 
-                            <p className="status delivered">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="feather feather-check-circle"
-                                >
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                    <polyline points="22 4 12 14.01 9 11.01"/>
-                                </svg>
-                                Delivered
-                            </p>
+const TrackingData = (props: any) => {
 
-                            {/*in transit status */}
-                            {/*    <p className="status inTransit">*/}
-                            {/*    <svg*/}
-                            {/*        xmlns="http://www.w3.org/2000/svg"*/}
-                            {/*        width="24"*/}
-                            {/*        height="24"*/}
-                            {/*        viewBox="0 0 24 24"*/}
-                            {/*        fill="none"*/}
-                            {/*        stroke="currentColor"*/}
-                            {/*        strokeWidth="2"*/}
-                            {/*        strokeLinecap="round"*/}
-                            {/*        strokeLinejoin="round"*/}
-                            {/*        className="feather feather-truck"*/}
-                            {/*    >*/}
-                            {/*        <rect x="1" y="3" width="15" height="13"/>*/}
-                            {/*        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>*/}
-                            {/*        <circle cx="5.5" cy="18.5" r="2.5"/>*/}
-                            {/*        <circle cx="18.5" cy="18.5" r="2.5"/>*/}
-                            {/*    </svg>*/}
-                            {/*    In Transit*/}
-                            {/*</p> */}
-                        </Box>
+    const {data, timelineData} = props
 
-                        <Box className="trackingTimeline">
-                            <p className="trackingId">Tracking Id - <span>1504839275606</span></p>
-
-                            <Box className="timelineBlock">
-                                {/* Delivered */}
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">27 Aug</Box>
-                                            <Box className="time">02:30 pM</Box>
-                                        </Box>
-                                        <Box className="badge"/>
-                                    </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity :</span>
-                                            Delivered
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location :</span>
-                                            Hisar
-                                        </Box>
-                                        <Box className="imageBlock">
-                                            <a href="https://easemylr.s3.us-east-2.amazonaws.com/images/b5XaHEI10K7dt9whpZZnuFUDDPGTCVhM1EA320TB.jpg"
-                                               target="_blank">
-                                                <img
-                                                    src="https://easemylr.s3.us-east-2.amazonaws.com/images/b5XaHEI10K7dt9whpZZnuFUDDPGTCVhM1EA320TB.jpg"
-                                                    alt="pod images"/>
-                                            </a>
-                                            <a href="https://easemylr.s3.us-east-2.amazonaws.com/images/b5XaHEI10K7dt9whpZZnuFUDDPGTCVhM1EA320TB.jpg"
-                                               target="_blank">
-                                                <img
-                                                    src="https://easemylr.s3.us-east-2.amazonaws.com/images/b5XaHEI10K7dt9whpZZnuFUDDPGTCVhM1EA320TB.jpg"
-                                                    alt="pod images"/>
-                                            </a>
-                                            <a href="https://easemylr.s3.us-east-2.amazonaws.com/images/b5XaHEI10K7dt9whpZZnuFUDDPGTCVhM1EA320TB.jpg"
-                                               target="_blank">
-                                                <img
-                                                    src="https://easemylr.s3.us-east-2.amazonaws.com/images/b5XaHEI10K7dt9whpZZnuFUDDPGTCVhM1EA320TB.jpg"
-                                                    alt="pod images"/>
-                                            </a>
-                                        </Box>
-                                    </Box>
-                                </Box>
-                                {/*out for delivery */}
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">27 Aug</Box>
-                                            <Box className="time">01:30 pM</Box>
-                                        </Box>
-                                        <Box className="badge"/>
-                                    </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity :</span>
-                                            Out for delivery
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location :</span>
-                                            Hisar
-                                        </Box>
-                                    </Box>
-                                </Box>
-                                {/* arrived */}
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">27 Aug</Box>
-                                            <Box className="time">10:30 aM</Box>
-                                        </Box>
-                                        <Box className="badge"/>
-                                    </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity :</span>
-                                            Arrived at nearest hub
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location :</span>
-                                            Hisar
-                                        </Box>
-                                    </Box>
-                                </Box>
-                                {/*departed */}
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">27 Aug</Box>
-                                            <Box className="time">04:00 AM</Box>
-                                        </Box>
-                                        <Box className="badge"/>
-                                    </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity :</span>
-                                            departed (in transit)
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location :</span>
-                                            from Chandigarh
-                                        </Box>
-
-                                        <a className="trackLink" href="#">Track Link</a>
-                                    </Box>
-                                </Box>
-                                {/*pickup*/}
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">26 Aug</Box>
-                                            <Box className="time">05:30 PM</Box>
-                                        </Box>
-                                        <Box className="badge"/>
-                                    </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity :</span>
-                                            Pick up Scheduled
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location :</span>
-                                            Chandigarh
-                                        </Box>
-                                    </Box>
-                                </Box>
-                                {/*menifested*/}
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">26 Aug</Box>
-                                            <Box className="time">11:30 AM</Box>
-                                        </Box>
-                                        <Box className="badge"/>
-                                    </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity :</span>
-                                            Shipment menifested
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location :</span>
-                                            Chandigarh
-                                        </Box>
-                                    </Box>
-                                </Box>
-                                {/*recieved*/}
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">26 Aug</Box>
-                                            <Box className="time">08:30 AM</Box>
-                                        </Box>
-                                        <Box className="badge"/>
-                                    </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity :</span>
-                                            Order Received
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location :</span>
-                                            Chandigarh
-                                        </Box>
-                                    </Box>
-                                </Box>
-                            </Box>
+    return (
+        <Box className="content">
+            <Box className="statusBlock">
+                <Box className="deliveryStatus">
+                    <p className="dateLine">Delivery Date</p>
+                    <Box className="dateBlock">
+                        <span className="day">{moment().format('dddd')}</span>
+                        <span className="month">{moment().format('MMMM')}</span>
+                        <Box className="date">
+                            <span>{moment().format('DD')}</span>
+                            <span className="year">{moment().format('YYYY')}</span>
                         </Box>
                     </Box>
 
-                    <Box className="infoBlock">
-                        <Box className="orderBlock">
-                            <p className="dateLine">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="feather feather-file"
-                                >
-                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                                    <polyline points="13 2 13 9 20 9"/>
-                                </svg>
-                                Order Details
-                            </p>
-                            <hr/>
+                    <span className="statusHead">Status:</span>
 
-                            <p className="detailLine">
-                                <span>Order ID</span>
-                                <span>wretyui567</span>
-                            </p>
+                    {data.delivery_status == 'Successful'
+                        ? <p className="status delivered">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="feather feather-check-circle"
+                            >
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            Delivered
+                        </p>
+                        : <p className="status inTransit">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="feather feather-truck"
+                            >
+                                <rect x="1" y="3" width="15" height="13"/>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/>
+                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                            In Transit
+                        </p>
+                    }
 
-                            <p className="detailLine">
-                                <span>Order Placed On</span>
-                                <span>12 Jan 2023</span>
-                            </p>
+                </Box>
 
-                            <p className="detailLine">
-                                <span>Order Status</span>
-                                <span>Currently in transit</span>
-                            </p>
-                        </Box>
+                <Box className="trackingTimeline">
+                    <p className="trackingId">Tracking Id - <span>{data.id}</span></p>
 
-                        <Box className="reviewBlock">
-                            <p className="dateLine">How was your Delivery Experience?</p>
-
-                            <Box className="rating">
-                                <input type="radio" name="rating" value="5" id="5"/>
-                                <label htmlFor="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"/>
-                                <label htmlFor="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"/>
-                                <label htmlFor="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"/>
-                                <label htmlFor="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="1"/>
-                                <label htmlFor="1">☆</label>
+                    <Box className="timelineBlock">
+                        {/* Delivered */}
+                        {timelineData.reverse().map((timeline: any, index: number) => (
+                            <Box className="timeline">
+                                <Box className="timeBlock">
+                                    <Box className="timeStamp">
+                                        <Box className="date">{moment(timeline.create_at).format('DD MMM')}</Box>
+                                        <Box className="time">{moment(timeline.create_at).format('hh:mm a')}</Box>
+                                    </Box>
+                                    <Box className="badge"/>
+                                </Box>
+                                <Box className="description">
+                                    <Box className="activity">
+                                        <span className="activityHeading">Activity :</span>
+                                        {timeline.status}
+                                    </Box>
+                                    <Box className="location">
+                                        <span className="activityHeading">Location :</span>
+                                        {timeline.status == 'Successful' ? data.shipto_city : data.branch_name}
+                                    </Box>
+                                </Box>
                             </Box>
-
-                            <textarea name="feedback" rows={4}
-                                      placeholder="Please enter your remarks (Max 250 characters)"/>
-
-                            <Button variant={'contained'}>Submit</Button>
-                        </Box>
+                        ))}
                     </Box>
                 </Box>
             </Box>
-        </NewPageContainer>
+
+            <Box className="infoBlock">
+                <Box className="orderBlock">
+                    <p className="dateLine">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="feather feather-file"
+                        >
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                            <polyline points="13 2 13 9 20 9"/>
+                        </svg>
+                        Order Details
+                    </p>
+                    <hr/>
+
+                    <p className="detailLine">
+                        <span>Order ID</span>
+                        <span>wretyui567</span>
+                    </p>
+
+                    <p className="detailLine">
+                        <span>Order Placed On</span>
+                        <span>12 Jan 2023</span>
+                    </p>
+
+                    <p className="detailLine">
+                        <span>Order Status</span>
+                        <span>Currently in transit</span>
+                    </p>
+                </Box>
+
+                <Box className="reviewBlock">
+                    <p className="dateLine">How was your Delivery Experience?</p>
+
+                    <Box className="rating">
+                        <input type="radio" name="rating" value="5" id="5"/>
+                        <label htmlFor="5">☆</label>
+                        <input type="radio" name="rating" value="4" id="4"/>
+                        <label htmlFor="4">☆</label>
+                        <input type="radio" name="rating" value="3" id="3"/>
+                        <label htmlFor="3">☆</label>
+                        <input type="radio" name="rating" value="2" id="2"/>
+                        <label htmlFor="2">☆</label>
+                        <input type="radio" name="rating" value="1" id="1"/>
+                        <label htmlFor="1">☆</label>
+                    </Box>
+
+                    <textarea name="feedback" rows={4}
+                              placeholder="Please enter your remarks (Max 250 characters)"/>
+
+                    <Button variant={'contained'}>Submit</Button>
+                </Box>
+            </Box>
+        </Box>
     )
 }

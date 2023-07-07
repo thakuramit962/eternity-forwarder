@@ -29,12 +29,14 @@ export default function MobileSidebarItems(props: MobileSidebarItemsProps) {
 
     const drawerMenus = [
         {name: 'Home', icon: Home, link: '',},
-        {name: 'Logistic Solutions', icon: DeblurRounded, link: 'services/logistic-solutions',},
-        {name: '3Pl/ Warehouse Services', icon: Diversity2Rounded, link: 'services/3pl-warehousing-services',},
-        {name: 'Other Services', icon: SupportAgentRounded, link: 'services/other-services',},
-        {name: 'Last Mile Partner', icon: TimelineRounded, link: 'partner-us/last-mile-partner',},
-        {name: 'Carrier Partner', icon: Home, link: 'partner-us/carrier',},
-        {name: 'Register as Driver', icon: BusinessRounded, link: 'partner-us/agent-driver',},
+        {name: 'Services', icon: Home, link: 'our-services',},
+        {name: 'Partner With Us', icon: Home, link: 'partner-with-us',},
+        // {name: 'Logistic Solutions', icon: DeblurRounded, link: 'services/logistic-solutions',},
+        // {name: '3Pl/ Warehouse Services', icon: Diversity2Rounded, link: 'services/3pl-warehousing-services',},
+        // {name: 'Other Services', icon: SupportAgentRounded, link: 'services/other-services',},
+        // {name: 'Last Mile Partner', icon: TimelineRounded, link: 'partner-us/last-mile-partner',},
+        // {name: 'Carrier Partner', icon: Home, link: 'partner-us/carrier',},
+        // {name: 'Register as Driver', icon: BusinessRounded, link: 'partner-us/agent-driver',},
         {name: 'About Company', icon: DeblurRounded, link: 'about-us',},
         {name: 'Contact Us', icon: Diversity2Rounded, link: 'contact-us'},
         {name: 'Ship Now', icon: SupportAgentRounded, link: 'book-service',},
@@ -103,18 +105,19 @@ export default function MobileSidebarItems(props: MobileSidebarItemsProps) {
                 {drawerMenus.map((drawerMenu, index) => {
                     const MyIcon = drawerMenu.icon
                     return (
-                        drawerMenu.name == 'Services'
-                            ? <a key={drawerMenu.name} href={'#serviceSection'} onClick={() => navigate('/')}>
-                                <ListItem disablePadding>
-                                    <ListItemButton>
-                                        <ListItemIcon>
-                                            <MyIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText primary={drawerMenu.name}/>
-                                    </ListItemButton>
-                                </ListItem>
-                            </a>
-                            : <NavLink key={drawerMenu.name} to={drawerMenu.link}
+                        // drawerMenu.name == 'Services'
+                        //     ? <a key={drawerMenu.name} href={'#serviceSection'} onClick={() => navigate('/')}>
+                        //         <ListItem disablePadding>
+                        //             <ListItemButton>
+                        //                 <ListItemIcon>
+                        //                     <MyIcon/>
+                        //                 </ListItemIcon>
+                        //                 <ListItemText primary={drawerMenu.name}/>
+                        //             </ListItemButton>
+                        //         </ListItem>
+                        //     </a>
+                        //     :
+                            <NavLink key={drawerMenu.name} to={drawerMenu.link}
                                        className={({isActive}) => isActive ? 'active' : ''}>
                                 <ListItem disablePadding>
                                     <ListItemButton>
@@ -125,8 +128,9 @@ export default function MobileSidebarItems(props: MobileSidebarItemsProps) {
                                     </ListItemButton>
                                 </ListItem>
                             </NavLink>
-                    )
-                })}
+                    // )
+                // }
+                )})}
             </List>
         </Box>
     )

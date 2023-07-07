@@ -30,6 +30,7 @@ import ContactUs from "../page/contact-us";
 import AboutLayout from "../page/about-us/about-layout";
 import AboutCompany from "../page/about-us/about-company";
 import Career from "../page/about-us/career";
+import Services from "../page/services";
 
 export default function WebRoutes() {
 
@@ -92,11 +93,13 @@ export default function WebRoutes() {
                     <Route path="" element={<Home/>}/>
                     {/*<Route path="contact-us" element={<ContactUs/>}/>*/}
                     <Route path="/about-us" element={<AboutLayout/>}>
+                        <Route path="" element={<AboutCompany/>}/>
                         <Route path="company" element={<AboutCompany/>}/>
                         <Route path="career" element={<Career/>}/>
                         <Route path="contact" element={<ContactUs/>}/>
                     </Route>
                     <Route path="book-service" element={<BookService/>}/>
+                    <Route path="our-services" element={<Services/>}/>
                     <Route path="/services" element={<ServiceLayout/>}>
                         <Route path="logistic-solutions" element={<LogisticSolutions/>}/>
                         <Route path="3pl-warehousing-services" element={<WarehouseService/>}/>

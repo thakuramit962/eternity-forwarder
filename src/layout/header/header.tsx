@@ -20,7 +20,7 @@ import blackLogo from '../../assets/images/long-logo.svg'
 
 const menus = [
     {
-        name: 'Our Services', link: 'services', clickable: false, submenu: [
+        name: 'Our Services', link: 'our-services', clickable: true, submenu: [
             {name: 'Logistic Solutions', link: 'services/logistic-solutions', sectionId: ''},
             {name: '3PL/ Warehousing', link: 'services/3pl-warehousing-services', sectionId: ''},
             {name: 'Other Services', link: 'services/other-services', sectionId: ''},
@@ -40,7 +40,7 @@ const menus = [
         ]
     },
     {
-        name: 'About Us', link: 'about-us', clickable: true, submenu: [
+        name: 'About Us', link: 'about-us', clickable: false, submenu: [
             {name: 'Company', link: 'about-us/company', sectionId: ''},
             {name: 'Career', link: 'about-us/career', sectionId: ''},
             {name: 'Contact Us', link: 'about-us/contact', sectionId: ''},
@@ -55,13 +55,15 @@ export default function Header(props: any) {
     const navigate = useNavigate()
 
     const homePage = useMatch('/')
-    const trackPage = useMatch('/track')
+    const trackPage = useMatch('/track/*')
     const about = useMatch('/about-us*')
     const service = useMatch('/services/*')
     const partner = useMatch('/partner-with-us/*')
     const partnerUs = useMatch('/partner-us/*')
 
-    const withOutBanner = (homePage || service || partner || partnerUs || trackPage || about)
+    const withOutBanner = true
+    // const withOutBanner = (!trackPage)
+    // const withOutBanner = (homePage || service || partner || partnerUs || trackPage || about)
 
     const isSmallScreen = useMediaQuery('(max-width:1023px)')
 

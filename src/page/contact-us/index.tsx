@@ -21,6 +21,7 @@ import {Controller, useForm} from "react-hook-form";
 import {ThemeTextField} from "../../components/inputs/theme-text-field";
 import {LoadingButton} from "@mui/lab";
 import bg from "../../assets/images/hero-banner-1.jpg";
+import ConnectivityMap from "./connectivity-map";
 
 
 export default function ContactUs() {
@@ -72,7 +73,8 @@ export default function ContactUs() {
                     Established in 2012, Eternity is dedicated to revolutionizing the logistics landscape in
                     India by leveraging digital solutions.
                 </Typography>
-                <img src={map} alt={'connectivity map'} className={'animate__animated animate__fadeIn'}/>
+                <ConnectivityMap />
+                {/*<img src={map} alt={'connectivity map'} className={'animate__animated animate__fadeIn'}/>*/}
             </Box>
 
             <Box className={'animate__animated animate__fadeIn '} sx={{
