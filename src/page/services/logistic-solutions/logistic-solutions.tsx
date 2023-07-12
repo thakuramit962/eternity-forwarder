@@ -158,7 +158,7 @@ export default function LogisticSolutions() {
 
                         <Box className={'ctaBlock'}>
                             <Button variant={'outlined'} data-aos="fade-up" data-aos-anchor-placement="center-bottom"
-                                    onClick={() => navigate('/contact-us')}>
+                                    onClick={() => navigate('/about-us/contact')}>
                                 Contact Us
                             </Button>
                         </Box>
@@ -240,7 +240,7 @@ const ServiceDescriptionBox = (props: any) => {
             </Typography>
             <Box className={'ctaBlock'}>
                 <Button variant={'outlined'} className={'animate__animated animate__fadeIn animate__slow'}
-                        onClick={() => navigate('/contact-us')}>
+                        onClick={() => navigate('/about-us/contact')}>
                     Contact Us
                 </Button>
             </Box>

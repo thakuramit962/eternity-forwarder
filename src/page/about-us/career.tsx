@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import {
     alpha,
     Box,
@@ -11,38 +11,88 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {Controller, useForm} from "react-hook-form";
-import {ThemeTextField} from "../../components/inputs/theme-text-field";
-import {Attachment} from "@mui/icons-material";
-import {LoadingButton} from "@mui/lab";
-import {servicesDetails} from "../../utils/sample-data";
-import {Link} from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+import { ThemeTextField } from "../../components/inputs/theme-text-field";
+import { Attachment } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
+import { servicesDetails } from "../../utils/sample-data";
+import { Link } from "react-router-dom";
 import joinUs from "../../assets/images/aboutIllustrationNew.png";
+import axios from 'axios';
 
 
 export default function Career() {
 
 
-    const {control, handleSubmit, formState: {errors}} = useForm()
+    const { control, handleSubmit, formState: { errors } } = useForm()
     const theme = useTheme()
     const [submitted, setSubmitted] = useState(false)
 
     const onSubmit = (data: any) => {
-        setTimeout(() => {
-            console.log(data)
-            setSubmitted(true)
-        }, 1000)
+        const newData = { ...data, cv: data.cv[0], }
+        console.log(newData)
+
+        const formData = new FormData();
+        formData.append("cv", data.cv[0]);
+        formData.append("education", data.education);
+        formData.append("fullName", data.fullName);
+        formData.append("location", data.location);
+        formData.append("phone", data.phone);
+
+
+
+        setSubmitted(true)
+        console.log('sdddd')
+        // const url = "https://api.shiprider.in/career.php"; // Replace with your API endpoint URL
+        const url = "https://edatakart.com/api/career"; // Replace with your API endpoint URL
+
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+                'X-API-KEY': "FiVGwokXDsJ5MEQrA2JY4e1RXJ7i5EkT",
+            }
+        }
+        axios.post(url, formData, config)
+            .then(data => {
+                // Handle the response data
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error("Error:", error);
+            })
+            .finally(() => setSubmitted(false))
+
+        // const options = {
+        //     method: "POST",
+        //     Headers: {
+        //         'X-API-KEY': "FiVGwokXDsJ5MEQrA2JY4e1RXJ7i5EkT",
+        //     },
+        //     body: formData
+        // };
+
+        // fetch(url, options)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // Handle the response data
+        //         console.log(data);
+        //     })
+        //     .catch(error => {
+        //         // Handle any errors
+        //         console.error("Error:", error);
+        //     })
+        //     .finally(() => setSubmitted(false))
     }
 
     return (
         <Box component={'section'} id={'contactUs'} sx={{
             display: 'flex',
-            gap :2,
+            gap: 2,
             flexWrap: 'wrap',
             alignItems: 'stretch',
             flex: 1,
             minHeight: 'min(90vh, 700px)',
-            px: {xs: 0, sm: 2},
+            px: { xs: 0, sm: 2 },
             py: 2,
         }}>
             <Box sx={{
@@ -51,7 +101,7 @@ export default function Career() {
                 flexFlow: 'column',
                 alignItems: 'flex-start',
                 textAlign: 'center',
-                p: {xs: 0, sm: 2, md: 3},
+                p: { xs: 0, sm: 2, md: 3 },
                 '& .headDes': {
                     textAlign: 'left',
                     textIndent: '1.5rem',
@@ -63,20 +113,20 @@ export default function Career() {
                 },
             }}>
                 <Typography className={'heading'} variant={'h3'} data-aos="fade-up"
-                            data-aos-anchor-placement="center-bottom"
-                            style={{margin: '0 0 1rem'}}>
+                    data-aos-anchor-placement="center-bottom"
+                    style={{ margin: '0 0 1rem' }}>
                     Join Us
                 </Typography>
                 <Typography variant={'body2'} className={'headDes'}>
                     Established in 2012, Eternity is dedicated to revolutionizing the logistics landscape in
                     India by leveraging digital solutions.
                 </Typography>
-                <img src={joinUs} alt={'connectivity map'} className={'animate__animated animate__fadeIn'}/>
+                <img src={joinUs} alt={'connectivity map'} className={'animate__animated animate__fadeIn'} />
             </Box>
 
             <Box className={'animate__animated animate__fadeIn '} sx={{
                 flex: '2 1 300px',
-                minHeight: {xs: '80vh', sm: 'auto'},
+                minHeight: { xs: '80vh', sm: 'auto' },
                 borderRadius: '20px',
                 background: '#fff',
                 boxShadow: `0 0 17px -3px #83838370`,
@@ -122,107 +172,106 @@ export default function Career() {
                             defaultValue={''}
                             control={control}
                             rules={{
-                                required: {value: true, message: 'Required'}
-                            }} render={({field}) => (
-                            <ThemeTextField
-                                {...field} required
-                                error={Boolean(errors?.fullName)}
-                                helperText={(errors?.fullName?.message ?? '').toString()}
-                                size={'small'} label={'Full Name'}
-                                sx={{flex: '1 1 300px'}}
-                                placeholder={'Your Name'}/>
-                        )}/>
+                                required: { value: true, message: 'Required' }
+                            }} render={({ field }) => (
+                                <ThemeTextField
+                                    {...field} required
+                                    error={Boolean(errors?.fullName)}
+                                    helperText={(errors?.fullName?.message ?? '').toString()}
+                                    size={'small'} label={'Full Name'}
+                                    sx={{ flex: '1 1 300px' }}
+                                    placeholder={'Your Name'} />
+                            )} />
 
 
                         <Controller
                             name={`phone`}
                             control={control}
                             rules={{
-                                required: {value: true, message: 'Required'},
-                                pattern: {value: /^[6-9]\d{9}$/, message: 'Enter valid phone number'}
+                                required: { value: true, message: 'Required' },
+                                pattern: { value: /^[6-9]\d{9}$/, message: 'Enter valid phone number' }
                             }}
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <ThemeTextField
                                     {...field} required
                                     error={Boolean(errors?.phone)}
                                     helperText={(errors?.phone?.message ?? '').toString()}
                                     size={'small'} label={'Phone'}
-                                    sx={{flex: '1 1 300px'}}
+                                    sx={{ flex: '1 1 300px' }}
                                     placeholder={'XXXX XXX XXX'}
                                 />
-                            )}/>
+                            )} />
 
                         <Controller
                             name={`email`}
                             defaultValue={''}
                             control={control}
                             rules={{
-                                required: {value: true, message: 'Required'},
+                                required: { value: true, message: 'Required' },
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                     message: 'Enter valid email address'
                                 }
-                            }} render={({field}) => (
-                            <ThemeTextField
-                                {...field} required
-                                error={Boolean(errors?.email)}
-                                helperText={(errors?.email?.message ?? '').toString()}
-                                size={'small'} label={'Email'}
-                                sx={{flex: '1 1 300px'}}
-                                placeholder={'your@email.address'}/>
-                        )}/>
+                            }} render={({ field }) => (
+                                <ThemeTextField
+                                    {...field} required
+                                    error={Boolean(errors?.email)}
+                                    helperText={(errors?.email?.message ?? '').toString()}
+                                    size={'small'} label={'Email'}
+                                    sx={{ flex: '1 1 300px' }}
+                                    placeholder={'your@email.address'} />
+                            )} />
 
                         <Controller
                             name={`education`}
                             defaultValue={''}
                             control={control}
                             rules={{
-                                required: {value: false, message: 'Required'},
-                            }} render={({field}) => (
-                            <ThemeTextField
-                                {...field}
-                                error={Boolean(errors?.education)}
-                                helperText={(errors?.education?.message ?? '').toString()}
-                                size={'small'} label={'Qualification'}
-                                sx={{flex: '1 1 300px'}}
-                                placeholder={'Highest qualification'}/>
-                        )}/>
+                                required: { value: false, message: 'Required' },
+                            }} render={({ field }) => (
+                                <ThemeTextField
+                                    {...field}
+                                    error={Boolean(errors?.education)}
+                                    helperText={(errors?.education?.message ?? '').toString()}
+                                    size={'small'} label={'Qualification'}
+                                    sx={{ flex: '1 1 300px' }}
+                                    placeholder={'Highest qualification'} />
+                            )} />
                         <Controller
                             name={`location`}
                             defaultValue={''}
                             control={control}
                             rules={{
-                                required: {value: true, message: 'Required'},
-                            }} render={({field}) => (
-                            <ThemeTextField
-                                {...field} required
-                                error={Boolean(errors?.location)}
-                                helperText={(errors?.location?.message ?? '').toString()}
-                                size={'small'} label={'Location'}
-                                sx={{flex: '1 1 300px'}}
-                                placeholder={'Location'}/>
-                        )}/>
+                                required: { value: true, message: 'Required' },
+                            }} render={({ field }) => (
+                                <ThemeTextField
+                                    {...field} required
+                                    error={Boolean(errors?.location)}
+                                    helperText={(errors?.location?.message ?? '').toString()}
+                                    size={'small'} label={'Location'}
+                                    sx={{ flex: '1 1 300px' }}
+                                    placeholder={'Location'} />
+                            )} />
                         <Controller
                             name={`cv`}
-                            defaultValue={''}
                             control={control}
                             rules={{
-                                required: {value: false, message: 'Required'},
-                            }} render={({field}) => (
-                            <ThemeTextField
-                                {...field}
-                                error={Boolean(errors?.cv)}
-                                helperText={(errors?.cv?.message ?? '').toString()}
-                                size={'small'} label={'Upload CV'}
-                                type={'file'}
-                                InputProps={{
-                                    startAdornment: <InputAdornment
-                                        position="start"><Attachment/></InputAdornment>,
-                                }}
-                                inputProps={{accept: 'image/png, image/jpeg, image/jpg, application/pdf'}}
-                                sx={{flex: '1 1 300px'}}
-                            />
-                        )}/>
+                                required: { value: false, message: 'Required' },
+                            }} render={({ field }) => (
+                                <ThemeTextField
+                                    {...field}
+                                    error={Boolean(errors?.cv)}
+                                    helperText={(errors?.cv?.message ?? '').toString()}
+                                    size={'small'} label={'Upload CV'}
+                                    type={'file'}
+                                    InputProps={{
+                                        startAdornment: <InputAdornment
+                                            position="start"><Attachment /></InputAdornment>,
+                                    }}
+                                    inputProps={{ accept: 'image/png, image/jpeg, image/jpg, application/pdf' }}
+                                    sx={{ flex: '1 1 300px' }}
+                                />
+                            )} />
                     </>
 
                     <Stack direction={'row'} sx={{
@@ -233,10 +282,10 @@ export default function Career() {
                         },
 
                     }}>
-                        <Checkbox size={'small'}/>
+                        <Checkbox size={'small'} />
                         <Typography variant={'caption'}>
                             I've read and accept the <Link to={'/'}>Privacy Policy</Link> and <Link to={'/'}>Terms od
-                            conditions</Link>
+                                conditions</Link>
                         </Typography>
                     </Stack>
 

@@ -13,7 +13,7 @@ export const services = [
         image: logisticImage,
         heading: 'Heading for Service!',
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
-        link: 'services',
+        link: 'services/logistic-solutions',
         subServices: [
             {name: 'Full Truck Load', link: ''},
             {name: 'Partial Truck Load', link: ''},
@@ -29,7 +29,7 @@ export const services = [
         image: warehouse,
         heading: 'Heading for Service!',
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
-        link: 'services',
+        link: 'services/3pl-warehousing-services',
         subServices: [
             {name: 'Full Truck Load', link: ''},
             {name: 'Partial Truck Load', link: ''},
@@ -45,7 +45,7 @@ export const services = [
         image: other,
         heading: 'Heading for Service!',
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
-        link: 'services',
+        link: 'services/other-services',
         subServices: [
             {name: 'Full Truck Load', link: ''},
             {name: 'Partial Truck Load', link: ''},

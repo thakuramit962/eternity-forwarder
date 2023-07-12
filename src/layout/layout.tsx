@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react'
-import {Outlet, useLocation} from 'react-router-dom'
-import {alpha, Box, useMediaQuery, useTheme} from "@mui/material"
+import React, { useEffect, useRef, useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import { alpha, Box, useMediaQuery, useTheme } from "@mui/material"
 import Header from "./header/header";
 import Sidebar from "./sidebar/sidebar";
 import 'aos/dist/aos.css';
@@ -43,16 +43,23 @@ export default function Layout() {
             {/*{isMobile*/}
             {/*    ? <MobileSidebar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>*/}
             {/*    : */}
-                <Sidebar open={isDrawerOpen} closeDrawer={toggleDrawer}/>
+            <Sidebar open={isDrawerOpen} closeDrawer={toggleDrawer} />
             {/*}*/}
 
-            <Header toggleDrawer={toggleDrawer}/>
+            <Header toggleDrawer={toggleDrawer} />
             <Box sx={{
                 display: 'flex',
                 flexFlow: 'column',
                 minHeight: '100vh',
                 px: 0,
                 background: alpha(theme.palette.secondary.main, 0.05),
+                '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                },
+                '& input[type=number]': {
+                    MozAppearance: 'textfield',
+                },
                 '& main': {
                     flex: 1,
                     background: 'transparent',
@@ -88,9 +95,9 @@ export default function Layout() {
                 },
             }}>
                 <Box component={'main'} className={'page'}>
-                    <Outlet/>
+                    <Outlet />
                 </Box>
-                <Footer/>
+                <Footer />
             </Box>
             <Box ref={cursorRounded} className="cursor rounded" sx={{
                 width: '30px',
@@ -98,7 +105,7 @@ export default function Layout() {
                 border: '2px solid #fff',
                 borderRadius: '50%',
                 display: 'none',
-            }}/>
+            }} />
         </React.Fragment>
     )
 }

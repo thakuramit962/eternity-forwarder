@@ -1,26 +1,28 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
-import {Box, Button, Toolbar} from "@mui/material"
+import { Box, Button, CircularProgress, Toolbar, useTheme } from "@mui/material"
 import NewPageContainer from "../../components/new-page-container";
-import {useParams} from "react-router-dom";
-import moment from "moment";
+import { useParams } from "react-router-dom";
+import moment from "moment"
+import noDataIllustration from '../../assets/illustrations/no-data.svg'
+import { StarBorderRounded, StarRounded } from '@mui/icons-material';
 
 
 export default function TrackingResult() {
 
 
     const params = useParams()
-    const {trackId} = params
+    const theme = useTheme()
+    const { trackId } = params
 
     const [fetching, setFetching] = useState(true)
+    const [noData, setNoData] = useState(false)
     const [trackingResult, setTrackingResult] = useState({})
     const [timelineTrail, setTimelineTrail] = useState([])
 
     useEffect(() => {
         setFetching(true)
-        console.log(trackId, 'trackingId')
-        const url = `http://app.shipbuddy.co.in/api/get-lrtimeline/${trackId}`
-        fetch(url)
+        fetch(`http://app.shipbuddy.co.in/api/get-lrtimeline/${trackId}`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok')
                 return response.json()
@@ -31,10 +33,14 @@ export default function TrackingResult() {
                     setTrackingResult(data?.data)
                     setTimelineTrail(data?.driver_trail)
                 } else {
+                    setNoData(true)
                     console.log('some error')
                 }
             })
-            .catch(error => console.error('Error:', error))
+            .catch(error => {
+                setNoData(true)
+                console.error('Error:', error)
+            })
             .finally(() => setFetching(false))
     }, [trackId])
 
@@ -43,12 +49,21 @@ export default function TrackingResult() {
             <Toolbar disableGutters sx={{
                 height: '110px',
                 transition: 'all 300ms ease-in-out',
-            }}/>
+            }} />
 
             <Box sx={{
                 padding: '0 1rem',
                 minHeight: 'min(100vh, 700px)',
-                backgroundColor: 'aliceblue',
+                '& .emptyContainer': {
+                    display: 'grid',
+                    placeItems: 'center',
+                    minHeight: 'min(70vh, 500px)',
+                    '& img': {
+                        maxHeight: '300px',
+                        objectFit: "contain",
+                    },
+                },
+                // backgroundColor: 'aliceblue',
                 '& .content': {
                     maxWidth: '1100px',
                     marginInline: 'auto',
@@ -64,6 +79,7 @@ export default function TrackingResult() {
                             padding: '1rem',
                             backgroundColor: 'white',
                             borderRadius: '12px',
+                            boxShadow: '0 0 17px -4px #83838380',
                         },
 
                         '& .dateLine': {
@@ -84,6 +100,7 @@ export default function TrackingResult() {
                             flexFlow: 'column',
                             justifyContent: 'flex-start',
                             gap: 0,
+                            mb: 2,
                             '& .day': {
                                 fontWeight: 600,
                                 fontSize: '24px',
@@ -98,15 +115,15 @@ export default function TrackingResult() {
                             '& .date': {
                                 fontSize: '100px',
                                 lineHeight: '100px',
-                                color: '#f3ba0a',
+                                color: theme.palette.primary.main,
                                 fontWeight: 500,
                                 display: 'flex',
                                 alignItems: 'flex-end',
                                 marginTop: '12px',
                                 '& .year': {
-                                    marginBottom: '22px',
+                                    marginBottom: '18px',
                                     fontWeight: 500,
-                                    fontSize: '14px',
+                                    fontSize: '22px',
                                     display: 'inline-block',
                                     lineHeight: 0,
                                     color: '#555',
@@ -123,6 +140,7 @@ export default function TrackingResult() {
                             fontSize: '38px !important',
                             display: 'inline-flex',
                             alignItems: 'center',
+                            margin: 0,
                             '&.delivered': {
                                 color: '#4ebb5b',
                             },
@@ -285,6 +303,7 @@ export default function TrackingResult() {
                             backgroundColor: 'white',
                             borderRadius: '12px',
                             marginBottom: '24px',
+                            boxShadow: '0 0 17px -4px #83838380',
                             '& .detailLine': {
                                 display: 'flex',
                                 alignItems: 'center',
@@ -304,6 +323,7 @@ export default function TrackingResult() {
                             },
                         },
                         '& .reviewBlock': {
+                            boxShadow: '0 0 17px -4px #83838380',
                             position: 'sticky',
                             top: '1rem',
                             padding: '1rem',
@@ -317,47 +337,94 @@ export default function TrackingResult() {
                                 display: 'flex',
                                 flexDirection: 'row-reverse',
                                 justifyContent: 'center',
+                                minHeight: '40px',
+                                mb: 2,
                                 '& > input': {
                                     display: 'none',
-                                    '&:checked ~ label:before': {
-                                        opacity: 1,
+                                    '&:checked ~ label': {
+                                        '& svg': {
+                                            '&.star': {
+                                                display: 'none',
+                                            },
+                                            '&.checkedStar': {
+                                                display: 'block',
+                                            },
+                                        },
+                                        '&:before': {
+                                            opacity: 1,
+                                        },
                                     },
                                 },
                                 '& > label': {
                                     position: 'relative',
+                                    display: 'grid',
+                                    placeItems: 'center',
                                     width: '1em',
                                     fontSize: '50px',
                                     fontWeight: 300,
                                     color: '#ffd600',
                                     cursor: 'pointer',
-                                    // '& ::before': {
-                                    //     content: '\\2605',
-                                    //     position: 'absolute',
-                                    //     opacity: 0,
-                                    // },
+                                    '& svg': {
+                                        position: 'absolute',
+                                        height: '48px',
+                                        width: '48px',
+                                        '&.checkedStar': {
+                                            display: 'none',
+                                        },
+                                    },
+                                    '& ::before': {
+                                        content: '"\\2605"',
+                                        position: 'absolute',
+                                        opacity: 0,
+                                    },
                                     '&:hover': {
-                                        '&:before, & ~ label:before': {
-                                            opacity: '1 !important',
+                                        '& svg': {
+                                            transform: 'scale(1.03)',
+                                        },
+                                        '& ~ label': {
+                                            '& svg': {
+                                                transform: 'scale(1.03)',
+                                            },
+                                            '&:before': {
+                                                opacity: '1 !important',
+                                            },
                                         },
                                     },
                                 },
-                                '&:hover > input:checked ~ label:before': {
-                                    opacity: 0.4,
+                                '&:hover > input:checked ~ label': {
+                                    '& svg': {
+                                        '&.star': {
+                                            display: 'none',
+                                        },
+                                        '& svg': {
+                                            '&.checkedStar': {
+                                                display: 'inline',
+                                            },
+                                        },
+                                        '&:before': {
+                                            opacity: 0.4,
+                                        },
+                                    },
                                 },
                             },
                             '& textarea': {
+                                mx: 'auto',
+                                width: '-webkit-fill-available',
                                 borderRadius: '8px',
-                                width: '100%',
+                                minWidth: '80%',
                                 padding: '8px 12px',
                                 border: 'none',
-                                outline: 'none',
-                                background: '#f2f2f2',
+                                // outline: 'none',
+                                // background: '#f16334',
+                                outline: `1px solid ${theme.palette.secondary.light}`,
                                 resize: 'none',
-                                fontSize: '12px',
+                                fontSize: '14px',
                                 color: '#737373',
                                 '&:hover, &:focus': {
                                     border: 'none',
-                                    outline: 'none',
+                                    outline: `1px solid ${theme.palette.primary.main}`,
+                                    boxShadow: `0 0 0 2px ${theme.palette.primary.main}`
+
                                 },
                             },
                             '& button': {
@@ -384,43 +451,68 @@ export default function TrackingResult() {
                             },
                         },
                     },
-                },
 
-                ['@media(max0width: 600px)']: {
-                    '& .description': {
-                        '& .location': {
-                            marginBottom: '12px',
-                        },
-                        '& .trackLink': {
-                            position: 'relative !important',
-                            right: 'auto !important',
-                            top: 'auto !important',
+                    ['@media(max0width: 600px)']: {
+                        '& .description': {
+                            '& .location': {
+                                marginBottom: '12px',
+                            },
+                            '& .trackLink': {
+                                position: 'relative !important',
+                                right: 'auto !important',
+                                top: 'auto !important',
+                            }
                         }
-                    }
 
-                },
-
-            }}>
+                    },
+                }
+            }} >
                 {
-                    fetching
-                        ? 'Wait Data is loading'
-                        : <TrackingData data={trackingResult} timelineData={timelineTrail}/>
+                    fetching ? <FetchingView />
+                        : noData ? <NoDataView />
+                            : <TrackingData data={trackingResult} timelineData={timelineTrail} />
                 }
             </Box>
-        </NewPageContainer>
+        </NewPageContainer >
     )
 }
 
 
+const FetchingView = () => {
+
+    return (
+        <Box className={'emptyContainer'}>
+            <CircularProgress />
+        </Box>
+    )
+}
+
+const NoDataView = () => {
+
+    return (
+        <Box className={'emptyContainer'}>
+            <img src={noDataIllustration} alt='no data' className='animate__animated animate__fadeIn' />
+        </Box>
+    )
+}
+
 const TrackingData = (props: any) => {
 
-    const {data, timelineData} = props
+    const { data, timelineData } = props
+    const [formData, setFormData] = useState({ rating: 0, feedback: '' })
+
+    const onReviewSubmit = () => {
+        if (formData.rating == 0) alert('rating is required')
+        else {
+            console.log(formData)
+        }
+    }
 
     return (
         <Box className="content">
             <Box className="statusBlock">
                 <Box className="deliveryStatus">
-                    <p className="dateLine">Delivery Date</p>
+                    <p className="dateLine">{data.delivery_status == 'Successful' ? 'Delivery Date' : 'Estd. Delivery Date'}</p>
                     <Box className="dateBlock">
                         <span className="day">{moment().format('dddd')}</span>
                         <span className="month">{moment().format('MMMM')}</span>
@@ -446,8 +538,8 @@ const TrackingData = (props: any) => {
                                 strokeLinejoin="round"
                                 className="feather feather-check-circle"
                             >
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
                             </svg>
                             Delivered
                         </p>
@@ -464,10 +556,10 @@ const TrackingData = (props: any) => {
                                 strokeLinejoin="round"
                                 className="feather feather-truck"
                             >
-                                <rect x="1" y="3" width="15" height="13"/>
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-                                <circle cx="5.5" cy="18.5" r="2.5"/>
-                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                                <rect x="1" y="3" width="15" height="13" />
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                                <circle cx="5.5" cy="18.5" r="2.5" />
+                                <circle cx="18.5" cy="18.5" r="2.5" />
                             </svg>
                             In Transit
                         </p>
@@ -480,14 +572,14 @@ const TrackingData = (props: any) => {
 
                     <Box className="timelineBlock">
                         {/* Delivered */}
-                        {timelineData.reverse().map((timeline: any, index: number) => (
+                        {timelineData?.reverse().map((timeline: any, index: number) => (
                             <Box className="timeline">
                                 <Box className="timeBlock">
                                     <Box className="timeStamp">
                                         <Box className="date">{moment(timeline.create_at).format('DD MMM')}</Box>
                                         <Box className="time">{moment(timeline.create_at).format('hh:mm a')}</Box>
                                     </Box>
-                                    <Box className="badge"/>
+                                    <Box className="badge" />
                                 </Box>
                                 <Box className="description">
                                     <Box className="activity">
@@ -520,12 +612,12 @@ const TrackingData = (props: any) => {
                             strokeLinejoin="round"
                             className="feather feather-file"
                         >
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                            <polyline points="13 2 13 9 20 9" />
                         </svg>
                         Order Details
                     </p>
-                    <hr/>
+                    <hr />
 
                     <p className="detailLine">
                         <span>Order ID</span>
@@ -547,22 +639,22 @@ const TrackingData = (props: any) => {
                     <p className="dateLine">How was your Delivery Experience?</p>
 
                     <Box className="rating">
-                        <input type="radio" name="rating" value="5" id="5"/>
-                        <label htmlFor="5">☆</label>
-                        <input type="radio" name="rating" value="4" id="4"/>
-                        <label htmlFor="4">☆</label>
-                        <input type="radio" name="rating" value="3" id="3"/>
-                        <label htmlFor="3">☆</label>
-                        <input type="radio" name="rating" value="2" id="2"/>
-                        <label htmlFor="2">☆</label>
-                        <input type="radio" name="rating" value="1" id="1"/>
-                        <label htmlFor="1">☆</label>
+                        <input type="radio" name="rating" value="5" id="5" onClick={() => setFormData({ ...formData, rating: 5 })} />
+                        <label htmlFor="5"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                        <input type="radio" name="rating" value="4" id="4" onClick={() => setFormData({ ...formData, rating: 4 })} />
+                        <label htmlFor="4"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                        <input type="radio" name="rating" value="3" id="3" onClick={() => setFormData({ ...formData, rating: 3 })} />
+                        <label htmlFor="3"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                        <input type="radio" name="rating" value="2" id="2" onClick={() => setFormData({ ...formData, rating: 2 })} />
+                        <label htmlFor="2"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                        <input type="radio" name="rating" value="1" id="1" onClick={() => setFormData({ ...formData, rating: 1 })} />
+                        <label htmlFor="1"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
                     </Box>
 
-                    <textarea name="feedback" rows={4}
-                              placeholder="Please enter your remarks (Max 250 characters)"/>
+                    <textarea name="feedback" rows={4} onChange={(e) => setFormData({ ...formData, feedback: e.target.value })}
+                        placeholder="Please enter your remarks (Max 250 characters)" />
 
-                    <Button variant={'contained'}>Submit</Button>
+                    <Button variant={'contained'} onClick={onReviewSubmit}>Submit</Button>
                 </Box>
             </Box>
         </Box>

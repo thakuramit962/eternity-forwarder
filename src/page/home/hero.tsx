@@ -277,7 +277,7 @@ const TrackingTab = () => {
 
     const track = () => {
         trackingNo
-            ? navigate('/track')
+            ? navigate(`/track/${trackingNo}`)
             : setHelperText('Tracking no is required')
     }
 

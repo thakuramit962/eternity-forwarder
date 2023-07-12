@@ -1,713 +1,1026 @@
 .st0 {
     fill: none;
-}
-
-.st1 {
-    opacity: 0.2;
-    fill: url(#SVGID_1_);
-}
-
-.st2 {
-    opacity: 0.2;
-    fill: url(#SVGID_00000062908612189211915620000010265108597279585721_);
-}
-
-.st3 {
-    opacity: 0.2;
-    fill: url(#SVGID_00000168837599976574522570000014413204429570743733_);
-}
-
-.st4 {
-    opacity: 0.2;
-    fill: url(#SVGID_00000183952024968150648690000003673622610112689058_);
-}
-
-.st5 {
-    opacity: 0.2;
-    fill: url(#SVGID_00000025424984681441199060000017230059942064941246_);
-}
-
-.st6 {
-    fill: #FFFFFF;
-    stroke: #FFFFFF;
-    stroke-width: 4.1538;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-dasharray: 4.6318, 6.9478;
-}
-
-.st7 {
-    fill: #FFFFFF;
-}
-
-.st8 {
-    fill: none;
-    stroke: #B3B3B3;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st9 {
-    fill: url(#SVGID_00000055703373823943309910000011460101070086632847_);
-}
-
-.st10 {
-    fill: url(#SVGID_00000176041519983294815270000000754053755605840037_);
-}
-
-.st11 {
-    fill: #244A4D;
-}
-
-.st12 {
-    fill: url(#SVGID_00000138562021963344346030000005541298191131851455_);
-}
-
-.st13 {
-    fill: url(#SVGID_00000006693456951057436430000003640687440619644300_);
-}
-
-.st14 {
-    fill: url(#SVGID_00000117665856367880445720000017433379206655553933_);
-}
-
-.st15 {
-    fill: url(#SVGID_00000005957423131390091670000005738353247120522911_);
-}
-
-.st16 {
-    fill: url(#SVGID_00000084513497002616958210000006943182361638897567_);
-}
-
-.st17 {
-    fill: url(#SVGID_00000125561515811242010880000004871736920645468814_);
-}
-
-.st18 {
-    fill: url(#SVGID_00000037657505590519559980000006968292892568201395_);
-}
-
-.st19 {
-    fill: url(#SVGID_00000168800925252978999130000016380291154482172051_);
-}
-
-.st20 {
-    fill: url(#SVGID_00000116200303916131498610000010990348316495237047_);
-}
-
-.st21 {
-    fill: url(#SVGID_00000078750199550241821350000014198134343557845914_);
-}
-
-.st22 {
-    fill: url(#SVGID_00000121971734279556186870000000181900557019239849_);
-}
-
-.st23 {
-    fill: url(#SVGID_00000125566463003463193130000005851746353020840587_);
-}
-
-.st24 {
-    fill: url(#SVGID_00000116955985915962168180000004421024533840893827_);
-}
-
-.st25 {
-    fill: #FFFFFF;
-    stroke: url(#SVGID_00000067956318421546721400000000704068602666297744_);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st26 {
-    fill: url(#SVGID_00000000922233591849969910000017406956717688233391_);
     stroke: #C9C9C9;
     stroke-width: 2.3527;
     stroke-miterlimit: 10;
 }
 
-.st27 {
-    fill: #144D61;
+.st1 {
+    fill: url(#SVGID_1_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
 }
 
-.st28 {
+.st2 {
+    fill: url(#SVGID_2_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st3 {
+    fill: url(#SVGID_3_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st4 {
+    fill: url(#SVGID_4_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st5 {
+    fill: url(#SVGID_5_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st6 {
+    fill: url(#SVGID_6_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st7 {
+    fill: url(#SVGID_7_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st8 {
+    fill: url(#SVGID_8_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st9 {
+    fill: url(#SVGID_9_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st10 {
+    fill: url(#SVGID_10_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st11 {
+    fill: url(#SVGID_11_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st12 {
+    fill: url(#SVGID_12_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st13 {
+    fill: url(#SVGID_13_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st14 {
+    fill: url(#SVGID_14_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st15 {
+    fill: #FFFFFF;
+}
+
+.st16 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_15_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st17 {
+    fill: url(#SVGID_16_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st18 {
+    fill: url(#SVGID_17_);
+}
+
+.st19 {
+    fill: url(#SVGID_18_);
+}
+
+.st20 {
+    fill: url(#SVGID_19_);
+}
+
+.st21 {
+    fill: url(#SVGID_20_);
+}
+
+.st22 {
     fill: none;
-    stroke: url(#SVGID_00000172421603452814118850000004848893252912670392_);
+    stroke: url(#SVGID_21_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
-.st29 {
+.st23 {
     fill: none;
-    stroke: url(#SVGID_00000089559436189574815730000009660674842491670460_);
+    stroke: url(#SVGID_22_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 6.7004, 10.0506;
 }
 
-.st30 {
+.st24 {
     fill: none;
-    stroke: url(#SVGID_00000081648730213081190440000007053463765759924637_);
+    stroke: url(#SVGID_23_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
+.st25 {
+    fill: url(#SVGID_24_);
+    stroke: url(#SVGID_25_);
+    stroke-miterlimit: 10;
+}
+
+.st26 {
+    fill: url(#SVGID_26_);
+    stroke: url(#SVGID_27_);
+    stroke-miterlimit: 10;
+}
+
+.st27 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_28_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st28 {
+    fill: url(#SVGID_29_);
+}
+
+.st29 {
+    fill: url(#SVGID_30_);
+}
+
+.st30 {
+    fill: url(#SVGID_31_);
+}
+
 .st31 {
-    fill: url(#SVGID_00000176028143544204024510000003003855281160203938_);
+    fill: url(#SVGID_32_);
 }
 
 .st32 {
-    fill: url(#SVGID_00000078028071203069047880000005361451748850205570_);
+    fill: url(#SVGID_33_);
 }
 
 .st33 {
-    fill: #FFFFFF;
-    stroke: #00FFFF;
-    stroke-width: 2;
+    fill: url(#SVGID_34_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
     stroke-miterlimit: 10;
 }
 
 .st34 {
-    fill: url(#SVGID_00000047754239662207617110000006625202937795227781_);
-    stroke: #C9C9C9;
-    stroke-width: 2.7805;
-    stroke-miterlimit: 10;
-}
-
-.st35 {
     fill: none;
-    stroke: #00FFFF;
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st36 {
-    fill: none;
-    stroke: #00FFFF;
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.7909, 10.1864;
-}
-
-.st37 {
-    fill: #00FFFF;
-}
-
-.st38 {
-    fill: #FFFFFF;
-    stroke: #FBB03B;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st39 {
-    fill: url(#SVGID_00000128450723789478209870000002013852485773538443_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st40 {
-    fill: none;
-    stroke: url(#SVGID_00000088096273094484970070000002354790848373727146_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st41 {
-    fill: none;
-    stroke: url(#SVGID_00000052807965177992750820000003322268565896455096_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.614, 9.921;
-}
-
-.st42 {
-    fill: none;
-    stroke: url(#SVGID_00000054228749511738979790000001774851669936169125_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st43 {
-    fill: url(#SVGID_00000080897797597967308520000009479246765753563327_);
-}
-
-.st44 {
-    fill: url(#SVGID_00000023251537307716602190000012460025377244008612_);
-}
-
-.st45 {
-    fill: url(#SVGID_00000044140898411700477750000004264109916801436819_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st46 {
-    fill: none;
-    stroke: url(#SVGID_00000085973098672301970890000014040230542486976133_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st47 {
-    fill: none;
-    stroke: url(#SVGID_00000042733722044775926720000017017410036351163048_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.6918, 10.0376;
-}
-
-.st48 {
-    fill: none;
-    stroke: url(#SVGID_00000010290096744756863770000010254395287368183976_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st49 {
-    fill: url(#SVGID_00000149354020711548025360000004076932442196068287_);
-}
-
-.st50 {
-    fill: url(#SVGID_00000142142522490117291430000015994076253972273285_);
-}
-
-.st51 {
-    font-family: 'ArialMT';
-}
-
-.st52 {
-    font-size: 32px;
-}
-
-.st53 {
-    fill: #FFFFFF;
-    stroke: url(#SVGID_00000114793396325480183150000013195490509901034415_);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st54 {
-    fill: url(#SVGID_00000114050195363811386370000007738983821809752208_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st55 {
-    fill: none;
-    stroke: url(#SVGID_00000026869702406879064740000010822348071260827536_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st56 {
-    fill: none;
-    stroke: url(#SVGID_00000072264378770213556110000000411113646824231322_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.6578, 9.9867;
-}
-
-.st57 {
-    fill: none;
-    stroke: url(#SVGID_00000129910280238448736460000004471507474881637536_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st58 {
-    fill: url(#SVGID_00000054245826024739256920000002665981588236074170_);
-}
-
-.st59 {
-    fill: url(#SVGID_00000162323871083893025100000014271785409242423743_);
-}
-
-.st60 {
-    fill: #FFFFFF;
-    stroke: url(#SVGID_00000070818835052696378880000008956080969525831346_);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st61 {
-    fill: url(#SVGID_00000076602330589027829960000015468005705636962692_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st62 {
-    fill: none;
-    stroke: url(#SVGID_00000037678140689433028180000011980418316123896476_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st63 {
-    fill: none;
-    stroke: url(#SVGID_00000049908512926867033150000008072509063099232140_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.7535, 10.1302;
-}
-
-.st64 {
-    fill: none;
-    stroke: url(#SVGID_00000103969525205670427130000000806173709368779709_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st65 {
-    fill: url(#SVGID_00000179610891027110936320000013843372041468324792_);
-}
-
-.st66 {
-    fill: url(#SVGID_00000178170389901161812000000005270255160214906009_);
-}
-
-.st67 {
-    fill: #FFFFFF;
-    stroke: url(#SVGID_00000091733943038885298410000000950421431187218589_);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st68 {
-    fill: url(#SVGID_00000134235783448662423750000005610928617945745062_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st69 {
-    fill: none;
-    stroke: url(#SVGID_00000140717319408629439770000013263884367449962153_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st70 {
-    fill: none;
-    stroke: url(#SVGID_00000093166030530962617880000014963828194672663463_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.8401, 10.2602;
-}
-
-.st71 {
-    fill: none;
-    stroke: url(#SVGID_00000141428132909226917400000004004216535576712100_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st72 {
-    fill: url(#SVGID_00000040563412879818221900000009555829162118240703_);
-}
-
-.st73 {
-    fill: url(#SVGID_00000024689843403062723510000002845436605611219640_);
-}
-
-.st74 {
-    fill: #FFFFFF;
-    stroke: url(#SVGID_00000081639339138567500740000000062422405244673188_);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st75 {
-    fill: url(#SVGID_00000122711737893558885280000014370254305570051479_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st76 {
-    fill: none;
-    stroke: url(#SVGID_00000072275261618982269280000016174726214235958956_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st77 {
-    fill: none;
-    stroke: url(#SVGID_00000116206838218731467530000006124784519344171943_);
+    stroke: url(#SVGID_35_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 6.8062, 10.2093;
 }
 
-.st78 {
+.st35 {
     fill: none;
-    stroke: url(#SVGID_00000134221539463746307160000008024895648452386698_);
+    stroke: url(#SVGID_36_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
+    stroke-dasharray: 6.8062, 10.2093;
 }
 
-.st79 {
-    fill: url(#SVGID_00000066515705562803985250000002814665638654846882_);
+.st36 {
+    fill: none;
+    stroke: url(#SVGID_37_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.8062, 10.2093;
 }
 
-.st80 {
-    fill: url(#SVGID_00000085955040952036413300000004422659420356529065_);
+.st37 {
+    fill: none;
+    stroke: url(#SVGID_38_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.8062, 10.2093;
 }
 
-.st81 {
+.st38 {
+    fill: url(#SVGID_39_);
+}
+
+.st39 {
     fill: #FFFFFF;
-    stroke: url(#SVGID_00000010991170893602266680000003711190465847360680_);
-    stroke-width: 2;
+    stroke: url(#SVGID_40_);
+    stroke-width: 6;
     stroke-miterlimit: 10;
 }
 
-.st82 {
-    fill: url(#SVGID_00000026872902402816874740000015736470102548776072_);
+.st40 {
+    fill: url(#SVGID_41_);
+}
+
+.st41 {
+    fill: url(#SVGID_42_);
+}
+
+.st42 {
+    fill: url(#SVGID_43_);
+}
+
+.st43 {
+    fill: url(#SVGID_44_);
+}
+
+.st44 {
+    fill: url(#SVGID_45_);
+}
+
+.st45 {
+    fill: url(#SVGID_46_);
+}
+
+.st46 {
+    fill: url(#SVGID_47_);
     stroke: #C9C9C9;
     stroke-width: 2.3527;
     stroke-miterlimit: 10;
 }
 
-.st83 {
+.st47 {
     fill: none;
-    stroke: url(#SVGID_00000133500719845943173470000005955749871122325667_);
+    stroke: url(#SVGID_48_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
-.st84 {
+.st48 {
     fill: none;
-    stroke: url(#SVGID_00000096742896359210516980000008651139663744480700_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.7829, 10.1743;
-}
-
-.st85 {
-    fill: none;
-    stroke: url(#SVGID_00000145754042604877849210000007352669069559485584_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st86 {
-    fill: url(#SVGID_00000140008072251010524750000009125117479571063962_);
-}
-
-.st87 {
-    fill: url(#SVGID_00000134221246351783840280000011436420664926607036_);
-}
-
-.st88 {
-    fill: #FFFFFF;
-    stroke: url(#SVGID_00000154401347423735376280000001408057382259990204_);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st89 {
-    fill: url(#SVGID_00000057838240271014793810000016861024103056754109_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st90 {
-    fill: none;
-    stroke: url(#SVGID_00000155841433184991143110000003787272541395839640_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st91 {
-    fill: none;
-    stroke: url(#SVGID_00000076584006941283795700000004827431562367157174_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.7045, 10.0567;
-}
-
-.st92 {
-    fill: none;
-    stroke: url(#SVGID_00000040558273074218036740000007070852882586952381_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st93 {
-    fill: url(#SVGID_00000035510609921555476670000013239310272494468269_);
-}
-
-.st94 {
-    fill: url(#SVGID_00000052067404103620899830000005465615431839536542_);
-}
-
-.st95 {
-    fill: #29ABE2;
-    stroke: #FFFFFF;
-    stroke-width: 4.1538;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-dasharray: 4.6318, 6.9478;
-}
-
-.st96 {
-    fill: #FFFFFF;
-    stroke: #244A4D;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-}
-
-.st97 {
-    fill: #244A4D;
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
-}
-
-.st98 {
-    fill: none;
-    stroke: url(#SVGID_00000088820236221842734210000007675983114874334616_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st99 {
-    fill: none;
-    stroke: url(#SVGID_00000097459501324281373400000004352904257704214704_);
+    stroke: url(#SVGID_49_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 6.6194, 9.9291;
 }
 
-.st100 {
+.st49 {
+    fill: url(#SVGID_50_);
+}
+
+.st50 {
+    fill: url(#SVGID_51_);
+}
+
+.st51 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_52_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st52 {
+    fill: url(#SVGID_53_);
+}
+
+.st53 {
+    fill: url(#SVGID_54_);
+}
+
+.st54 {
+    fill: url(#SVGID_55_);
+}
+
+.st55 {
+    fill: url(#SVGID_56_);
+}
+
+.st56 {
+    fill: url(#SVGID_57_);
+    stroke: #C9C9C9;
+    stroke-width: 2.3527;
+    stroke-miterlimit: 10;
+}
+
+.st57 {
     fill: none;
-    stroke: url(#SVGID_00000005960623184108118770000007256709211055807635_);
+    stroke: url(#SVGID_58_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
-.st101 {
-    fill: url(#SVGID_00000016032850335532179510000013881076408391674773_);
-}
-
-.st102 {
-    fill: url(#SVGID_00000056423498969269489770000013379377166727125158_);
-}
-
-.st103 {
+.st58 {
     fill: none;
-    stroke: url(#SVGID_00000042695912046479305700000001655417340951255450_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.st104 {
-    fill: none;
-    stroke: url(#SVGID_00000080917324647298563460000010868338708882874514_);
+    stroke: url(#SVGID_59_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 6.5778, 9.8666;
 }
 
-.st105 {
+.st59 {
+    fill: url(#SVGID_60_);
+}
+
+.st60 {
+    fill: url(#SVGID_61_);
+}
+
+.st61 {
     fill: none;
-    stroke: url(#SVGID_00000003817970399486042360000012430511158468733338_);
+    stroke: url(#SVGID_62_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+.st62 {
+    fill: none;
+    stroke: url(#SVGID_63_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.6578, 9.9867;
+}
+
+.st63 {
+    fill: none;
+    stroke: url(#SVGID_64_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st64 {
+    fill: url(#SVGID_65_);
+}
+
+.st65 {
+    fill: url(#SVGID_66_);
+}
+
+.st66 {
+    fill: none;
+    stroke: url(#SVGID_67_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st67 {
+    fill: none;
+    stroke: url(#SVGID_68_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.7535, 10.1302;
+}
+
+.st68 {
+    fill: none;
+    stroke: url(#SVGID_69_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st69 {
+    fill: url(#SVGID_70_);
+}
+
+.st70 {
+    fill: url(#SVGID_71_);
+}
+
+.st71 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_72_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st72 {
+    fill: url(#SVGID_73_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st73 {
+    fill: url(#SVGID_74_);
+}
+
+.st74 {
+    fill: url(#SVGID_75_);
+}
+
+.st75 {
+    fill: url(#SVGID_76_);
+}
+
+.st76 {
+    fill: url(#SVGID_77_);
+}
+
+.st77 {
+    fill: url(#SVGID_78_);
+}
+
+.st78 {
+    fill: url(#SVGID_79_);
+}
+
+.st79 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_80_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st80 {
+    fill: url(#SVGID_81_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st81 {
+    fill: url(#SVGID_82_);
+}
+
+.st82 {
+    fill: url(#SVGID_83_);
+}
+
+.st83 {
+    fill: url(#SVGID_84_);
+}
+
+.st84 {
+    fill: url(#SVGID_85_);
+}
+
+.st85 {
+    fill: url(#SVGID_86_);
+}
+
+.st86 {
+    fill: url(#SVGID_87_);
+}
+
+.st87 {
+    fill: url(#SVGID_88_);
+}
+
+.st88 {
+    fill: url(#SVGID_89_);
+}
+
+.st89 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_90_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st90 {
+    fill: url(#SVGID_91_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st91 {
+    fill: url(#SVGID_92_);
+}
+
+.st92 {
+    fill: url(#SVGID_93_);
+}
+
+.st93 {
+    fill: url(#SVGID_94_);
+}
+
+.st94 {
+    fill: url(#SVGID_95_);
+}
+
+.st95 {
+    fill: url(#SVGID_96_);
+}
+
+.st96 {
+    fill: url(#SVGID_97_);
+}
+
+.st97 {
+    fill: url(#SVGID_98_);
+}
+
+.st98 {
+    fill: url(#SVGID_99_);
+}
+
+.st99 {
+    fill: none;
+    stroke: url(#SVGID_100_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st100 {
+    fill: none;
+    stroke: url(#SVGID_101_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.8401, 10.2602;
+}
+
+.st101 {
+    fill: none;
+    stroke: url(#SVGID_102_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st102 {
+    fill: url(#SVGID_103_);
+}
+
+.st103 {
+    fill: url(#SVGID_104_);
+}
+
+.st104 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_105_);
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st105 {
+    fill: url(#SVGID_106_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
 }
 
 .st106 {
-    fill: url(#SVGID_00000106830973063118912010000013095098682435710654_);
+    fill: url(#SVGID_107_);
 }
 
 .st107 {
-    fill: url(#SVGID_00000167355128082356487660000011879780010591387797_);
+    fill: url(#SVGID_108_);
 }
 
 .st108 {
-    fill: #FFFFFF;
-    stroke: url(#SVGID_00000118388703338320219590000005611657332284951425_);
-    stroke-width: 2;
-    stroke-miterlimit: 10;
+    fill: url(#SVGID_109_);
 }
 
 .st109 {
-    fill: url(#SVGID_00000121982739272294213680000003507513135608407996_);
-    stroke: #C9C9C9;
-    stroke-width: 2.3527;
-    stroke-miterlimit: 10;
+    fill: url(#SVGID_110_);
 }
 
 .st110 {
-    fill: none;
-    stroke: url(#SVGID_00000073723617995904728270000003103752893631641227_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    fill: url(#SVGID_111_);
 }
 
 .st111 {
-    fill: none;
-    stroke: url(#SVGID_00000142876975299560074880000009854014667680548241_);
-    stroke-width: 1.6726;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 6.6093, 9.9139;
+    fill: url(#SVGID_112_);
 }
 
 .st112 {
     fill: none;
-    stroke: url(#SVGID_00000091733685534983570370000014060575459968018872_);
+    stroke: url(#SVGID_113_);
     stroke-width: 1.6726;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
 .st113 {
-    fill: url(#SVGID_00000143599258984136040800000013990194397497417663_);
+    fill: none;
+    stroke: url(#SVGID_114_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.614, 9.921;
 }
 
 .st114 {
-    fill: url(#SVGID_00000136405446513688022470000016366851491618618528_);
+    fill: none;
+    stroke: url(#SVGID_115_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st115 {
+    fill: url(#SVGID_116_);
+}
+
+.st116 {
+    fill: url(#SVGID_117_);
+}
+
+.st117 {
+    fill: none;
+    stroke: url(#SVGID_118_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.6918, 10.0376;
+}
+
+.st118 {
+    fill: none;
+    stroke: url(#SVGID_119_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st119 {
+    fill: url(#SVGID_120_);
+}
+
+.st120 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_121_);
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st121 {
+    fill: url(#SVGID_122_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st122 {
+    fill: url(#SVGID_123_);
+}
+
+.st123 {
+    fill: url(#SVGID_124_);
+}
+
+.st124 {
+    fill: url(#SVGID_125_);
+}
+
+.st125 {
+    fill: url(#SVGID_126_);
+}
+
+.st126 {
+    fill: url(#SVGID_127_);
+}
+
+.st127 {
+    fill: url(#SVGID_128_);
+}
+
+.st128 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_129_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st129 {
+    fill: url(#SVGID_130_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st130 {
+    fill: url(#SVGID_131_);
+}
+
+.st131 {
+    fill: url(#SVGID_132_);
+}
+
+.st132 {
+    fill: url(#SVGID_133_);
+}
+
+.st133 {
+    fill: url(#SVGID_134_);
+}
+
+.st134 {
+    fill: url(#SVGID_135_);
+}
+
+.st135 {
+    fill: url(#SVGID_136_);
+}
+
+.st136 {
+    fill: url(#SVGID_137_);
+}
+
+.st137 {
+    fill: none;
+    stroke: url(#SVGID_138_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st138 {
+    fill: none;
+    stroke: url(#SVGID_139_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.8062, 10.2093;
+}
+
+.st139 {
+    fill: none;
+    stroke: url(#SVGID_140_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st140 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_141_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st141 {
+    fill: url(#SVGID_142_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st142 {
+    fill: url(#SVGID_143_);
+}
+
+.st143 {
+    fill: url(#SVGID_144_);
+}
+
+.st144 {
+    fill: url(#SVGID_145_);
+}
+
+.st145 {
+    fill: url(#SVGID_146_);
+}
+
+.st146 {
+    fill: url(#SVGID_147_);
+}
+
+.st147 {
+    fill: url(#SVGID_148_);
+}
+
+.st148 {
+    fill: url(#SVGID_149_);
+}
+
+.st149 {
+    fill: url(#SVGID_150_);
+}
+
+.st150 {
+    fill: url(#SVGID_151_);
+}
+
+.st151 {
+    fill: url(#SVGID_152_);
+}
+
+.st152 {
+    fill: url(#SVGID_153_);
+}
+
+.st153 {
+    fill: none;
+    stroke: url(#SVGID_154_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.7829, 10.1743;
+}
+
+.st154 {
+    fill: none;
+    stroke: url(#SVGID_155_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st155 {
+    fill: url(#SVGID_156_);
+}
+
+.st156 {
+    fill: none;
+    stroke: url(#SVGID_157_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.7045, 10.0567;
+}
+
+.st157 {
+    fill: none;
+    stroke: url(#SVGID_158_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st158 {
+    fill: url(#SVGID_159_);
+}
+
+.st159 {
+    fill: url(#SVGID_160_);
+}
+
+.st160 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_161_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st161 {
+    fill: url(#SVGID_162_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st162 {
+    fill: url(#SVGID_163_);
+}
+
+.st163 {
+    fill: url(#SVGID_164_);
+}
+
+.st164 {
+    fill: url(#SVGID_165_);
+}
+
+.st165 {
+    fill: url(#SVGID_166_);
+}
+
+.st166 {
+    fill: url(#SVGID_167_);
+}
+
+.st167 {
+    fill: url(#SVGID_168_);
+}
+
+.st168 {
+    fill: url(#SVGID_169_);
+}
+
+.st169 {
+    fill: url(#SVGID_170_);
+}
+
+.st170 {
+    fill: url(#SVGID_171_);
+}
+
+.st171 {
+    fill: #FFFFFF;
+    stroke: url(#SVGID_172_);
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.st172 {
+    fill: url(#SVGID_173_);
+    stroke: #C9C9C9;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+.st173 {
+    fill: none;
+    stroke: url(#SVGID_174_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st174 {
+    fill: none;
+    stroke: url(#SVGID_175_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 6.6093, 9.9139;
+}
+
+.st175 {
+    fill: none;
+    stroke: url(#SVGID_176_);
+    stroke-width: 1.6726;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.st176 {
+    fill: url(#SVGID_177_);
+}
+
+.st177 {
+    fill: url(#SVGID_178_);
+}
+
+.st178 {
+    fill: url(#SVGID_179_);
+}
+
+.st179 {
+    fill: url(#SVGID_180_);
+}
+
+.st180 {
+    fill: url(#SVGID_181_);
+}
+
+.st181 {
+    fill: url(#SVGID_182_);
+}
+
+.st182 {
+    fill: url(#SVGID_183_);
+}
+
+.st183 {
+    fill: url(#SVGID_184_);
+}
+
+.st184 {
+    fill: url(#SVGID_185_);
+}
+
+.st185 {
+    fill: url(#SVGID_186_);
 }

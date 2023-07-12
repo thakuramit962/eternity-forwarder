@@ -54,16 +54,10 @@ export default function Header(props: any) {
     const theme = useTheme()
     const navigate = useNavigate()
 
-    const homePage = useMatch('/')
-    const trackPage = useMatch('/track/*')
-    const about = useMatch('/about-us*')
-    const service = useMatch('/services/*')
-    const partner = useMatch('/partner-with-us/*')
-    const partnerUs = useMatch('/partner-us/*')
+    const trackPage = useMatch('/track')
+    const trackResult = useMatch('/track/*')
 
-    const withOutBanner = true
-    // const withOutBanner = (!trackPage)
-    // const withOutBanner = (homePage || service || partner || partnerUs || trackPage || about)
+    const withOutBanner = (!trackResult || trackPage)
 
     const isSmallScreen = useMediaQuery('(max-width:1023px)')
 

@@ -141,7 +141,7 @@ export default function WarehouseService() {
 
                         <Box className={'ctaBlock animate__animated animate__fadeInUp'}>
                             <Button variant={'outlined'} data-aos="fade-up" data-aos-anchor-placement="center-bottom"
-                                    onClick={() => navigate('/contact-us')}>
+                                    onClick={() => navigate('/about-us/contact')}>
                                 Contact Us
                             </Button>
                         </Box>
