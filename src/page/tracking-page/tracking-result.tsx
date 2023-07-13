@@ -615,7 +615,7 @@ const TrackingData = (props: any) => {
                     <hr />
 
                     <p className="detailLine">
-                        <span>Order ID</span>
+                        <span>Order/ Shipment ID</span>
                         <span>{data.order_id ? data.order_id : data.id}</span>
                     </p>
 
