@@ -143,7 +143,7 @@ const Hero = (props: any) => {
                             background: theme.palette.background.paper,
                             flex: 1,
                             width: '-webkit-fill-available',
-                            mx: 'auto',
+                            mx: 0,
                             pt: 4,
                             pb: 3,
                             px: 3,

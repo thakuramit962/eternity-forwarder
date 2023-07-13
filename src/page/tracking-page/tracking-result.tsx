@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import { Box, Button, CircularProgress, Toolbar, useTheme } from "@mui/material"
+import { Box, Button, CircularProgress, Toolbar, Typography, useTheme } from "@mui/material"
 import NewPageContainer from "../../components/new-page-container";
 import { useParams } from "react-router-dom";
 import moment from "moment"
 import noDataIllustration from '../../assets/illustrations/no-data.svg'
-import { StarBorderRounded, StarRounded } from '@mui/icons-material';
+import { StarBorderRounded, StarRounded } from '@mui/icons-material'
+import thankYou from '../../assets/illustrations/success.svg'
 
 
 export default function TrackingResult() {
@@ -499,14 +500,8 @@ const NoDataView = () => {
 const TrackingData = (props: any) => {
 
     const { data, timelineData } = props
-    const [formData, setFormData] = useState({ rating: 0, feedback: '' })
 
-    const onReviewSubmit = () => {
-        if (formData.rating == 0) alert('rating is required')
-        else {
-            console.log(formData)
-        }
-    }
+    const [reviewSubmitted, setReviewSubmitted] = useState(false)
 
     return (
         <Box className="content">
@@ -514,11 +509,11 @@ const TrackingData = (props: any) => {
                 <Box className="deliveryStatus">
                     <p className="dateLine">{data.delivery_status == 'Successful' ? 'Delivery Date' : 'Estd. Delivery Date'}</p>
                     <Box className="dateBlock">
-                        <span className="day">{moment().format('dddd')}</span>
-                        <span className="month">{moment().format('MMMM')}</span>
+                        <span className="day">{moment(data.delivery_date).format('dddd')}</span>
+                        <span className="month">{moment(data.delivery_date).format('MMMM')}</span>
                         <Box className="date">
-                            <span>{moment().format('DD')}</span>
-                            <span className="year">{moment().format('YYYY')}</span>
+                            <span>{moment(data.delivery_date).format('DD')}</span>
+                            <span className="year">{moment(data.delivery_date).format('YYYY')}</span>
                         </Box>
                     </Box>
 
@@ -621,41 +616,117 @@ const TrackingData = (props: any) => {
 
                     <p className="detailLine">
                         <span>Order ID</span>
-                        <span>wretyui567</span>
+                        <span>{data.order_id ? data.order_id : '-na-'}</span>
                     </p>
 
                     <p className="detailLine">
                         <span>Order Placed On</span>
-                        <span>12 Jan 2023</span>
+                        <span>{data.created_at ? moment(data.created_at).format('DD MMM YYYY') : '-na-'}</span>
                     </p>
 
                     <p className="detailLine">
                         <span>Order Status</span>
-                        <span>Currently in transit</span>
+                        <span>{data.delivery_status == 'Successful' ? 'Delivered Successfully' : 'Currently in transit'}</span>
                     </p>
                 </Box>
 
                 <Box className="reviewBlock">
-                    <p className="dateLine">How was your Delivery Experience?</p>
+                    {!reviewSubmitted
+                        ? <ReviewForm setReviewSubmitted={setReviewSubmitted} />
+                        : <ReviewSubmittedView/>
+                    }
 
-                    <Box className="rating">
-                        <input type="radio" name="rating" value="5" id="5" onClick={() => setFormData({ ...formData, rating: 5 })} />
-                        <label htmlFor="5"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                        <input type="radio" name="rating" value="4" id="4" onClick={() => setFormData({ ...formData, rating: 4 })} />
-                        <label htmlFor="4"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                        <input type="radio" name="rating" value="3" id="3" onClick={() => setFormData({ ...formData, rating: 3 })} />
-                        <label htmlFor="3"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                        <input type="radio" name="rating" value="2" id="2" onClick={() => setFormData({ ...formData, rating: 2 })} />
-                        <label htmlFor="2"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                        <input type="radio" name="rating" value="1" id="1" onClick={() => setFormData({ ...formData, rating: 1 })} />
-                        <label htmlFor="1"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                    </Box>
-
-                    <textarea name="feedback" rows={4} onChange={(e) => setFormData({ ...formData, feedback: e.target.value })}
-                        placeholder="Please enter your remarks (Max 250 characters)" />
-
-                    <Button variant={'contained'} onClick={onReviewSubmit}>Submit</Button>
                 </Box>
+            </Box>
+        </Box>
+    )
+}
+
+const ReviewForm = (props: any) => {
+
+    const { setReviewSubmitted } = props
+
+    const [formData, setFormData] = useState({ rating: 0, feedback: '' })
+
+    const onReviewSubmit = () => {
+        if (formData.rating == 0) alert('rating is required')
+        else {
+            console.log(formData)
+            setReviewSubmitted(true)
+        }
+    }
+
+    return (
+        <>
+            <p className="dateLine">How was your Delivery Experience?</p>
+
+            <Box className="rating">
+                <input type="radio" name="rating" value="5" id="5" onClick={() => setFormData({ ...formData, rating: 5 })} />
+                <label htmlFor="5"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                <input type="radio" name="rating" value="4" id="4" onClick={() => setFormData({ ...formData, rating: 4 })} />
+                <label htmlFor="4"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                <input type="radio" name="rating" value="3" id="3" onClick={() => setFormData({ ...formData, rating: 3 })} />
+                <label htmlFor="3"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                <input type="radio" name="rating" value="2" id="2" onClick={() => setFormData({ ...formData, rating: 2 })} />
+                <label htmlFor="2"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                <input type="radio" name="rating" value="1" id="1" onClick={() => setFormData({ ...formData, rating: 1 })} />
+                <label htmlFor="1"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+            </Box>
+
+            <textarea name="feedback" rows={4} onChange={(e) => setFormData({ ...formData, feedback: e.target.value })}
+                placeholder="Please enter your remarks (Max 250 characters)" />
+
+            <Button variant={'contained'} onClick={onReviewSubmit}>Submit</Button>
+        </>
+    )
+}
+
+const ReviewSubmittedView = () => {
+
+    return (
+        <Box sx={{
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 3,
+            '& .dialogHead': {
+                maxWidth: '320px',
+                fontSize: '1.3rem',
+                fontWeight: 500,
+            },
+            '& .dialogDes': {
+                maxWidth: '320px',
+                fontSize: '0.9rem',
+            },
+            '& .MuiButton-root': {
+                height: '40px',
+                borderRadius: '50vh',
+                fontSize: '1rem',
+                width: '90%',
+                maxWidth: '300px',
+                mx: 'auto'
+            },
+        }}>
+            <Box sx={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '& img': {
+                    maxHeight: '100px',
+                    objectFit: 'contain',
+                    p:4,
+                },
+            }}>
+                <img src={thankYou} alt={'thank you'} />
+                <Typography className='dialogHead'>
+                    Thank you for your feedback!
+                </Typography>
+                <Typography className='dialogDes'>
+                    We appreciate your time and look forward to connecting with you soon.
+                </Typography>
             </Box>
         </Box>
     )

@@ -5,11 +5,13 @@ import carrierPartner from '../../assets/images/home/for-business.png'
 import partnerBg from '../../assets/images/partner-bg.png'
 import bg from '../../assets/images/bg.png'
 import earn from '../../assets/images/earn.svg'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function PartnerWithUsSection() {
 
     const theme = useTheme()
+    const navigate = useNavigate()
 
     return (
         <Box component={'section'} sx={{
@@ -104,8 +106,8 @@ export default function PartnerWithUsSection() {
                         </Typography>
 
                         <Box className={'actionButtons'}>
-                            <Button variant={'outlined'} className={'ctaButton'}>Last Mile Partner</Button>
-                            <Button variant={'outlined'} className={'ctaButton'}>Carrier Partner</Button>
+                            <Button variant={'outlined'} className={'ctaButton'} onClick={()=>navigate('/partner-us/last-mile-partner')}>Last Mile Partner</Button>
+                            <Button variant={'outlined'} className={'ctaButton'} onClick={()=>navigate('/partner-us/carrier')}>Carrier Partner</Button>
                         </Box>
                     </Box>
 

@@ -44,7 +44,8 @@ export default function Footer() {
                     },
                     '& .footerDescription': {
                         fontSize: '0.85rem',
-                        maxWidth: '35ch',
+                        mt: 2,
+                        maxWidth: '40ch',
                         color: theme.palette.text.secondary
                     },
                     '& .footerHeading': {
@@ -97,8 +98,9 @@ export default function Footer() {
                 }} data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                     <img src={logo} alt={'eternity forwarders'} />
 
-                    <Typography className={'footerDescription'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod</Typography>
+                    <Typography className={'footerDescription'}>
+                        Your trusted logistics partner for efficient transportation and supply chain optimization.
+                    </Typography>
                 </Box>
 
                 <Box className={'footerWidget'} data-aos="fade-up" data-aos-anchor-placement="center-bottom" >

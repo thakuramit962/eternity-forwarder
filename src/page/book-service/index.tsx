@@ -46,34 +46,34 @@ export default function BookService() {
             else setPinCodes({ pickUp: pinCodes.pickUp, drop: e.target.value })
 
             if (/^[1-6][0-9]{5}$/.test(e.target.value) == true) {
-                setChecking(true)
+                // setChecking(true)
                 if (inputId == 1) {
                     setHelperText({ pickUp: '', drop: helperText.drop })
                 } else {
                     setHelperText({ pickUp: helperText.pickUp, drop: '' })
                 }
-                setTimeout(() => {
-                    setChecking(false)
-                    if (e.target.value == '123456') {
-                        if (inputId == 1) {
-                            setHelperText({ pickUp: 'Not Serviceable', drop: helperText.drop })
-                            setError({ pickUp: true, drop: error.drop })
-                        } else {
-                            setHelperText({ pickUp: helperText.pickUp, drop: 'Not Serviceable' })
-                            setError({ pickUp: error.pickUp, drop: true })
-                        }
-                    } else {
-                        if (inputId == 1) {
-                            setPickUpCity('Your City Name')
-                            setHelperText({ pickUp: '', drop: '' })
-                            setError({ pickUp: false, drop: error.drop })
-                        } else {
-                            setDropCity('Your City Name')
-                            setHelperText({ pickUp: '', drop: '' })
-                            setError({ pickUp: error.pickUp, drop: false })
-                        }
-                    }
-                }, 700)
+                // setTimeout(() => {
+                    // setChecking(false)
+                    // if (e.target.value == '123456') {
+                    //     if (inputId == 1) {
+                    //         setHelperText({ pickUp: 'Not Serviceable', drop: helperText.drop })
+                    //         setError({ pickUp: true, drop: error.drop })
+                    //     } else {
+                    //         setHelperText({ pickUp: helperText.pickUp, drop: 'Not Serviceable' })
+                    //         setError({ pickUp: error.pickUp, drop: true })
+                    //     }
+                    // } else {
+                    //     if (inputId == 1) {
+                    //         setPickUpCity('Your City Name')
+                    //         setHelperText({ pickUp: '', drop: '' })
+                    //         setError({ pickUp: false, drop: error.drop })
+                    //     } else {
+                    //         setDropCity('Your City Name')
+                    //         setHelperText({ pickUp: '', drop: '' })
+                    //         setError({ pickUp: error.pickUp, drop: false })
+                    //     }
+                    // }
+                // }, 700)
             } else {
                 if (inputId == 1) {
                     setHelperText({ pickUp: 'Invalid pincode', drop: helperText.drop })
@@ -136,7 +136,9 @@ export default function BookService() {
         if (phone.value.length > 0) {
             if (/^[6789][0-9]{9}$/.test(phone.value) == true) {
                 console.log({ ...pinCodes, phone: phone.value })
-                setFormState('otpEntry')
+                // setFormState('otpEntry')
+            setFormState('submitted')
+
             } else { setPhone({ ...phone, helperText: 'Invalid Phone number', error: true }) }
         }
         else { setPhone({ ...phone, helperText: 'Required', error: true }) }
@@ -376,7 +378,8 @@ export default function BookService() {
 
                                             <Button disableRipple variant={'contained'} fullWidth
                                                 disabled={
-                                                    (pinCodes.pickUp != '' || pinCodes.drop != '') && (pickUpCity == '' || dropCity == '')
+                                                    (pinCodes.pickUp.length < 6 || pinCodes.drop.length < 6)
+                                                    // (pinCodes.pickUp != '' || pinCodes.drop != '') && (pickUpCity == '' || dropCity == '')
                                                 }
                                                 className={'animate__animated animate__fadeInUp'}
                                                 onClick={onClickProceed}>
@@ -430,7 +433,7 @@ export default function BookService() {
 
                                                 <Button disableRipple variant={'contained'} fullWidth
                                                     disabled={
-                                                        (pinCodes.pickUp != '' || pinCodes.drop != '') && (pickUpCity == '' || dropCity == '')
+                                                        (phone.value?.length < 10)
                                                     }
                                                     className={'animate__animated animate__fadeInUp'}
                                                     onClick={onClickSendOtp}>

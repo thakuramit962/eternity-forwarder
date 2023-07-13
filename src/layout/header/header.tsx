@@ -13,7 +13,7 @@ import {
     useScrollTrigger,
     useTheme
 } from "@mui/material"
-import {NavLink, useNavigate, useMatch, useLocation} from "react-router-dom"
+import { NavLink, useNavigate, useMatch, useLocation } from "react-router-dom"
 import whiteLogo from '../../assets/images/long-logo-white.svg'
 import blackLogo from '../../assets/images/long-logo.svg'
 
@@ -21,9 +21,9 @@ import blackLogo from '../../assets/images/long-logo.svg'
 const menus = [
     {
         name: 'Our Services', link: 'our-services', clickable: true, submenu: [
-            {name: 'Logistic Solutions', link: 'services/logistic-solutions', sectionId: ''},
-            {name: '3PL/ Warehousing', link: 'services/3pl-warehousing-services', sectionId: ''},
-            {name: 'Other Services', link: 'services/other-services', sectionId: ''},
+            { name: 'Logistic Solutions', link: 'services/logistic-solutions', sectionId: '' },
+            { name: '3PL/ Warehousing', link: 'services/3pl-warehousing-services', sectionId: '' },
+            { name: 'Other Services', link: 'services/other-services', sectionId: '' },
         ]
     },
     // {
@@ -34,25 +34,26 @@ const menus = [
     // },
     {
         name: 'Partner With Us', link: 'partner-with-us', clickable: true, submenu: [
-            {name: 'Last Mile Partner', link: 'partner-us/last-mile-partner', sectionId: ''},
-            {name: 'Carrier Partner', link: 'partner-us/carrier', sectionId: ''},
-            {name: 'Agent', link: 'partner-us/agent-driver', sectionId: ''},
+            { name: 'Last Mile Partner', link: 'partner-us/last-mile-partner', sectionId: '' },
+            { name: 'Carrier Partner', link: 'partner-us/carrier', sectionId: '' },
+            { name: 'Agent', link: 'partner-us/agent-driver', sectionId: '' },
         ]
     },
     {
         name: 'About Us', link: 'about-us', clickable: false, submenu: [
-            {name: 'Company', link: 'about-us/company', sectionId: ''},
-            {name: 'Career', link: 'about-us/career', sectionId: ''},
-            {name: 'Contact Us', link: 'about-us/contact', sectionId: ''},
+            { name: 'Company', link: 'about-us/company', sectionId: '' },
+            { name: 'Career', link: 'about-us/career', sectionId: '' },
+            { name: 'Contact Us', link: 'about-us/contact', sectionId: '' },
         ]
     },
-    {name: 'Ship Now', link: 'book-service', clickable: true,}
+    { name: 'Ship Now', link: 'book-service', clickable: true, submenu: [] }
 ]
 
 export default function Header(props: any) {
 
     const theme = useTheme()
     const navigate = useNavigate()
+    const location = useLocation()
 
     const trackPage = useMatch('/track')
     const trackResult = useMatch('/track/*')
@@ -76,7 +77,7 @@ export default function Header(props: any) {
                 justifyContent: 'space-between',
                 '& img.longLogo': {
                     maxWidth: '100%',
-                    maxHeight: {xs: '36px', sm: '44px'},
+                    maxHeight: { xs: '36px', sm: '44px' },
                     cursor: 'pointer',
                 },
             }}>
@@ -95,7 +96,7 @@ export default function Header(props: any) {
                 }}>
                     <img
                         src={scrolled ? blackLogo : (withOutBanner ? whiteLogo : blackLogo)}
-                        onClick={() => navigate('/')} className={'longLogo'}/>
+                        onClick={() => navigate('/')} className={'longLogo'} />
                 </Box>
 
                 <Box sx={{
@@ -189,30 +190,30 @@ export default function Header(props: any) {
                     {menus.map((menu) => (
                         <Box key={menu.name} className={'menuBox'}>
                             <NavLink key={menu.name} to={`${menu.link}`}
-                                     className={({isActive}) => isActive ? 'active navAnchor' : 'navAnchor'}
-                                     style={{
-                                         pointerEvents: menu.clickable ? 'auto' : 'none'
-                                     }}>
+                                className={({ isActive }) => (isActive || menu.submenu?.some(m => location.pathname.includes(m.link))) ? 'active navAnchor' : 'navAnchor'}
+                                style={{
+                                    pointerEvents: menu.clickable ? 'auto' : 'none'
+                                }}> 
                                 {menu.name}
-                                <span className={'decoration'}/>
+                                <span className={'decoration'} />
                             </NavLink>
                             {menu.submenu &&
-                            menu.submenu.length > 0 &&
-                            <List className={'submenu animate__animated animate__fadeInUps'}>
-                                {menu.submenu?.map((m, index) => (
-                                    <ListItem key={index} sx={{p: 0}}>
-                                        <ListItemButton href={m?.sectionId ?? ''}
-                                                        onClick={() => navigate((m.link == '') ? menu.link : m.link)}
-                                                        sx={{
-                                                            fontWeight: 500,
-                                                            fontSize: '15px',
-                                                            color: theme.palette.secondary.main,
-                                                        }}>
-                                            {m?.name}
-                                        </ListItemButton>
-                                    </ListItem>
-                                ))}
-                            </List>}
+                                menu.submenu.length > 0 &&
+                                <List className={'submenu animate__animated animate__fadeInUps'}>
+                                    {menu.submenu?.map((m, index) => (
+                                        <ListItem key={index} sx={{ p: 0 }}>
+                                            <ListItemButton href={m?.sectionId ?? ''}
+                                                onClick={() => navigate((m.link == '') ? menu.link : m.link)}
+                                                sx={{
+                                                    fontWeight: 500,
+                                                    fontSize: '15px',
+                                                    color: theme.palette.secondary.main,
+                                                }}>
+                                                {m?.name}
+                                            </ListItemButton>
+                                        </ListItem>
+                                    ))}
+                                </List>}
                         </Box>
                     ))}
 
@@ -261,7 +262,7 @@ export default function Header(props: any) {
                     }}>
                         {/*<Button variant={'outlined'} size={'medium'} className={'trackButton'}>Track</Button>*/}
                         <Button variant={'outlined'} size={'medium'} className={'shipButton'}
-                                onClick={() => navigate('track')}>Track</Button>
+                            onClick={() => navigate('track')}>Track</Button>
                     </Box>
                 </Box>
 
@@ -312,7 +313,7 @@ export default function Header(props: any) {
                             },
                         },
                     }}>
-                        <MenuIcon/>
+                        <MenuIcon />
                     </IconButton>
                 </Box>
 

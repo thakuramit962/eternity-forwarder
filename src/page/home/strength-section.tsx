@@ -3,6 +3,7 @@ import {useParallax} from "react-scroll-parallax";
 import truckIllustration from "../../assets/images/truck-illustration.svg";
 import React, {useEffect, useState} from "react";
 import {Diversity2Rounded} from "@mui/icons-material";
+import awesome from '../../assets/illustrations/how-awesome.svg'
 
 
 const strengths = [
@@ -253,7 +254,7 @@ export const StrengthSectionDesktop = () => {
                     }}>
 
                         {strengths.map((strength, index) => (
-                            <>
+                            <React.Fragment key={index}>
                                 <Typography variant={'h4'}
                                             className={'strengthTitle animate__animated animate__fadeInUp'} sx={{
                                     display: (activeCarousel == index && isHovered) ? 'block' : 'none',
@@ -266,12 +267,13 @@ export const StrengthSectionDesktop = () => {
                                 }}>
                                     {strength.des}
                                 </Typography>
-                            </>
+                            </React.Fragment>
                         ))}
 
                         <Typography variant={'h2'}
                                     data-aos="zoom-in" data-aos-anchor-placement="center-bottom"
                                     sx={{
+                                        display: 'none',
                                         // display: isHovered ? 'none' : 'block',
                                         textAlign: 'center',
                                         fontWeight: 600,
@@ -283,12 +285,12 @@ export const StrengthSectionDesktop = () => {
                             How<br/>We Are<br/><span>Awesome</span>
                         </Typography>
 
+                        <img src={awesome} alt="how we are awesome" />
+
 
                         {strengths.map((strength, index) => (
                             <Box
-                                // onMouseOver={showDes}
-                                // onMouseEnter={showDes} onMouseLeave={hideDes}
-                                // onClick={() => setActiveCarousel(index)}
+                                key={index}
                                 className={
                                     activeCarousel == index ?
                                         index < 5 ? 'active strength left' : 'strength active'
