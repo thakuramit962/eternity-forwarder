@@ -509,11 +509,11 @@ const TrackingData = (props: any) => {
                 <Box className="deliveryStatus">
                     <p className="dateLine">{data.delivery_status == 'Successful' ? 'Delivery Date' : 'Estd. Delivery Date'}</p>
                     <Box className="dateBlock">
-                        <span className="day">{moment(data.delivery_date).format('dddd')}</span>
-                        <span className="month">{moment(data.delivery_date).format('MMMM')}</span>
+                        <span className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : '-na-'}</span>
+                        <span className="month">{data.delivery_date ? moment(data.delivery_date).format('MMMM') : '-na-'}</span>
                         <Box className="date">
-                            <span>{moment(data.delivery_date).format('DD')}</span>
-                            <span className="year">{moment(data.delivery_date).format('YYYY')}</span>
+                            <span>{data.delivery_date ? moment(data.delivery_date).format('DD') : '-na-'}</span>
+                            <span className="year">{data.delivery_date ? moment(data.delivery_date).format('YYYY') : '-na-'}</span>
                         </Box>
                     </Box>
 
