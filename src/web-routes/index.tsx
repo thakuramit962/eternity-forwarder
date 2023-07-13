@@ -31,6 +31,9 @@ import AboutLayout from "../page/about-us/about-layout";
 import AboutCompany from "../page/about-us/about-company";
 import Career from "../page/about-us/career";
 import Services from "../page/services";
+import TermsOfUses from '../page/legal/terms-of-uses';
+import Disclaimer from '../page/legal/disclaimer';
+import PrivacyAndPolicy from '../page/legal/privacy-and-policy';
 
 export default function WebRoutes() {
 
@@ -113,6 +116,9 @@ export default function WebRoutes() {
                     </Route>
                     <Route path="track" element={<TrackingPage/>}/>
                     <Route path="track/:trackId" element={<TrackingResult/>}/>
+                    <Route path="privacy-policy" element={<PrivacyAndPolicy/>}/>
+                    <Route path="terms-of-uses" element={<TermsOfUses/>}/>
+                    <Route path="disclaimer" element={<Disclaimer/>}/>
                 </Route>
 
 

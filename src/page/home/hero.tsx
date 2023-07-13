@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import {
     alpha,
     Box,
@@ -9,9 +9,9 @@ import {
 } from "@mui/material"
 import bg from '../../assets/images/hero-banner-1.jpg'
 import trackIllustration from '../../assets/images/logistic-1.png'
-import {MyLocation, Place} from "@mui/icons-material";
-import {useNavigate} from "react-router-dom";
-import {heroBanner} from "../../utils/sample-data";
+import { MyLocation, Place } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { heroBanner } from "../../utils/sample-data";
 import LoadingElement from "../../components/loading-element/loading-element";
 
 
@@ -49,7 +49,7 @@ const Hero = (props: any) => {
             <Toolbar disableGutters sx={{
                 height: scrolled ? '80px' : '90px',
                 transition: 'all 300ms ease-in-out',
-            }}/>
+            }} />
             <Box sx={{
                 flex: 1,
                 display: 'flex',
@@ -62,10 +62,10 @@ const Hero = (props: any) => {
             }}>
                 <Box sx={{
                     flex: '1 1 400px',
-                    pb: {xs: 0, sm: 10},
+                    pb: { xs: 0, sm: 10 },
                     mx: 'auto',
                     '& .MuiTypography-root': {
-                        textAlign: {xs: 'center', md: 'left'},
+                        textAlign: { xs: 'center', md: 'left' },
                         '&.MuiTypography-h2': {
                             maxWidth: '20ch',
                             fontWeight: 500,
@@ -76,32 +76,32 @@ const Hero = (props: any) => {
                             maxWidth: '550px',
                             fontSize: '1rem',
                             letterSpacing: '0.5px',
-                            margin: {xs: 'auto', sm: 'auto', md: '0.5rem 0 0'},
+                            margin: { xs: 'auto', sm: 'auto', md: '0.5rem 0 0' },
                             color: alpha(theme.palette.background.default, 0.85),
                         },
                     },
                 }}>
                     <Typography variant={'h2'}
-                                className={'animate__animated animate__fadeInUp'}>{heroBanner.title}</Typography>
+                        className={'animate__animated animate__fadeInUp'}>{heroBanner.title}</Typography>
                     <Typography variant={'body2'} className={'animate__animated animate__fadeInUp'}>
                         {heroBanner.des}
                     </Typography>
                 </Box>
 
                 <Box className={'animate__animated animate__fadeIn animate__fast'}
-                     sx={{
-                         flex: '1 1 350px',
-                         display: 'flex',
-                         alignItems: 'center',
-                         justifyContent: 'center',
-                     }}>
+                    sx={{
+                        flex: '1 1 350px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
                     <Box sx={{
                         zIndex: 0,
                         background: alpha(theme.palette.background.paper, 0.2),
                         borderRadius: '20px',
                         minHeight: '350px',
                         width: '100%',
-                        maxWidth: {xs: '100%', sm: '350px'},
+                        maxWidth: { xs: '100%', sm: '350px' },
                         overflow: 'hidden',
                         display: 'flex',
                         flexFlow: 'column',
@@ -235,17 +235,17 @@ const Hero = (props: any) => {
                             indicatorColor="secondary"
                             aria-label="secondary tabs example"
                             variant={'fullWidth'}>
-                            <Tab disableRipple value="trackTab" label="Track"/>
-                            <Tab disableRipple value="shipTab" label="Ship Now"/>
+                            <Tab disableRipple value="trackTab" label="Track" />
+                            <Tab disableRipple value="shipTab" label="Ship Now" />
 
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" className={'shape'}
-                                 x="0px" y="0px" viewBox="0 0 512 256">
-                                <path className="st0" d="M512,256H0c141.4,0,256-114.6,256-256C256,141.4,370.6,256,512,256z"/>
+                                x="0px" y="0px" viewBox="0 0 512 256">
+                                <path className="st0" d="M512,256H0c141.4,0,256-114.6,256-256C256,141.4,370.6,256,512,256z" />
                             </svg>
                         </Tabs>
 
-                        {value === 'trackTab' && <TrackingTab/>}
-                        {value === 'shipTab' && <ShipNowTab/>}
+                        {value === 'trackTab' && <TrackingTab />}
+                        {value === 'shipTab' && <ShipNowTab />}
 
                     </Box>
                 </Box>
@@ -263,11 +263,8 @@ const TrackingTab = () => {
     const checkTrackingNo = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setTrackingNo(e.target.value)
         if (e.target.value.length > 0) {
-            if (/^[0-9]{7}$/.test(e.target.value) != true) {
-                e.target.value.length < 3
-                    ? setHelperText('Order id too short')
-                    : setHelperText('Invalid order Id')
-            } else {
+            if (e.target.value.length < 3) setHelperText('Order id too short')
+            else {
                 setHelperText('')
             }
         } else {
@@ -283,20 +280,20 @@ const TrackingTab = () => {
 
     return (
         <Box className={'formBlock'}>
-            <Typography className={'ctaText animate__animated animate__fadeInUp'} sx={{flexFlow: 'column'}}>
-                <img src={trackIllustration} style={{maxHeight: '90px'}}/>
+            <Typography className={'ctaText animate__animated animate__fadeInUp'} sx={{ flexFlow: 'column' }}>
+                <img src={trackIllustration} style={{ maxHeight: '90px' }} />
 
                 Your trusted logistics partner
                 {/*, seamlessly serving across India*/}
             </Typography>
 
             <TextField className={'heroInputs animate__animated animate__fadeInUp'}
-                       placeholder={'Enter your order id'} error={!!helperText}
-                       helperText={helperText} onChange={(e) => checkTrackingNo(e)}/>
+                placeholder={'Enter your order id'} error={!!helperText}
+                helperText={helperText} onChange={(e) => checkTrackingNo(e)} />
 
             <Button disableRipple variant={'contained'} fullWidth
-                    className={'animate__animated animate__fadeInUp'}
-                    disabled={!!helperText} onClick={track}>
+                className={'animate__animated animate__fadeInUp'}
+                disabled={!!helperText} onClick={track}>
                 Track
             </Button>
         </Box>
@@ -310,9 +307,9 @@ const ShipNowTab = () => {
     const navigate = useNavigate()
     const [pickUpCity, setPickUpCity] = useState('')
     const [dropCity, setDropCity] = useState('')
-    const [pinCodes, setPinCodes] = useState({pickUp: '', drop: ''})
-    const [helperText, setHelperText] = useState({pickUp: '', drop: ''})
-    const [error, setError] = useState({pickUp: false, drop: false})
+    const [pinCodes, setPinCodes] = useState({ pickUp: '', drop: '' })
+    const [helperText, setHelperText] = useState({ pickUp: '', drop: '' })
+    const [error, setError] = useState({ pickUp: false, drop: false })
     const [checking, setChecking] = useState(false)
 
 
@@ -320,8 +317,8 @@ const ShipNowTab = () => {
         console.log(pinCodes)
 
         if (e.target.value.length <= 6) {
-            if (inputId == 1) setPinCodes({pickUp: e.target.value, drop: pinCodes.drop})
-            else setPinCodes({pickUp: pinCodes.pickUp, drop: e.target.value})
+            if (inputId == 1) setPinCodes({ pickUp: e.target.value, drop: pinCodes.drop })
+            else setPinCodes({ pickUp: pinCodes.pickUp, drop: e.target.value })
 
             if (/^[1-6][0-9]{5}$/.test(e.target.value) == true) {
                 console.log('running', e.target.value)
@@ -336,55 +333,55 @@ const ShipNowTab = () => {
                 // } else {
                 setChecking(true)
                 if (inputId == 1) {
-                    setHelperText({pickUp: '', drop: helperText.drop})
+                    setHelperText({ pickUp: '', drop: helperText.drop })
                 } else {
-                    setHelperText({pickUp: helperText.pickUp, drop: ''})
+                    setHelperText({ pickUp: helperText.pickUp, drop: '' })
                 }
 
                 setTimeout(() => {
                     setChecking(false)
                     if (e.target.value == '123456') {
                         if (inputId == 1) {
-                            setHelperText({pickUp: 'Not Serviceable', drop: helperText.drop})
-                            setError({pickUp: true, drop: error.drop})
+                            setHelperText({ pickUp: 'Not Serviceable', drop: helperText.drop })
+                            setError({ pickUp: true, drop: error.drop })
                         } else {
-                            setHelperText({pickUp: helperText.pickUp, drop: 'Not Serviceable'})
-                            setError({pickUp: error.pickUp, drop: true})
+                            setHelperText({ pickUp: helperText.pickUp, drop: 'Not Serviceable' })
+                            setError({ pickUp: error.pickUp, drop: true })
                         }
                     } else {
                         if (inputId == 1) {
                             setPickUpCity('Your City Name')
-                            setHelperText({pickUp: '', drop: ''})
-                            setError({pickUp: false, drop: error.drop})
+                            setHelperText({ pickUp: '', drop: '' })
+                            setError({ pickUp: false, drop: error.drop })
                         } else {
                             setDropCity('Your City Name')
-                            setHelperText({pickUp: '', drop: ''})
-                            setError({pickUp: error.pickUp, drop: false})
+                            setHelperText({ pickUp: '', drop: '' })
+                            setError({ pickUp: error.pickUp, drop: false })
                         }
                     }
                 }, 700)
                 // }
             } else {
                 if (inputId == 1) {
-                    setHelperText({pickUp: 'Invalid pincode', drop: helperText.drop})
+                    setHelperText({ pickUp: 'Invalid pincode', drop: helperText.drop })
                     setPickUpCity('')
                 } else {
-                    setHelperText({pickUp: helperText.pickUp, drop: 'Invalid pincode'})
+                    setHelperText({ pickUp: helperText.pickUp, drop: 'Invalid pincode' })
                     setDropCity('')
                 }
             }
 
         } else if (e.target.value.length == 0) {
             console.log('r 2', e.target.value)
-            setHelperText({pickUp: helperText.pickUp, drop: helperText.drop})
+            setHelperText({ pickUp: helperText.pickUp, drop: helperText.drop })
             if (inputId == 1) {
                 setPickUpCity('')
-                setError({pickUp: false, drop: error.drop})
-                setHelperText({pickUp: '', drop: helperText.drop})
+                setError({ pickUp: false, drop: error.drop })
+                setHelperText({ pickUp: '', drop: helperText.drop })
             } else {
                 setDropCity('')
-                setError({pickUp: error.pickUp, drop: false})
-                setHelperText({pickUp: helperText.pickUp, drop: ''})
+                setError({ pickUp: error.pickUp, drop: false })
+                setHelperText({ pickUp: helperText.pickUp, drop: '' })
             }
         }
     }
@@ -395,56 +392,56 @@ const ShipNowTab = () => {
 
     return (
         <Box className={'formBlock'}>
-            {checking && <LoadingElement/>}
+            {checking && <LoadingElement />}
 
             <Typography className={'ctaText animate__animated animate__fadeInUp'}>
                 Seamlessly serving across India
             </Typography>
 
             <TextField className={'heroInputs animate__animated animate__fadeInUp'}
-                       placeholder={'Pickup pincode'}
-                       helperText={helperText.pickUp}
-                       inputProps={{inputMode: 'numeric', pattern: '[1-6][0-9]{5}'}}
-                       InputProps={{
-                           startAdornment: <InputAdornment position="start"><MyLocation/></InputAdornment>,
-                           endAdornment: <InputAdornment position="start" sx={{
-                               '& p': {
-                                   color: theme.palette.success.main,
-                                   fontSize: '14px',
-                                   fontWeight: 600,
-                               },
-                           }}>{pickUpCity}</InputAdornment>,
-                       }}
-                       error={error.pickUp}
-                       value={pinCodes.pickUp}
-                       onChange={(e) => checkPinCode(e, 1)}
+                placeholder={'Pickup pincode'}
+                helperText={helperText.pickUp}
+                inputProps={{ inputMode: 'numeric', pattern: '[1-6][0-9]{5}' }}
+                InputProps={{
+                    startAdornment: <InputAdornment position="start"><MyLocation /></InputAdornment>,
+                    endAdornment: <InputAdornment position="start" sx={{
+                        '& p': {
+                            color: theme.palette.success.main,
+                            fontSize: '14px',
+                            fontWeight: 600,
+                        },
+                    }}>{pickUpCity}</InputAdornment>,
+                }}
+                error={error.pickUp}
+                value={pinCodes.pickUp}
+                onChange={(e) => checkPinCode(e, 1)}
             />
 
             <TextField className={'heroInputs animate__animated animate__fadeInUp'}
-                       placeholder={'Delivery pincode'}
-                       helperText={helperText.drop}
-                       inputProps={{inputMode: 'numeric', pattern: '[1-6][0-9]{5}'}}
-                       InputProps={{
-                           startAdornment: <InputAdornment position="start"><Place/></InputAdornment>,
-                           endAdornment: <InputAdornment position="start" sx={{
-                               '& p': {
-                                   color: theme.palette.success.main,
-                                   fontSize: '14px',
-                                   fontWeight: 600,
-                               },
-                           }}>{dropCity}</InputAdornment>,
-                       }}
-                       error={error.drop}
-                       value={pinCodes.drop}
-                       onChange={(e) => checkPinCode(e, 2)}
+                placeholder={'Delivery pincode'}
+                helperText={helperText.drop}
+                inputProps={{ inputMode: 'numeric', pattern: '[1-6][0-9]{5}' }}
+                InputProps={{
+                    startAdornment: <InputAdornment position="start"><Place /></InputAdornment>,
+                    endAdornment: <InputAdornment position="start" sx={{
+                        '& p': {
+                            color: theme.palette.success.main,
+                            fontSize: '14px',
+                            fontWeight: 600,
+                        },
+                    }}>{dropCity}</InputAdornment>,
+                }}
+                error={error.drop}
+                value={pinCodes.drop}
+                onChange={(e) => checkPinCode(e, 2)}
             />
 
             <Button disableRipple variant={'contained'} fullWidth
-                    disabled={
-                        (pinCodes.pickUp != '' || pinCodes.drop != '') && (pickUpCity == '' || dropCity == '')
-                    }
-                    className={'animate__animated animate__fadeInUp'}
-                    onClick={onSubmit}>
+                disabled={
+                    (pinCodes.pickUp != '' || pinCodes.drop != '') && (pickUpCity == '' || dropCity == '')
+                }
+                className={'animate__animated animate__fadeInUp'}
+                onClick={onSubmit}>
                 Proceed
             </Button>
         </Box>

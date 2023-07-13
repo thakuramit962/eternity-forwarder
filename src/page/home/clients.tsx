@@ -33,7 +33,7 @@ export default function Clients() {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
     return (
-        <Box component={'section'} sx={{
+        <Box component={'section'} id="clients" sx={{
             minHeight: 'min(50vh, 500px)',
             display: 'flex',
             alignItems: 'center',

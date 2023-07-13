@@ -1,14 +1,15 @@
 import React from 'react'
-import {alpha, Box, Drawer, useMediaQuery, useTheme} from "@mui/material";
+import { alpha, Box, Button, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import MobileSidebarItems from "./mobile-sidebar-items";
+import illustration from '../../assets/images/logistic-1.png'
 
 
 export default function Sidebar(props: any) {
 
-    const {open, closeDrawer} = props
+    const { open, closeDrawer } = props
 
     const theme = useTheme()
-    const isMobile = useMediaQuery('(max-width:600px)')
+    const isMobile = useMediaQuery('(max-width:1023px)')
 
     return (
         <Drawer
@@ -24,7 +25,7 @@ export default function Sidebar(props: any) {
                     width: isMobile ? '100%' : 350,
                     boxSizing: 'border-box',
                     border: 'none',
-                    // borderRadius: '20px',
+                    justifyContent: 'center',
                 },
                 '& a': {
                     color: theme.palette.text.primary,
@@ -43,8 +44,46 @@ export default function Sidebar(props: any) {
                 },
             }}
         >
-            {isMobile ? <MobileSidebarItems toggleDrawer={closeDrawer}/> : 'not mobile'}
+            {isMobile ? <MobileSidebarItems toggleDrawer={closeDrawer} /> : <LargeScreenDrawerItem />}
 
         </Drawer>
+    )
+}
+
+
+const LargeScreenDrawerItem = () => {
+
+    const theme = useTheme()
+
+    return (
+        <Box sx={{
+            alignSelf: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 3,
+            flexFlow: 'column',
+            '& img': {
+                maxHeight: '200px',
+                objectFit: 'contain',
+                p:4,
+            },
+            '& .ctaButton':{
+                borderWidth: '2px',
+                borderRadius: '12px',
+                textTransform: 'none',
+                fontWeight: 600,
+                color: theme.palette.secondary.main,
+                borderColor: theme.palette.secondary.main,
+                width: '100%',
+                maxWidth: '200px',
+                fontSize: '1.2rem',
+
+            },
+        }}>
+                <img src={illustration} alt={'thank you'} />
+                <Button variant={'outlined'} className={'ctaButton'}>Use Portal</Button>
+
+        </Box>
     )
 }

@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import map from "../../assets/images/map.png";
 import bannerBg from "../../assets/images/hero-banner-1.jpg"
+import thankYou from "../../assets/illustrations/success.svg"
 import Toolbar from "@mui/material/Toolbar";
 import LoadingElement from "../../components/loading-element/loading-element";
 import { MyLocation, Password, PhoneRounded, Place } from "@mui/icons-material";
@@ -142,10 +143,10 @@ export default function BookService() {
     }
 
     const onSubmitOtp = () => {
-        if(otp?.length == 6){
+        if (otp?.length == 6) {
             console.log({ ...pinCodes, phone: phone.value, otp })
             setFormState('submitted')
-        } else{
+        } else {
 
         }
     }
@@ -504,7 +505,54 @@ export default function BookService() {
                                                 </Box>
 
                                             </Box>
-                                            : <p>Thank You</p>
+                                            : <Box className={'thankYouBox'}>
+                                                <Box sx={{
+                                                    minHeight: '300px',
+                                                    textAlign: 'center',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'center',
+                                                    gap: 3,
+                                                    '& .dialogHead': {
+                                                        maxWidth: '320px',
+                                                        fontSize: '1.3rem',
+                                                        fontWeight: 500,
+                                                    },
+                                                    '& .dialogDes': {
+                                                        maxWidth: '320px',
+                                                        fontSize: '0.9rem',
+                                                    },
+                                                    '& .MuiButton-root': {
+                                                        height: '40px',
+                                                        borderRadius: '50vh',
+                                                        fontSize: '1rem',
+                                                        width: '90%',
+                                                        maxWidth: '300px',
+                                                        mx: 'auto'
+                                                    },
+                                                }}>
+                                                    <Box sx={{
+                                                        flex: 1,
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        '& img': {
+                                                            maxHeight: '200px',
+                                                            objectFit: 'contain',
+                                                            p: 4,
+                                                        },
+                                                    }}>
+                                                        <img src={thankYou} alt={'thank you'} />
+                                                        <Typography className='dialogHead'>
+                                                            Thanks!
+                                                        </Typography>
+                                                        <Typography className='dialogDes'>
+                                                            We appreciate your time and look forward to connecting with you soon.
+                                                        </Typography>
+                                                    </Box>
+                                                </Box>
+                                            </Box>
                             }
 
 

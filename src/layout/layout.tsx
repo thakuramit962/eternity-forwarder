@@ -40,11 +40,7 @@ export default function Layout() {
 
     return (
         <React.Fragment>
-            {/*{isMobile*/}
-            {/*    ? <MobileSidebar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer}/>*/}
-            {/*    : */}
             <Sidebar open={isDrawerOpen} closeDrawer={toggleDrawer} />
-            {/*}*/}
 
             <Header toggleDrawer={toggleDrawer} />
             <Box sx={{

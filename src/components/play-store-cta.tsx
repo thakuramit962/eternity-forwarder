@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Divider, Typography, useTheme} from "@mui/material"
+import {Box, Container, Divider, Typography, useTheme} from "@mui/material"
 import appStoreButton from "../assets/images/app-store-button.svg"
 import qr from "../assets/images/qr.png"
 import mobileMockup from "../assets/images/app-mockup.png"
@@ -10,7 +10,7 @@ export default function PlayStoreCta() {
     const theme = useTheme()
 
     return (
-        <Box data-aos="fade-up" data-aos-anchor-placement="center-bottom" sx={{
+        <Container data-aos="fade-up" data-aos-anchor-placement="center-bottom" sx={{
             minHeight: '300px',
             borderRadius: '20px',
             display: 'flex',
@@ -22,6 +22,7 @@ export default function PlayStoreCta() {
             px: {xs: 2, sm: 4, md: 8},
             py: {xs: 4, sm: 2},
             gap: 2,
+            mt: 5,
             '& img.mockup': {
                 maxHeight: {xs: '200px', sm: '300px', md: '400px'},
                 transform: `skewX(356deg) skewY(5deg)`,
@@ -81,6 +82,6 @@ export default function PlayStoreCta() {
                 </Box>
             </Box>
             <img src={mobileMockup} className={'mockup'} data-aos="fade-up" data-aos-anchor-placement="center-bottom" />
-        </Box>
+        </Container>
     )
 }
