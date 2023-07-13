@@ -509,11 +509,11 @@ const TrackingData = (props: any) => {
                 <Box className="deliveryStatus">
                     <p className="dateLine">{data.delivery_status == 'Successful' ? 'Delivery Date' : 'Estd. Delivery Date'}</p>
                     <Box className="dateBlock">
-                        <span className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : '-na-'}</span>
-                        <span className="month">{data.delivery_date ? moment(data.delivery_date).format('MMMM') : '-na-'}</span>
+                        <span className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : moment(data.created_at).add(4, 'd').format('dddd')}</span>
+                        <span className="month">{data.delivery_date ? moment(data.delivery_date).format('MMMM') : moment(data.created_at).add(4, 'd').format('MMMM')}</span>
                         <Box className="date">
-                            <span>{data.delivery_date ? moment(data.delivery_date).format('DD') : '-na-'}</span>
-                            <span className="year">{data.delivery_date ? moment(data.delivery_date).format('YYYY') : '-na-'}</span>
+                            <span>{data.delivery_date ? moment(data.delivery_date).format('DD') : moment(data.created_at).add(4, 'd').format('DD')}</span>
+                            <span className="year">{data.delivery_date ? moment(data.delivery_date).format('YYYY') : moment(data.created_at).add(4, 'd').format('YYYY')}</span>
                         </Box>
                     </Box>
 
@@ -578,11 +578,11 @@ const TrackingData = (props: any) => {
                                 </Box>
                                 <Box className="description">
                                     <Box className="activity">
-                                        <span className="activityHeading">Activity :</span>
-                                        {timeline.status}
+                                        <span className="activityHeading">Activity : </span>
+                                        {timeline.desc}
                                     </Box>
                                     <Box className="location">
-                                        <span className="activityHeading">Location :</span>
+                                        <span className="activityHeading">Location : </span>
                                         {timeline.status == 'Successful' ? data.shipto_city : data.branch_name}
                                     </Box>
                                 </Box>
@@ -616,7 +616,7 @@ const TrackingData = (props: any) => {
 
                     <p className="detailLine">
                         <span>Order ID</span>
-                        <span>{data.order_id ? data.order_id : '-na-'}</span>
+                        <span>{data.order_id ? data.order_id : data.id}</span>
                     </p>
 
                     <p className="detailLine">
