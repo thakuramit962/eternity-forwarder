@@ -110,7 +110,7 @@ export default function AboutLayout() {
                           }}>
                         <Tab label="Company" onClick={() => navigate('company')}/>
                         <Tab label="Career" onClick={() => navigate('career')}/>
-                        <Tab label="Contact" onClick={() => navigate('contact')}/>
+                        <Tab label="Contact Us" onClick={() => navigate('contact')}/>
                     </Tabs>
                 </Box>
             </Box>

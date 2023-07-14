@@ -106,7 +106,7 @@ export default function ServiceLayout() {
                               },
 
                           }}>
-                        <Tab label="Logistic Solution" onClick={() => navigate('logistic-solutions')}/>
+                        <Tab label="Logistic Solutions" onClick={() => navigate('logistic-solutions')}/>
                         <Tab label="3PL/ Warehousing" onClick={() => navigate('3pl-warehousing-services')}/>
                         <Tab label="Other Services" onClick={() => navigate('other-services')}/>
                     </Tabs>

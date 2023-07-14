@@ -2,6 +2,7 @@ import React from 'react'
 import { alpha, Box, Button, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import MobileSidebarItems from "./mobile-sidebar-items";
 import illustration from '../../assets/images/logistic-1.png'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Sidebar(props: any) {
@@ -54,6 +55,7 @@ export default function Sidebar(props: any) {
 const LargeScreenDrawerItem = () => {
 
     const theme = useTheme()
+    const navigate = useNavigate()
 
     return (
         <Box sx={{
@@ -66,9 +68,9 @@ const LargeScreenDrawerItem = () => {
             '& img': {
                 maxHeight: '200px',
                 objectFit: 'contain',
-                p:4,
+                p: 4,
             },
-            '& .ctaButton':{
+            '& .ctaButton': {
                 borderWidth: '2px',
                 borderRadius: '12px',
                 textTransform: 'none',
@@ -81,8 +83,10 @@ const LargeScreenDrawerItem = () => {
 
             },
         }}>
-                <img src={illustration} alt={'thank you'} />
-                <Button variant={'outlined'} className={'ctaButton'}>Use Portal</Button>
+            <img src={illustration} alt={'thank you'} />
+            <a href='https://app.shiprider.in' target='_blank'>
+                <Button variant={'outlined'} className={'ctaButton'}>Go to ShipRider</Button>
+            </a>
 
         </Box>
     )

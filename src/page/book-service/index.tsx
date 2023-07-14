@@ -13,30 +13,31 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import map from "../../assets/images/map.png";
+import map from "../../assets/images/on-time-text.png";
 import bannerBg from "../../assets/images/hero-banner-1.jpg"
 import thankYou from "../../assets/illustrations/success.svg"
 import Toolbar from "@mui/material/Toolbar";
 import LoadingElement from "../../components/loading-element/loading-element";
 import { MyLocation, Password, PhoneRounded, Place } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import OTPInput from "./otp-inputs";
 
 
 export default function BookService() {
 
     const theme = useTheme()
+    const location = useLocation()
     const navigate = useNavigate()
     const [pickUpCity, setPickUpCity] = useState('')
     const [dropCity, setDropCity] = useState('')
     const [phone, setPhone] = useState({ value: '', error: false, helperText: '' })
-    const [pinCodes, setPinCodes] = useState({ pickUp: '', drop: '' })
+    const [pinCodes, setPinCodes] = useState({ pickUp: `${location.state?.pickPin ? location.state.pickPin : ''}`, drop: `${location.state?.dropPin ? location.state.dropPin : ''}` })
     const [helperText, setHelperText] = useState({ pickUp: '', drop: '' })
     const [error, setError] = useState({ pickUp: false, drop: false })
     const [checking, setChecking] = useState(false)
     const [otp, setOtp] = useState<string>()
 
-    const [formState, setFormState] = useState<'pinCodeEntries' | 'mobileEntry' | 'otpEntry' | 'submitted'>('pinCodeEntries')
+    const [formState, setFormState] = useState<'pinCodeEntries' | 'mobileEntry' | 'otpEntry' | 'submitted'>(location.state?.pickPin ? 'mobileEntry' : 'pinCodeEntries')
 
 
     const checkPinCode = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, inputId: number) => {
@@ -53,26 +54,26 @@ export default function BookService() {
                     setHelperText({ pickUp: helperText.pickUp, drop: '' })
                 }
                 // setTimeout(() => {
-                    // setChecking(false)
-                    // if (e.target.value == '123456') {
-                    //     if (inputId == 1) {
-                    //         setHelperText({ pickUp: 'Not Serviceable', drop: helperText.drop })
-                    //         setError({ pickUp: true, drop: error.drop })
-                    //     } else {
-                    //         setHelperText({ pickUp: helperText.pickUp, drop: 'Not Serviceable' })
-                    //         setError({ pickUp: error.pickUp, drop: true })
-                    //     }
-                    // } else {
-                    //     if (inputId == 1) {
-                    //         setPickUpCity('Your City Name')
-                    //         setHelperText({ pickUp: '', drop: '' })
-                    //         setError({ pickUp: false, drop: error.drop })
-                    //     } else {
-                    //         setDropCity('Your City Name')
-                    //         setHelperText({ pickUp: '', drop: '' })
-                    //         setError({ pickUp: error.pickUp, drop: false })
-                    //     }
-                    // }
+                // setChecking(false)
+                // if (e.target.value == '123456') {
+                //     if (inputId == 1) {
+                //         setHelperText({ pickUp: 'Not Serviceable', drop: helperText.drop })
+                //         setError({ pickUp: true, drop: error.drop })
+                //     } else {
+                //         setHelperText({ pickUp: helperText.pickUp, drop: 'Not Serviceable' })
+                //         setError({ pickUp: error.pickUp, drop: true })
+                //     }
+                // } else {
+                //     if (inputId == 1) {
+                //         setPickUpCity('Your City Name')
+                //         setHelperText({ pickUp: '', drop: '' })
+                //         setError({ pickUp: false, drop: error.drop })
+                //     } else {
+                //         setDropCity('Your City Name')
+                //         setHelperText({ pickUp: '', drop: '' })
+                //         setError({ pickUp: error.pickUp, drop: false })
+                //     }
+                // }
                 // }, 700)
             } else {
                 if (inputId == 1) {
@@ -137,7 +138,7 @@ export default function BookService() {
             if (/^[6789][0-9]{9}$/.test(phone.value) == true) {
                 console.log({ ...pinCodes, phone: phone.value })
                 // setFormState('otpEntry')
-            setFormState('submitted')
+                setFormState('submitted')
 
             } else { setPhone({ ...phone, helperText: 'Invalid Phone number', error: true }) }
         }
@@ -195,8 +196,10 @@ export default function BookService() {
                         '& img': {
                             height: '90%',
                             width: '90%',
+                            maxWidth: '600px',
                             maxHeight: 'min(80vh, 500px)',
                             objectFit: 'contain',
+                            filter: 'brightness(2)',
                         },
                     }}>
                         <img src={map} alt={'connectivity map'} />
@@ -209,118 +212,119 @@ export default function BookService() {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
-                        <Box sx={{
-                            background: alpha(theme.palette.background.default, 1),
-                            backdropFilter: 'blur(10px)',
-                            // boxShadow: '0 0 17px #83838370',
-                            // height: '100%',
-                            borderRadius: '20px',
-                            minHeight: '500px',
-                            width: '90%',
-                            maxWidth: '380px',
-                            mx: 'auto',
-                            my: 2,
-                            display: 'flex',
-                            flexFlow: 'column',
-                            justifyContent: 'center',
-                            gap: 3,
-                            '& .headingBlock': {
-                                mb: 3,
+                        <Box
+                            sx={{
+                                background: alpha(theme.palette.background.default, 1),
+                                backdropFilter: 'blur(10px)',
+                                // boxShadow: '0 0 17px #83838370',
+                                // height: '100%',
+                                borderRadius: '20px',
+                                minHeight: '500px',
+                                width: '90%',
+                                maxWidth: '380px',
+                                mx: 'auto',
+                                my: 2,
                                 display: 'flex',
                                 flexFlow: 'column',
-                                justifyContent: 'flex-end',
-                                alignItems: 'center',
-                                alignContent: 'center',
-                                '& .formHead': {
-                                    fontSize: '1.25rem',
-                                    lineHeight: '1.5rem',
-                                    fontWeight: 600,
-                                    color: theme.palette.secondary.main,
-                                },
-                                '& .headDes': {
-                                    fontSize: '0.875rem',
-                                    lineHeight: '1.25rem',
-                                    color: theme.palette.secondary.light,
-                                },
-                            },
-                            '& .formBlock': {
-                                mx: 'auto',
-                                width: '100%',
-                                maxWidth: '300px',
-                                position: 'relative',
-                                py: 3,
-                                '& .formItems': {
-                                    width: '100%',
-                                    minHeight: '200px',
+                                justifyContent: 'center',
+                                gap: 3,
+                                '& .headingBlock': {
+                                    mb: 3,
                                     display: 'flex',
                                     flexFlow: 'column',
                                     justifyContent: 'flex-end',
-                                },
-                                '& .heroInputs': {
-                                    borderRadius: '12px',
-                                    width: '100%',
-                                    minHeight: '64px',
-                                    '& .MuiSvgIcon-root': {
-                                        height: '18px',
-                                        width: '18px',
+                                    alignItems: 'center',
+                                    alignContent: 'center',
+                                    '& .formHead': {
+                                        fontSize: '1.25rem',
+                                        lineHeight: '1.5rem',
+                                        fontWeight: 600,
+                                        color: theme.palette.secondary.main,
                                     },
-                                    '& .MuiInputBase-root': {
-                                        px: '10px',
-                                        '&.Mui-focused': {
-                                            '&.Mui-error': {
+                                    '& .headDes': {
+                                        fontSize: '0.875rem',
+                                        lineHeight: '1.25rem',
+                                        color: theme.palette.secondary.light,
+                                    },
+                                },
+                                '& .formBlock': {
+                                    mx: 'auto',
+                                    width: '100%',
+                                    maxWidth: '300px',
+                                    position: 'relative',
+                                    py: 3,
+                                    '& .formItems': {
+                                        width: '100%',
+                                        minHeight: '200px',
+                                        display: 'flex',
+                                        flexFlow: 'column',
+                                        justifyContent: 'flex-end',
+                                    },
+                                    '& .heroInputs': {
+                                        borderRadius: '12px',
+                                        width: '100%',
+                                        minHeight: '64px',
+                                        '& .MuiSvgIcon-root': {
+                                            height: '18px',
+                                            width: '18px',
+                                        },
+                                        '& .MuiInputBase-root': {
+                                            px: '10px',
+                                            '&.Mui-focused': {
+                                                '&.Mui-error': {
+                                                    '& .MuiOutlinedInput-notchedOutline': {
+                                                        borderColor: theme.palette.error.main,
+                                                    },
+                                                },
                                                 '& .MuiOutlinedInput-notchedOutline': {
-                                                    borderColor: theme.palette.error.main,
+                                                    borderColor: theme.palette.secondary.main,
                                                 },
                                             },
-                                            '& .MuiOutlinedInput-notchedOutline': {
-                                                borderColor: theme.palette.secondary.main,
+                                        },
+                                        '& .MuiOutlinedInput-notchedOutline': {
+                                            borderRadius: '12px',
+                                            borderWidth: '2px',
+                                        },
+                                        '& .MuiFormHelperText-root': {
+                                            mt: 0,
+                                        },
+                                        '& input': {
+                                            p: '10px 0',
+                                            textTransform: 'uppercase',
+                                            fontWeight: 700,
+                                            letterSpacing: '1px',
+                                            color: theme.palette.secondary.light,
+                                            '&::placeholder': {
+                                                textTransform: 'none',
+                                                fontWeight: 400,
+                                                letterSpacing: '0px',
+                                                fontSize: '14px'
                                             },
                                         },
                                     },
-                                    '& .MuiOutlinedInput-notchedOutline': {
-                                        borderRadius: '12px',
+                                    '& .MuiButton-root': {
                                         borderWidth: '2px',
-                                    },
-                                    '& .MuiFormHelperText-root': {
-                                        mt: 0,
-                                    },
-                                    '& input': {
-                                        p: '10px 0',
-                                        textTransform: 'uppercase',
-                                        fontWeight: 700,
-                                        letterSpacing: '1px',
-                                        color: theme.palette.secondary.light,
-                                        '&::placeholder': {
-                                            textTransform: 'none',
-                                            fontWeight: 400,
-                                            letterSpacing: '0px',
-                                            fontSize: '14px'
+                                        borderRadius: '12px',
+                                        textTransform: 'none',
+                                        fontWeight: 600,
+                                        minHeight: '50px',
+                                        mt: 1,
+                                        fontSize: '1.2rem',
+                                        cursor: 'pointer',
+                                        transition: 'all 150ms ease-in-out',
+                                        '&:hover': {
+                                            '&:active': {
+                                                transform: 'scale(0.98)',
+                                            },
                                         },
                                     },
-                                },
-                                '& .MuiButton-root': {
-                                    borderWidth: '2px',
-                                    borderRadius: '12px',
-                                    textTransform: 'none',
-                                    fontWeight: 600,
-                                    minHeight: '50px',
-                                    mt: 1,
-                                    fontSize: '1.2rem',
-                                    cursor: 'pointer',
-                                    transition: 'all 150ms ease-in-out',
-                                    '&:hover': {
-                                        '&:active': {
-                                            transform: 'scale(0.98)',
-                                        },
+                                    '& .loadingElement': {
+                                        background: `radial-gradient(${alpha(theme.palette.text.secondary, 0.07)} 20%, ${alpha(theme.palette.text.secondary, 0)} 80%)`,
+                                        position: 'absolute',
+                                        inset: 0,
                                     },
                                 },
-                                '& .loadingElement': {
-                                    background: `radial-gradient(${alpha(theme.palette.text.secondary, 0.07)} 20%, ${alpha(theme.palette.text.secondary, 0)} 80%)`,
-                                    position: 'absolute',
-                                    inset: 0,
-                                },
-                            },
-                        }}>
+                            }}>
                             {
                                 formState == 'pinCodeEntries'
                                     ? <Box className={'formBlock'}>
@@ -437,7 +441,7 @@ export default function BookService() {
                                                     }
                                                     className={'animate__animated animate__fadeInUp'}
                                                     onClick={onClickSendOtp}>
-                                                    Get OTP
+                                                    Proceed
                                                 </Button>
                                             </Box>
 

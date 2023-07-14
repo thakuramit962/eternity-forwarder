@@ -81,6 +81,10 @@ export default function TrackingResult() {
                             backgroundColor: 'white',
                             borderRadius: '12px',
                             boxShadow: '0 0 17px -4px #83838380',
+                            '& .dateLine': {
+                                color: theme.palette.primary.main,
+                                fontWeight: 600,
+                            },
                         },
 
                         '& .dateLine': {
@@ -102,10 +106,16 @@ export default function TrackingResult() {
                             justifyContent: 'flex-start',
                             gap: 0,
                             mb: 2,
+                            '& .statusDate':{
+                                fontWeight: 600,
+                                fontSize: 'clamp(2rem, 6vw, 2.2rem)',
+                                mb: 2,
+                            },
                             '& .day': {
                                 fontWeight: 600,
                                 fontSize: '24px',
                                 display: 'inline',
+                                color: theme.palette.secondary.light,
                             },
                             '& .month': {
                                 fontWeight: 600,
@@ -507,14 +517,16 @@ const TrackingData = (props: any) => {
         <Box className="content">
             <Box className="statusBlock">
                 <Box className="deliveryStatus">
-                    <p className="dateLine">{data.delivery_status == 'Successful' ? 'Delivery Date' : 'Estd. Delivery Date'}</p>
+                    <p className="dateLine">{data.delivery_status == 'Successful' ? 'Delivery Date' : 'Shipment Date'}</p>
                     <Box className="dateBlock">
-                        <span className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : moment(data.created_at).add(4, 'd').format('dddd')}</span>
-                        <span className="month">{data.delivery_date ? moment(data.delivery_date).format('MMMM') : moment(data.created_at).add(4, 'd').format('MMMM')}</span>
+                        <span className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : moment(data.created_at).format('dddd')}</span>
+                        <span className='statusDate'>{moment().format('DD MMMM YYYY')}</span>
+
+                        {/* <span className="month">{data.delivery_date ? moment(data.delivery_date).format('MMMM') : moment(data.created_at).format('MMMM')}</span>
                         <Box className="date">
-                            <span>{data.delivery_date ? moment(data.delivery_date).format('DD') : moment(data.created_at).add(4, 'd').format('DD')}</span>
-                            <span className="year">{data.delivery_date ? moment(data.delivery_date).format('YYYY') : moment(data.created_at).add(4, 'd').format('YYYY')}</span>
-                        </Box>
+                            <span>{data.delivery_date ? moment(data.delivery_date).format('DD') : moment(data.created_at).format('DD')}</span>
+                            <span className="year">{data.delivery_date ? moment(data.delivery_date).format('YYYY') : moment(data.created_at).format('YYYY')}</span>
+                        </Box> */}
                     </Box>
 
                     <span className="statusHead">Status:</span>
@@ -583,7 +595,7 @@ const TrackingData = (props: any) => {
                                     </Box>
                                     <Box className="location">
                                         <span className="activityHeading">Location : </span>
-                                        {timeline.status == 'Successful' ? data.shipto_city : data.branch_name}
+                                        {timeline.location}
                                     </Box>
                                 </Box>
                             </Box>

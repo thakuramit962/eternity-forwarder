@@ -190,14 +190,14 @@ export default function ContactUs() {
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: true, message: 'Required' },
+                                    required: { value: false, message: 'Required' },
                                     pattern: {
                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                         message: 'Enter valid email address'
                                     }
                                 }} render={({ field }) => (
                                     <ThemeTextField
-                                        {...field} required
+                                        {...field}
                                         error={Boolean(errors?.email)}
                                         helperText={(errors?.email?.message ?? '').toString()}
                                         size={'small'} label={'Email'}
@@ -225,10 +225,10 @@ export default function ContactUs() {
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: true, message: 'Required' },
+                                    required: { value: false, message: 'Required' },
                                 }} render={({ field }) => (
                                     <ThemeTextField
-                                        {...field} required type={'url'}
+                                        {...field} type={'url'}
                                         error={Boolean(errors?.companyWebsite)}
                                         helperText={(errors?.companyWebsite?.message ?? '').toString()}
                                         size={'small'} label={'Company Website'}
@@ -243,16 +243,17 @@ export default function ContactUs() {
                                     required: { value: true, message: 'Required' },
                                 }} render={({ field }) => (
                                     <ThemeTextField
-                                        {...field} required select
+                                        {...field} required 
+                                        // select
                                         error={Boolean(errors?.serviceType)}
                                         helperText={(errors?.serviceType?.message ?? '').toString()}
                                         size={'small'} label={'Service Type'}
                                         sx={{ flex: '1 1 200px' }}
-                                        placeholder={'type of service'}>
-                                        <MenuItem value={'option1'}>Option 1</MenuItem>
-                                        <MenuItem value={'option2'}>Option 2</MenuItem>
-                                        <MenuItem value={'option3'}>Option 3</MenuItem>
-                                    </ThemeTextField>
+                                        placeholder={'type of service'}/>
+                                        //<MenuItem value={'option1'}>Option 1</MenuItem>
+                                        //<MenuItem value={'option2'}>Option 2</MenuItem>
+                                        //</><MenuItem value={'option3'}>Option 3</MenuItem>
+                                    //</ThemeTextField> 
                                 )} />
                             <Controller
                                 name={`state`}
@@ -262,16 +263,17 @@ export default function ContactUs() {
                                     required: { value: true, message: 'Required' },
                                 }} render={({ field }) => (
                                     <ThemeTextField
-                                        {...field} required select
+                                        {...field} required 
+                                        // select
                                         error={Boolean(errors?.state)}
                                         helperText={(errors?.state?.message ?? '').toString()}
                                         size={'small'} label={'State or Region'}
                                         sx={{ flex: '1 1 200px' }}
-                                        placeholder={'Select state'}>
-                                        <MenuItem value={'option1'}>Option 1</MenuItem>
-                                        <MenuItem value={'option2'}>Option 2</MenuItem>
-                                        <MenuItem value={'option3'}>Option 3</MenuItem>
-                                    </ThemeTextField>
+                                        placeholder={'Select state'}/>
+                                       //<MenuItem value={'option1'}>Option 1</MenuItem>
+                                        //<MenuItem value={'option2'}>Option 2</MenuItem>
+                                        //</><MenuItem value={'option3'}>Option 3</MenuItem>
+                                    //</ThemeTextField> 
                                 )} />
 
 

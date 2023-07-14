@@ -3,7 +3,7 @@ import warehouse from "../assets/images/warehouse.jpg"
 import logisticImage from "../assets/images/logistic.jpg"
 
 export const heroBanner = {
-    title: 'Logistics Meets Reliability Here!',
+    title: 'Logistics meets reliability, Here!',
     des: 'Your trusted logistics partner, seamlessly serving both urban and rural areas across India by ensuring efficient transportation, timely deliveries, and supply chain optimization.'
 }
 

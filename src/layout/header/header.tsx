@@ -20,7 +20,8 @@ import blackLogo from '../../assets/images/long-logo.svg'
 
 const menus = [
     {
-        name: 'Our Services', link: 'our-services', clickable: true, submenu: [
+        // name: 'Our Services', link: 'our-services', clickable: true, submenu: [
+        name: 'Our Services', link: 'services/logistic-solutions', clickable: true, submenu: [
             { name: 'Logistic Solutions', link: 'services/logistic-solutions', sectionId: '' },
             { name: '3PL/ Warehousing', link: 'services/3pl-warehousing-services', sectionId: '' },
             { name: 'Other Services', link: 'services/other-services', sectionId: '' },

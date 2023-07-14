@@ -273,7 +273,7 @@ export const StrengthSectionDesktop = () => {
                         <Typography variant={'h2'}
                                     data-aos="zoom-in" data-aos-anchor-placement="center-bottom"
                                     sx={{
-                                        display: 'none',
+                                        // display: 'none',
                                         // display: isHovered ? 'none' : 'block',
                                         textAlign: 'center',
                                         fontWeight: 600,
@@ -285,7 +285,7 @@ export const StrengthSectionDesktop = () => {
                             How<br/>We Are<br/><span>Awesome</span>
                         </Typography>
 
-                        <img src={awesome} alt="how we are awesome" />
+                        {/* <img src={awesome} alt="how we are awesome" /> */}
 
 
                         {strengths.map((strength, index) => (

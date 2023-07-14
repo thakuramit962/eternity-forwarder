@@ -10,7 +10,7 @@ export default function ServiceOption2() {
     const theme = useTheme()
 
     return (
-        <Box  component={'section'} className={'animate__animated animate__fadeIn'}
+        <Box id="ourServices" component={'section'} className={'animate__animated animate__fadeIn'}
              sx={{
                  minHeight: 'min(90vh, 450px)',
                  maxWidth: '1100px',

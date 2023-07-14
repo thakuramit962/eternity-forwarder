@@ -74,7 +74,7 @@ const Hero = (props: any) => {
                         },
                         '&.MuiTypography-body2': {
                             maxWidth: '550px',
-                            fontSize: '1rem',
+                            fontSize: '1.1rem',
                             letterSpacing: '0.5px',
                             margin: { xs: 'auto', sm: 'auto', md: '0.5rem 0 0' },
                             color: alpha(theme.palette.background.default, 0.85),
@@ -283,12 +283,11 @@ const TrackingTab = () => {
             <Typography className={'ctaText animate__animated animate__fadeInUp'} sx={{ flexFlow: 'column' }}>
                 <img src={trackIllustration} style={{ maxHeight: '90px' }} />
 
-                Your trusted logistics partner
-                {/*, seamlessly serving across India*/}
+                Track your shipment status
             </Typography>
 
             <TextField className={'heroInputs animate__animated animate__fadeInUp'}
-                placeholder={'Enter your order id'} error={!!helperText}
+                placeholder={'Enter your shipment ID'} error={!!helperText}
                 helperText={helperText} onChange={(e) => checkTrackingNo(e)} />
 
             <Button disableRipple variant={'contained'} fullWidth
@@ -322,44 +321,42 @@ const ShipNowTab = () => {
 
             if (/^[1-6][0-9]{5}$/.test(e.target.value) == true) {
                 console.log('running', e.target.value)
-                // if (e.target.value == pinCodes.pickUp || e.target.value == pinCodes.drop) {
-                //     if (inputId == 1) {
-                //         setHelperText({pickUp: 'Can\'t be same as destination', drop: helperText.drop})
-                //         setError({pickUp: true, drop: error.drop})
-                //     } else {
-                //         setHelperText({pickUp: helperText.pickUp, drop: 'Can\'t be same as pickup'})
-                //         setError({pickUp: error.pickUp, drop: true})
-                //     }
-                // } else {
-                setChecking(true)
                 if (inputId == 1) {
                     setHelperText({ pickUp: '', drop: helperText.drop })
+                    setError({ pickUp: false, drop: error.drop })
                 } else {
                     setHelperText({ pickUp: helperText.pickUp, drop: '' })
+                    setError({ pickUp: error.pickUp, drop: false })
                 }
+                // setChecking(true)
+                // if (inputId == 1) {
+                //     setHelperText({ pickUp: '', drop: helperText.drop })
+                // } else {
+                //     setHelperText({ pickUp: helperText.pickUp, drop: '' })
+                // }
 
-                setTimeout(() => {
-                    setChecking(false)
-                    if (e.target.value == '123456') {
-                        if (inputId == 1) {
-                            setHelperText({ pickUp: 'Not Serviceable', drop: helperText.drop })
-                            setError({ pickUp: true, drop: error.drop })
-                        } else {
-                            setHelperText({ pickUp: helperText.pickUp, drop: 'Not Serviceable' })
-                            setError({ pickUp: error.pickUp, drop: true })
-                        }
-                    } else {
-                        if (inputId == 1) {
-                            setPickUpCity('Your City Name')
-                            setHelperText({ pickUp: '', drop: '' })
-                            setError({ pickUp: false, drop: error.drop })
-                        } else {
-                            setDropCity('Your City Name')
-                            setHelperText({ pickUp: '', drop: '' })
-                            setError({ pickUp: error.pickUp, drop: false })
-                        }
-                    }
-                }, 700)
+                // setTimeout(() => {
+                //     setChecking(false)
+                //     if (e.target.value == '123456') {
+                //         if (inputId == 1) {
+                //             setHelperText({ pickUp: 'Not Serviceable', drop: helperText.drop })
+                //             setError({ pickUp: true, drop: error.drop })
+                //         } else {
+                //             setHelperText({ pickUp: helperText.pickUp, drop: 'Not Serviceable' })
+                //             setError({ pickUp: error.pickUp, drop: true })
+                //         }
+                //     } else {
+                //         if (inputId == 1) {
+                //             setPickUpCity('Your City Name')
+                //             setHelperText({ pickUp: '', drop: '' })
+                //             setError({ pickUp: false, drop: error.drop })
+                //         } else {
+                //             setDropCity('Your City Name')
+                //             setHelperText({ pickUp: '', drop: '' })
+                //             setError({ pickUp: error.pickUp, drop: false })
+                //         }
+                //     }
+                // }, 700)
                 // }
             } else {
                 if (inputId == 1) {
@@ -387,6 +384,24 @@ const ShipNowTab = () => {
     }
 
     const onSubmit = () => {
+        if (pinCodes.pickUp.length == 6 || pinCodes.drop.length == 6) {
+            navigate('/book-service', { state: { pickPin: pinCodes.pickUp, dropPin: pinCodes.drop } })
+        } else {
+            if (pinCodes.pickUp.length != 6) {
+                setHelperText({ pickUp: 'Required', drop: '' })
+                setError({ pickUp: true, drop: false })
+            }
+            else if (pinCodes.drop.length != 6) {
+                setHelperText({ pickUp: '', drop: 'Required' })
+                setError({ pickUp: false, drop: true })
+            }
+            else {
+                setHelperText({ pickUp: 'Required', drop: 'Required' })
+                setError({ pickUp: true, drop: true })
+            }
+
+        }
+
         console.log(pinCodes)
     }
 
@@ -438,7 +453,8 @@ const ShipNowTab = () => {
 
             <Button disableRipple variant={'contained'} fullWidth
                 disabled={
-                    (pinCodes.pickUp != '' || pinCodes.drop != '') && (pickUpCity == '' || dropCity == '')
+                    (pinCodes.pickUp.length > 0 || pinCodes.drop.length > 0) && (pinCodes.pickUp.length != 6 || pinCodes.drop.length != 6)
+                    // (pinCodes.pickUp != '' || pinCodes.drop != '') && (pickUpCity == '' || dropCity == '')
                 }
                 className={'animate__animated animate__fadeInUp'}
                 onClick={onSubmit}>

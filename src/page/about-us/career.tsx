@@ -98,7 +98,7 @@ export default function Career() {
                     p: { xs: 0, sm: 2, md: 3 },
                     '& .headDes': {
                         textAlign: 'left',
-                        textIndent: '1.5rem',
+                        // textIndent: '1.5rem',
                     },
                     '& img': {
                         maxHeight: '300px',
@@ -201,7 +201,7 @@ export default function Career() {
                             Application Form
                         </Typography>
                         <Typography variant={'body1'} className={'blockDes animate__animated animate__fadeInUp'}>
-                            Some text to describe why one should join Eternity Forwarders
+                            {/* Some text to describe why one should join Eternity Forwarders */}
                         </Typography>
 
                         <>
@@ -315,7 +315,7 @@ export default function Career() {
                         }}>
                             <Checkbox size={'small'} />
                             <Typography variant={'caption'}>
-                                I've read and accept the <Link to={'/'}>Privacy Policy</Link> and <Link to={'/'}>Terms od
+                                I've read and accept the <Link to={'/privacy-policy'}>Privacy Policy</Link> and <Link to={'/terms-of-uses'}>Terms and
                                     conditions</Link>
                             </Typography>
                         </Stack>
