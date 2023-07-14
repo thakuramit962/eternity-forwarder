@@ -286,7 +286,7 @@ const TrackingTab = () => {
 
             <TextField className={'heroInputs animate__animated animate__fadeInUp'}
                 value={trackingNo}
-                placeholder={'Enter your shipment ID'} error={!!helperText} type='number'
+                placeholder={'Enter your Shipment ID'} error={!!helperText} type='number'
                 helperText={helperText} onChange={(e) => checkTrackingNo(e)} />
 
             <Button disableRipple variant={'contained'} fullWidth

@@ -237,7 +237,7 @@ const TrackPage = () => {
                 },
             }}>
                 <TextField className={'heroInputs animate__animated animate__fadeInUp animate_slow'}
-                    placeholder={'Enter your order id'} error={!!helperText} value={trackingNo}
+                    placeholder={'Enter your Shipment ID'} error={!!helperText} value={trackingNo}
                     helperText={helperText} onChange={(e) => checkTrackingNo(e)} />
 
                 <Button disableRipple variant={'contained'} fullWidth
