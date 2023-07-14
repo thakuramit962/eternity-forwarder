@@ -241,7 +241,8 @@ export default function Header(props: any) {
                             maxWidth: '200px',
                             fontSize: '1.1rem',
                             lineHeight: '1.7rem',
-                            background: scrolled ? theme.palette.primary.main : 'transparent',
+                            background: 'transparent',
+                            // background: scrolled ? theme.palette.primary.main : 'transparent',
                             '&:hover': {
                                 background: theme.palette.primary.main,
                                 color: theme.palette.secondary.main,

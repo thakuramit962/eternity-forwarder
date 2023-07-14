@@ -195,11 +195,11 @@ export default function BookService() {
                         justifyContent: 'center',
                         '& img': {
                             height: '90%',
-                            width: '90%',
-                            maxWidth: '600px',
-                            maxHeight: 'min(80vh, 500px)',
+                            // width: '90%',
+                            // maxWidth: '600px',
+                            maxHeight: 'min(80vh, 600px)',
                             objectFit: 'contain',
-                            filter: 'brightness(2)',
+                            // filter: 'brightness(2)',
                         },
                     }}>
                         <img src={map} alt={'connectivity map'} />
