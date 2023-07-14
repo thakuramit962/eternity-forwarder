@@ -261,14 +261,12 @@ const TrackingTab = () => {
     const [helperText, setHelperText] = useState('')
 
     const checkTrackingNo = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setTrackingNo(e.target.value)
-        if (e.target.value.length > 0) {
+        if (e.target.value.length <= 8) {
+            setTrackingNo(e.target.value)
             if (e.target.value.length < 3) setHelperText('Order id too short')
             else {
                 setHelperText('')
             }
-        } else {
-            setHelperText('')
         }
     }
 
@@ -287,7 +285,8 @@ const TrackingTab = () => {
             </Typography>
 
             <TextField className={'heroInputs animate__animated animate__fadeInUp'}
-                placeholder={'Enter your shipment ID'} error={!!helperText}
+                value={trackingNo}
+                placeholder={'Enter your shipment ID'} error={!!helperText} type='number'
                 helperText={helperText} onChange={(e) => checkTrackingNo(e)} />
 
             <Button disableRipple variant={'contained'} fullWidth

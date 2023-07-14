@@ -49,7 +49,7 @@ export default function PrivacyAndPolicy() {
                 }} />
 
                 <Box className={'headingBlock'}>
-                    <Typography variant={'h1'}>Privacy And Policy</Typography>
+                    <Typography variant={'h1'}>Privacy Policy</Typography>
                     <Typography variant={'body2'} className={'headDes'}>Making the world a smaller place</Typography>
                 </Box>
 

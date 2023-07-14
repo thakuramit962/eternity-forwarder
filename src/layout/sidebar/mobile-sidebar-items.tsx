@@ -29,7 +29,7 @@ export default function MobileSidebarItems(props: MobileSidebarItemsProps) {
 
     const drawerMenus = [
         {name: 'Home', icon: Home, link: '',},
-        {name: 'Services', icon: Home, link: 'our-services',},
+        {name: 'Services', icon: Home, link: 'services/logistic-solutions',},
         {name: 'Partner With Us', icon: Home, link: 'partner-with-us',},
         {name: 'About Company', icon: DeblurRounded, link: 'about-us',},
         {name: 'Contact Us', icon: Diversity2Rounded, link: 'about-us/contact'},

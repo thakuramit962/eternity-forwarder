@@ -190,14 +190,20 @@ export default function Header(props: any) {
                 }}>
                     {menus.map((menu) => (
                         <Box key={menu.name} className={'menuBox'}>
-                            <NavLink key={menu.name} to={`${menu.link}`}
-                                className={({ isActive }) => (isActive || menu.submenu?.some(m => location.pathname.includes(m.link))) ? 'active navAnchor' : 'navAnchor'}
-                                style={{
-                                    pointerEvents: menu.clickable ? 'auto' : 'none'
-                                }}> 
-                                {menu.name}
-                                <span className={'decoration'} />
-                            </NavLink>
+                            {menu.name == 'Our Services'
+                                ? <a key={menu.name} href={'#ourServices'} onClick={() => navigate('/')}
+                                className={(menu.submenu?.some(m => location.pathname.includes(m.link))) ? 'active navAnchor' : 'navAnchor'}
+                                >Our Services<span className={'decoration'} /></a>
+                                : <NavLink key={menu.name} to={`${menu.link}`}
+                                    className={({ isActive }) => (isActive || menu.submenu?.some(m => location.pathname.includes(m.link))) ? 'active navAnchor' : 'navAnchor'}
+                                    style={{
+                                        pointerEvents: menu.clickable ? 'auto' : 'none'
+                                    }}>
+                                    {menu.name}
+                                    <span className={'decoration'} />
+                                </NavLink>
+                            }
+
                             {menu.submenu &&
                                 menu.submenu.length > 0 &&
                                 <List className={'submenu animate__animated animate__fadeInUps'}>

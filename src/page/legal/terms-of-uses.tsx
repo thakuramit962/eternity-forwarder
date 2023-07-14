@@ -49,7 +49,7 @@ export default function TermsOfUses() {
                 }} />
 
                 <Box className={'headingBlock'}>
-                    <Typography variant={'h1'}>Terms of Uses</Typography>
+                    <Typography variant={'h1'}>Terms and Conditions</Typography>
                     <Typography variant={'body2'} className={'headDes'}>Making the world a smaller place</Typography>
                 </Box>
 

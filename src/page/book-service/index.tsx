@@ -13,7 +13,7 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import map from "../../assets/images/on-time-text.png";
+import map from "../../assets/illustrations/onTime.svg";
 import bannerBg from "../../assets/images/hero-banner-1.jpg"
 import thankYou from "../../assets/illustrations/success.svg"
 import Toolbar from "@mui/material/Toolbar";
@@ -429,9 +429,9 @@ export default function BookService() {
                                                 }}>
                                                     <Checkbox size={'small'} />
                                                     <Typography variant={'caption'}>
-                                                        I have read and I accept the <Link to={'/'}>Privacy
-                                                            Policy</Link> & <Link to={'/'}>Conditions of Use</Link>
-                                                    </Typography>
+                                                        I have read and I accept the <Link to={'/privacy-policy'}>Privacy
+                                                            Policy</Link> & <Link to={'/terms-of-uses'}>Terms and conditions</Link>
+                                                    </Typography>   
                                                 </Stack>
 
 

@@ -54,17 +54,12 @@ const TrackPage = () => {
 
 
     const checkTrackingNo = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setTrackingNo(e.target.value)
-        if (e.target.value.length > 0) {
-            // if (/^[0-9]$/.test(e.target.value) != true) {
-            e.target.value.length < 3
-                ? setHelperText('Order id too short')
-                : setHelperText('')
-            // } else {
-            //     setHelperText('')
-            // }
-        } else {
-            setHelperText('')
+        if (e.target.value.length <= 8) {
+            setTrackingNo(e.target.value)
+            if (e.target.value.length < 3) setHelperText('Order id too short')
+            else {
+                setHelperText('')
+            }
         }
     }
 
@@ -242,7 +237,7 @@ const TrackPage = () => {
                 },
             }}>
                 <TextField className={'heroInputs animate__animated animate__fadeInUp animate_slow'}
-                    placeholder={'Enter your order id'} error={!!helperText}
+                    placeholder={'Enter your order id'} error={!!helperText} value={trackingNo}
                     helperText={helperText} onChange={(e) => checkTrackingNo(e)} />
 
                 <Button disableRipple variant={'contained'} fullWidth
