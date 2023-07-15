@@ -1,21 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {
     Accordion, AccordionDetails, AccordionSummary,
     alpha,
     Box,
-    Container,
-    InputAdornment,
-    Tab,
-    Tabs,
     Typography,
-    useMediaQuery,
     useTheme
 } from "@mui/material";
 import groupIllustration from "../../assets/images/aboutIllustrationNew.png";
 import {AutoAwesomeRounded} from "@mui/icons-material";
 import {coreValues} from "../../utils/sample-data";
-import Career from "./career";
-import ContactUs from "../contact-us";
 
 
 export default function AboutCompany() {
@@ -162,10 +155,10 @@ export default function AboutCompany() {
                     '& .visionDes': {
                         flex: '1 1 300px',
                         maxWidth: '600px',
-                        '& h3':{
-                             ml: 0
+                        '& h3': {
+                            ml: 0
                         },
-                        '& .headDes':{
+                        '& .headDes': {
                             textAlign: 'justify',
                             textIndent: 3,
                             // maxWidth: '600px',

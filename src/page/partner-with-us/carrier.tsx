@@ -16,6 +16,7 @@ import { useForm, Controller } from "react-hook-form";
 import { ThemeTextField } from "../../components/inputs/theme-text-field";
 import { LoadingButton } from "@mui/lab";
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
+import axios from "axios";
 
 
 export default function Carrier() {
@@ -54,12 +55,23 @@ export default function Carrier() {
     const onSubmit = (data: any) => {
         setLoading(true)
         console.log(errors)
-        setTimeout(() => {
-            console.log({ leaseVehicle, ...data })
-            setLoading(false)
-            setSubmitted(true)
-            reset()
-        }, 1000)
+
+        const url = "https://app.shiprider.in/api/carrier-partner"
+        axios.post(url, { leaseVehicle, ...data }, {
+            headers: {
+                "Content-Type": "application/json",
+                "crossorigin": "anonymous"
+            }
+        })
+            .then((res) => {
+                if (res.data.status == true) {
+                    reset()
+                    console.log(res)
+                    setSubmitted(true)
+                } else alert('Some error occured')
+            })
+            .catch((err) => console.error(JSON.stringify(err)))
+            .finally(() => setLoading(false))
     }
 
     useEffect(() => {
@@ -208,6 +220,7 @@ export default function Carrier() {
                                     error={Boolean(errors?.company)}
                                     helperText={(errors?.company?.message ?? '').toString()}
                                     size={'small'} label={'Company'}
+                                    inputProps={{ maxLength: 250 }}
                                     sx={{ flex: 1, minWidth: { xs: '100%', sm: '60%' } }}
                                     // className={'formInput'}
                                     placeholder={'Company Name'} />
@@ -225,6 +238,7 @@ export default function Carrier() {
                                     error={Boolean(errors?.contactPerson)}
                                     helperText={(errors?.contactPerson?.message ?? '').toString()}
                                     size={'small'} label={'Contact Person'}
+                                    inputProps={{ maxLength: 50 }}
                                     sx={{ flex: 1, minWidth: { xs: '100%', sm: '30%' } }}
                                     // className={'formInput'}
                                     placeholder={'Person Name'} />
@@ -235,6 +249,10 @@ export default function Carrier() {
                             control={control}
                             rules={{
                                 required: { value: false, message: 'Required' },
+                                pattern: {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: 'Invalid email address'
+                                }
                             }} render={({ field }) => (
                                 <ThemeTextField
                                     {...field}
@@ -251,12 +269,17 @@ export default function Carrier() {
                             control={control}
                             rules={{
                                 required: { value: true, message: 'Required' },
+                                pattern: {
+                                    value: /^[9876][0-9]{9}$/i,
+                                    message: 'Invalid phone number'
+                                }
                             }} render={({ field }) => (
                                 <ThemeTextField
-                                    {...field} required
+                                    {...field} required type={'tel'}
                                     error={Boolean(errors?.phone)}
                                     helperText={(errors?.phone?.message ?? '').toString()}
                                     size={'small'} label={'Phone'}
+                                    inputProps={{ maxLength: 10 }}
                                     sx={{ flex: 1, minWidth: { xs: '100%', sm: '30%' } }}
                                     // className={'formInput'}
                                     placeholder={'XXXX XXX XXX'} />

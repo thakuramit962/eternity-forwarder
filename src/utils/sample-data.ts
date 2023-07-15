@@ -1,6 +1,23 @@
 import other from "../assets/images/other.jpg"
 import warehouse from "../assets/images/warehouse.jpg"
 import logisticImage from "../assets/images/logistic.jpg"
+import ftl from '../assets/illustrations/services-icon/ftl.svg'
+import ptl from '../assets/illustrations/services-icon/ptl.svg'
+import dropShip from '../assets/illustrations/services-icon/drop-ship.svg'
+import lastMile from '../assets/illustrations/services-icon/lmd.svg'
+import reverseLogistic from '../assets/illustrations/services-icon/reverse-logistic.svg'
+import drone from '../assets/illustrations/services-icon/drone-logistic.svg'
+import sameDay from '../assets/illustrations/services-icon/same-day.svg'
+import eCom from '../assets/illustrations/services-icon/e-commerce.svg'
+import inventoryManage from '../assets/illustrations/services-icon/inventory-management.svg'
+import warehouseManage from '../assets/illustrations/services-icon/warehouse.svg'
+import labelling from '../assets/illustrations/services-icon/labelling.svg'
+import documentation from '../assets/illustrations/services-icon/documentation.svg'
+import crossDock from '../assets/illustrations/services-icon/cross-docking.svg'
+import greenLogistic from '../assets/illustrations/services-icon/green-logistic.svg'
+import customizedSol from '../assets/illustrations/services-icon/customize-sol.svg'
+
+
 
 export const heroBanner = {
     title: 'Logistics meets reliability, Here!',
@@ -65,6 +82,7 @@ export const servicesDetails = {
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
         subServices: [
             {
+                image: ftl,
                 name: 'Full Truck Load',
                 shortDes: 'Get your goods moving smoothly and swiftly with our specialized freight options, efficient transport solutions tailored to your shipment size and requirements.',
                 longDes: 'FTL (Full Truckload) is the ideal transportation solution for businesses with large-scale shipments that require the exclusive use of a full truck. With FTL, your goods will be the only cargo on the truck, ensuring direct delivery from the origin to the destination without any intermediate stops. This service offers several advantages, including faster transit times, reduced handling, and increased security. By utilizing FTL, you gain the benefit of dedicated trucking, allowing for greater control over the transportation process and minimizing the risk of damage or loss. Our FTL services are designed to accommodate your specific requirements, whether it\'s the transport of high-value goods, time-sensitive shipments, or the need for specialized equipment such as temperature-controlled trailers.  \n' +
@@ -72,6 +90,7 @@ export const servicesDetails = {
             },
 
             {
+                image: ptl,
                 name: 'Partial Truck Load',
                 shortDes:
                     'Flexible and scalable logistics solutions for shipments of various sizes, tailored shipping options for partial loads, ensuring cost-effectiveness.'
@@ -80,30 +99,35 @@ export const servicesDetails = {
             },
 
             {
+                image: dropShip,
                 name: 'Drop Ship',
                 shortDes: 'Eliminate inventory management complexities with our efficient drop-shipping mode, expand your reach and efficiency with our hassle-free drop-shipping solutions.',
                 longDes: 'At Eternity Forwarders, our drop ship logistics service is designed to empower retailers to effortlessly expand their product offerings and improve customer satisfaction. With our efficient drop ship logistics solution, you can seamlessly integrate our extensive network of trusted suppliers and manufacturers into your business operations. By leveraging our partnerships, you can eliminate the need for warehousing and inventory management, reducing overhead costs and freeing up valuable resources. Our dedicated team ensures seamless coordination between retailers, suppliers, and end customers, guaranteeing timely order processing, efficient shipping, and reliable delivery. With our drop ship logistics service, you can confidently offer a wide range of products without the burden of inventory management, allowing you to focus on sales and customer relationships. Partner with us to unlock new growth opportunities and enhance your business\'s efficiency with our tailored drop ship logistics solution. '
             },
 
             {
+                image: lastMile,
                 name: 'Last Mile Delivery',
                 shortDes: 'Swift and secure delivery of your products to their ultimate destinations.',
                 longDes: 'we understand the importance of a seamless and reliable last mile delivery experience for businesses and their customers. Our last mile delivery service ensures that your products are efficiently transported from the nearest distribution center or retail store directly to your customers\' doorsteps. With a strong focus on customer satisfaction, we prioritize timely and accurate deliveries, providing a positive and memorable experience for your customers. Our experienced drivers and advanced routing technology enable us to optimize routes and minimize delivery times, ensuring efficient and cost-effective last mile delivery. By partnering with us, you can rely on our dedicated team to handle the intricacies of last mile logistics, allowing you to focus on your core business operations. Enhance customer loyalty and drive repeat business with our tailored last mile delivery service designed to meet the unique needs of your business. '
             },
 
             {
+                image: reverseLogistic,
                 name: 'Reverse Logistics',
                 shortDes: 'Reduce costs and complexities with our comprehensive reverse logistics services.',
                 longDes: 'With a customer-centric approach, we seamlessly navigate the complexities of reverse supply chains, streamlining processes and maximizing recovery while minimizing environmental impact. Our team of experts harnesses advanced technologies and data-driven insights to optimize every stage of the reverse logistics journey, from efficient collection and sorting to refurbishment, recycling, and responsible disposal. With our unwavering commitment to sustainability, cost-effectiveness, and customer satisfaction, we empower businesses to turn reverse logistics into a strategic advantage, ensuring a circular economy that benefits both their bottom line and the planet we call home. '
             },
 
             {
+                image: drone,
                 name: 'Drone Logistics',
                 shortDes: 'Reduce costs and complexities with our comprehensive reverse logistics services.',
                 longDes: 'At our company, we are revolutionizing the future of logistics with our cutting-edge drone solutions. By harnessing the power of unmanned aerial vehicles, we have unlocked a new era of efficiency, speed, and precision in the transportation of goods. Our drone logistics services offer unprecedented agility and flexibility, enabling us to navigate challenging terrains, congested urban areas, and remote locations with ease. From rapid delivery of urgent medical supplies to seamless e-commerce fulfillment, our fleet of advanced drones ensures swift and secure transportation, while reducing carbon emissions and minimizing traffic congestion. With our unwavering commitment to innovation and customer satisfaction, we are shaping the future of logistics, one drone flight at a time. '
             },
 
             {
+                image: sameDay,
                 name: 'Same Day Delivery',
                 shortDes: 'Reduce costs and complexities with our comprehensive reverse logistics services.',
                 longDes: 'Introducing our game-changing service: Same Day Delivery/1 Day Delivery. We understand the fast-paced demands of today\'s world, where time is of the essence. That\'s why we have revolutionized the delivery industry by providing a lightning-fast solution to meet your urgent shipping needs. With our unwavering commitment to efficiency and reliability, we guarantee that your packages will reach their destination within the same day or just 24 hours. Our dedicated team of logistics experts, coupled with advanced tracking technology, ensures seamless coordination and real-time updates every step of the way. Experience the convenience and peace of mind that comes with our Same Day Delivery/1 Day Delivery service, where we don\'t just deliver packages, but also deliver on our promise to exceed your expectations. Say goodbye to waiting and hello to a new era of swift, efficient, and hassle-free deliveries. '
@@ -115,26 +139,31 @@ export const servicesDetails = {
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
         subServices: [
             {
+                image: eCom,
                 name: 'E-commerce Fulfillment',
                 shortDes: 'Seamlessly handle online orders from processing to packaging, ensuring efficient delivery for a smooth shopping experience.',
                 longDes: ''
             },
             {
+                image: inventoryManage,
                 name: 'Inventory Management',
                 shortDes: 'Optimize stock levels, streamline operations, and reduce costs with precise control over inventory throughout the supply chain.',
                 longDes: ''
             },
             {
+                image: warehouseManage,
                 name: 'Dedicated Warehouse Management',
                 shortDes: 'Tailored warehousing solutions designed to meet your unique business needs, providing secure and efficient storage for your goods.',
                 longDes: ''
             },
             {
+                image: labelling,
                 name: 'Labelling & Re-labelling',
                 shortDes: 'Professionally label products with accuracy and attention to detail, ensuring compliance and enhancing brand visibility.',
                 longDes: ''
             },
             {
+                image: documentation,
                 name: 'Customs Clearance & Documentation',
                 shortDes: 'Navigate complex customs procedures and documentation requirements, ensuring smooth clearance for international shipments, saving time and eliminating hassles.',
                 longDes: ''
@@ -146,16 +175,19 @@ export const servicesDetails = {
         des: 'Optimising your B2B & B2C channel with our comprehensive network and robust solutions through efficient route planning, speedy & reliable deliveries across India.',
         subServices: [
             {
+                image: crossDock,
                 name: 'Cross-Docking ',
                 shortDes: 'Seamlessly handle online orders from processing to packaging, ensuring efficient delivery for a smooth shopping experience.',
                 longDes: ''
             },
             {
+                image: greenLogistic,
                 name: 'Green Logistics',
                 shortDes: 'Optimize stock levels, streamline operations, and reduce costs with precise control over inventory throughout the supply chain.',
                 longDes: ''
             },
             {
+                image: customizedSol,
                 name: 'Customized Solutions',
                 shortDes: 'Tailored warehousing solutions designed to meet your unique business needs, providing secure and efficient storage for your goods.',
                 longDes: ''

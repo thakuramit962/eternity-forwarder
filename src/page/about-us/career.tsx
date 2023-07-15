@@ -25,7 +25,7 @@ import { servicesDetails } from "../../utils/sample-data";
 import { Link } from "react-router-dom";
 import joinUs from "../../assets/images/aboutIllustrationNew.png";
 import thankYou from "../../assets/images/earn.svg";
-import axios, { Axios } from 'axios';
+import axios from 'axios'
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
 
 
@@ -59,7 +59,7 @@ export default function Career() {
         console.log(newData)
 
         setSubmiting(true)
-        const url = "https://app.shiprider.in/api/career";
+        const url = "https://app.shiprider.in/api/career"
         axios.post(url, newData, {
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -67,7 +67,7 @@ export default function Career() {
             }
         })
             .then((res) => {
-                if (res.data.success == true) {
+                if (res.data.status == true) {
                     reset()
                     console.log(res)
                     setSubmitted(true)
@@ -252,8 +252,9 @@ export default function Career() {
                                     }
                                 }} render={({ field }) => (
                                     <ThemeTextField
-                                        {...field} required
+                                        {...field} required type={'tel'}
                                         error={Boolean(errors?.email)}
+                                        inputProps={{ maxLength: 10 }}
                                         helperText={(errors?.email?.message ?? '').toString()}
                                         size={'small'} label={'Email'}
                                         sx={{ flex: '1 1 300px' }}

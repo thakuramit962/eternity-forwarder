@@ -35,6 +35,7 @@ export default function BookService() {
     const [helperText, setHelperText] = useState({ pickUp: '', drop: '' })
     const [error, setError] = useState({ pickUp: false, drop: false })
     const [checking, setChecking] = useState(false)
+    const [consent, setConsent] = useState(false)
     const [otp, setOtp] = useState<string>()
 
     const [formState, setFormState] = useState<'pinCodeEntries' | 'mobileEntry' | 'otpEntry' | 'submitted'>(location.state?.pickPin ? 'mobileEntry' : 'pinCodeEntries')
@@ -427,7 +428,7 @@ export default function BookService() {
                                                     },
 
                                                 }}>
-                                                    <Checkbox size={'small'} />
+                                                    <Checkbox size={'small'} checked={consent} onChange={(e)=> setConsent(e.target.checked)} />
                                                     <Typography variant={'caption'}>
                                                         I have read and I accept the <Link to={'/privacy-policy'}>Privacy
                                                             Policy</Link> & <Link to={'/terms-of-uses'}>Terms and conditions</Link>
@@ -437,7 +438,7 @@ export default function BookService() {
 
                                                 <Button disableRipple variant={'contained'} fullWidth
                                                     disabled={
-                                                        (phone.value?.length < 10)
+                                                        (phone.value?.length < 10 || !consent)
                                                     }
                                                     className={'animate__animated animate__fadeInUp'}
                                                     onClick={onClickSendOtp}>

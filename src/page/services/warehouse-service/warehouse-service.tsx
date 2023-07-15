@@ -125,7 +125,7 @@ export default function WarehouseService() {
                     <Box key={index} className={'servicePart'} data-aos="fade-up"
                          data-aos-anchor-placement="center-bottom">
                         <Box className={'imgBlock'}>
-                            <img src={demoImg} alt={'service name'}
+                            <img src={service.image} alt={'service name'}
                                  className={`animate__animated ${activeDes != index && 'animate__fadeIn'}`}/>
                         </Box>
                         <Typography variant={'h4'}

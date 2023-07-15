@@ -17,6 +17,7 @@ import { ThemeTextField } from "../../components/inputs/theme-text-field";
 import { LoadingButton } from "@mui/lab";
 import { getFirstErrorMessage } from "../../utils/app-helper";
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
+import axios from "axios";
 
 
 export default function Carrier() {
@@ -55,12 +56,23 @@ export default function Carrier() {
     const onSubmit = (data: any) => {
         setLoading(true)
         console.log(errors)
-        setTimeout(() => {
-            console.log({ validLicense, ...data })
-            setLoading(false)
-            setSubmitted(true)
-            reset()
-        }, 1000)
+
+        const url = "https://app.shiprider.in/api/driver-partner"
+        axios.post(url, { validLicense, ...data }, {
+            headers: {
+                "Content-Type": "application/json",
+                "crossorigin": "anonymous"
+            }
+        })
+            .then((res) => {
+                if (res.data.status == true) {
+                    reset()
+                    console.log(res)
+                    setSubmitted(true)
+                } else alert('Some error occured')
+            })
+            .catch((err) => console.error(JSON.stringify(err)))
+            .finally(() => setLoading(false))
     }
 
     useEffect(() => {
@@ -217,6 +229,7 @@ export default function Carrier() {
                                     error={Boolean(errors?.name)}
                                     helperText={(errors?.name?.message ?? '').toString()}
                                     size={'small'} label={'Contact Person'}
+                                    inputProps={{ maxLength: 50 }}
                                     sx={{ flex: 1, minWidth: { xs: '100%', sm: '60%' } }}
                                     // className={'formInput'}
                                     placeholder={'Person Name'} />
@@ -244,6 +257,10 @@ export default function Carrier() {
                             control={control}
                             rules={{
                                 required: { value: true, message: 'Required' },
+                                pattern: {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: 'Invalid email address'
+                                }
                             }} render={({ field }) => (
                                 <ThemeTextField
                                     {...field}
@@ -260,12 +277,17 @@ export default function Carrier() {
                             control={control}
                             rules={{
                                 required: { value: true, message: 'Required' },
+                                pattern: {
+                                    value: /^[9876][0-9]{9}$/i,
+                                    message: 'Invalid phone number'
+                                }
                             }} render={({ field }) => (
                                 <ThemeTextField
                                     {...field} required
                                     error={Boolean(errors?.phone)}
                                     helperText={(errors?.phone?.message ?? '').toString()}
                                     size={'small'} label={'Phone'}
+                                    inputProps={{ maxLength: 10 }}
                                     sx={{ flex: 1, minWidth: { xs: '100%', sm: '30%' } }}
                                     // className={'formInput'}
                                     placeholder={'XXXX XXX XXX'} />

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 
-import { Box, Button, CircularProgress, Toolbar, Typography, useTheme } from "@mui/material"
+import {Box, Button, CircularProgress, Toolbar, Typography, useTheme} from "@mui/material"
 import NewPageContainer from "../../components/new-page-container";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import moment from "moment"
 import noDataIllustration from '../../assets/illustrations/no-data.svg'
-import { StarBorderRounded, StarRounded } from '@mui/icons-material'
+import {Block, StarBorderRounded, StarRounded} from '@mui/icons-material'
 import thankYou from '../../assets/illustrations/success.svg'
 
 
@@ -14,7 +14,7 @@ export default function TrackingResult() {
 
     const params = useParams()
     const theme = useTheme()
-    const { trackId } = params
+    const {trackId} = params
 
     const [fetching, setFetching] = useState(true)
     const [noData, setNoData] = useState(false)
@@ -50,7 +50,7 @@ export default function TrackingResult() {
             <Toolbar disableGutters sx={{
                 height: '110px',
                 transition: 'all 300ms ease-in-out',
-            }} />
+            }}/>
 
             <Box sx={{
                 padding: '0 1rem',
@@ -106,7 +106,7 @@ export default function TrackingResult() {
                             justifyContent: 'flex-start',
                             gap: 0,
                             mb: 2,
-                            '& .statusDate':{
+                            '& .statusDate': {
                                 fontWeight: 600,
                                 fontSize: 'clamp(2rem, 6vw, 2.2rem)',
                                 mb: 2,
@@ -154,6 +154,9 @@ export default function TrackingResult() {
                             margin: 0,
                             '&.delivered': {
                                 color: '#4ebb5b',
+                            },
+                            '&.cancelled': {
+                                color: theme.palette.error.main,
                             },
                             '&.inTransit': {
                                 color: 'orange',
@@ -477,14 +480,14 @@ export default function TrackingResult() {
 
                     },
                 }
-            }} >
+            }}>
                 {
-                    fetching ? <FetchingView />
-                        : noData ? <NoDataView />
-                            : <TrackingData data={trackingResult} timelineData={timelineTrail} />
+                    fetching ? <FetchingView/>
+                        : noData ? <NoDataView/>
+                        : <TrackingData data={trackingResult} timelineData={timelineTrail}/>
                 }
             </Box>
-        </NewPageContainer >
+        </NewPageContainer>
     )
 }
 
@@ -493,7 +496,7 @@ const FetchingView = () => {
 
     return (
         <Box className={'emptyContainer'}>
-            <CircularProgress />
+            <CircularProgress/>
         </Box>
     )
 }
@@ -502,14 +505,14 @@ const NoDataView = () => {
 
     return (
         <Box className={'emptyContainer'}>
-            <img src={noDataIllustration} alt='no data' className='animate__animated animate__fadeIn' />
+            <img src={noDataIllustration} alt='no data' className='animate__animated animate__fadeIn'/>
         </Box>
     )
 }
 
 const TrackingData = (props: any) => {
 
-    const { data, timelineData } = props
+    const {data, timelineData} = props
 
     const [reviewSubmitted, setReviewSubmitted] = useState(false)
 
@@ -519,7 +522,8 @@ const TrackingData = (props: any) => {
                 <Box className="deliveryStatus">
                     <p className="dateLine">{data.delivery_status == 'Successful' ? 'Delivery Date' : 'Shipment Date'}</p>
                     <Box className="dateBlock">
-                        <span className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : moment(data.created_at).format('dddd')}</span>
+                        <span
+                            className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : moment(data.created_at).format('dddd')}</span>
                         <span className='statusDate'>{moment().format('DD MMMM YYYY')}</span>
 
                         {/* <span className="month">{data.delivery_date ? moment(data.delivery_date).format('MMMM') : moment(data.created_at).format('MMMM')}</span>
@@ -545,31 +549,36 @@ const TrackingData = (props: any) => {
                                 strokeLinejoin="round"
                                 className="feather feather-check-circle"
                             >
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                <polyline points="22 4 12 14.01 9 11.01" />
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
                             Delivered
                         </p>
-                        : <p className="status inTransit">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-truck"
-                            >
-                                <rect x="1" y="3" width="15" height="13" />
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-                                <circle cx="5.5" cy="18.5" r="2.5" />
-                                <circle cx="18.5" cy="18.5" r="2.5" />
-                            </svg>
-                            In Transit
-                        </p>
+                        : data.delivery_status == 'Cancel'
+                            ? <p className="status cancelled">
+                                <Block/>
+                                Cancelled
+                            </p>
+                            : <p className="status inTransit">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="feather feather-truck"
+                                >
+                                    <rect x="1" y="3" width="15" height="13"/>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                                </svg>
+                                In Transit
+                            </p>
                     }
 
                 </Box>
@@ -578,28 +587,30 @@ const TrackingData = (props: any) => {
                     <p className="trackingId">Tracking Id - <span>{data.id}</span></p>
 
                     <Box className="timelineBlock">
-                        {/* Delivered */}
-                        {timelineData?.reverse().map((timeline: any, index: number) => (
-                            <Box className="timeline">
-                                <Box className="timeBlock">
-                                    <Box className="timeStamp">
-                                        <Box className="date">{moment(timeline.create_at).format('DD MMM')}</Box>
-                                        <Box className="time">{moment(timeline.create_at).format('hh:mm a')}</Box>
+
+                        {
+                            data.delivery_status != 'Cancel' &&
+                            timelineData?.reverse().map((timeline: any, index: number) => (
+                                <Box className="timeline">
+                                    <Box className="timeBlock">
+                                        <Box className="timeStamp">
+                                            <Box className="date">{moment(timeline.create_at).format('DD MMM')}</Box>
+                                            <Box className="time">{moment(timeline.create_at).format('hh:mm a')}</Box>
+                                        </Box>
+                                        <Box className="badge"/>
                                     </Box>
-                                    <Box className="badge" />
+                                    <Box className="description">
+                                        <Box className="activity">
+                                            <span className="activityHeading">Activity : </span>
+                                            {timeline.desc}
+                                        </Box>
+                                        <Box className="location">
+                                            <span className="activityHeading">Location : </span>
+                                            {timeline.location}
+                                        </Box>
+                                    </Box>
                                 </Box>
-                                <Box className="description">
-                                    <Box className="activity">
-                                        <span className="activityHeading">Activity : </span>
-                                        {timeline.desc}
-                                    </Box>
-                                    <Box className="location">
-                                        <span className="activityHeading">Location : </span>
-                                        {timeline.location}
-                                    </Box>
-                                </Box>
-                            </Box>
-                        ))}
+                            ))}
                     </Box>
                 </Box>
             </Box>
@@ -619,12 +630,12 @@ const TrackingData = (props: any) => {
                             strokeLinejoin="round"
                             className="feather feather-file"
                         >
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
-                            <polyline points="13 2 13 9 20 9" />
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                            <polyline points="13 2 13 9 20 9"/>
                         </svg>
                         Order Details
                     </p>
-                    <hr />
+                    <hr/>
 
                     <p className="detailLine">
                         <span>Order/ Shipment ID</span>
@@ -644,7 +655,7 @@ const TrackingData = (props: any) => {
 
                 <Box className="reviewBlock">
                     {!reviewSubmitted
-                        ? <ReviewForm setReviewSubmitted={setReviewSubmitted} />
+                        ? <ReviewForm setReviewSubmitted={setReviewSubmitted}/>
                         : <ReviewSubmittedView/>
                     }
 
@@ -656,9 +667,9 @@ const TrackingData = (props: any) => {
 
 const ReviewForm = (props: any) => {
 
-    const { setReviewSubmitted } = props
+    const {setReviewSubmitted} = props
 
-    const [formData, setFormData] = useState({ rating: 0, feedback: '' })
+    const [formData, setFormData] = useState({rating: 0, feedback: ''})
 
     const onReviewSubmit = () => {
         if (formData.rating == 0) alert('rating is required')
@@ -673,20 +684,25 @@ const ReviewForm = (props: any) => {
             <p className="dateLine">How was your Delivery Experience?</p>
 
             <Box className="rating">
-                <input type="radio" name="rating" value="5" id="5" onClick={() => setFormData({ ...formData, rating: 5 })} />
-                <label htmlFor="5"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                <input type="radio" name="rating" value="4" id="4" onClick={() => setFormData({ ...formData, rating: 4 })} />
-                <label htmlFor="4"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                <input type="radio" name="rating" value="3" id="3" onClick={() => setFormData({ ...formData, rating: 3 })} />
-                <label htmlFor="3"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                <input type="radio" name="rating" value="2" id="2" onClick={() => setFormData({ ...formData, rating: 2 })} />
-                <label htmlFor="2"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
-                <input type="radio" name="rating" value="1" id="1" onClick={() => setFormData({ ...formData, rating: 1 })} />
-                <label htmlFor="1"><StarRounded className='checkedStar' /><StarBorderRounded className='star' /></label>
+                <input type="radio" name="rating" value="5" id="5"
+                       onClick={() => setFormData({...formData, rating: 5})}/>
+                <label htmlFor="5"><StarRounded className='checkedStar'/><StarBorderRounded className='star'/></label>
+                <input type="radio" name="rating" value="4" id="4"
+                       onClick={() => setFormData({...formData, rating: 4})}/>
+                <label htmlFor="4"><StarRounded className='checkedStar'/><StarBorderRounded className='star'/></label>
+                <input type="radio" name="rating" value="3" id="3"
+                       onClick={() => setFormData({...formData, rating: 3})}/>
+                <label htmlFor="3"><StarRounded className='checkedStar'/><StarBorderRounded className='star'/></label>
+                <input type="radio" name="rating" value="2" id="2"
+                       onClick={() => setFormData({...formData, rating: 2})}/>
+                <label htmlFor="2"><StarRounded className='checkedStar'/><StarBorderRounded className='star'/></label>
+                <input type="radio" name="rating" value="1" id="1"
+                       onClick={() => setFormData({...formData, rating: 1})}/>
+                <label htmlFor="1"><StarRounded className='checkedStar'/><StarBorderRounded className='star'/></label>
             </Box>
 
-            <textarea name="feedback" rows={4} onChange={(e) => setFormData({ ...formData, feedback: e.target.value })}
-                placeholder="Please enter your remarks (Max 250 characters)" />
+            <textarea name="feedback" rows={4} onChange={(e) => setFormData({...formData, feedback: e.target.value})}
+                      placeholder="Please enter your remarks (Max 250 characters)"/>
 
             <Button variant={'contained'} onClick={onReviewSubmit}>Submit</Button>
         </>
@@ -729,15 +745,15 @@ const ReviewSubmittedView = () => {
                 '& img': {
                     maxHeight: '100px',
                     objectFit: 'contain',
-                    p:4,
+                    p: 4,
                 },
             }}>
-                <img src={thankYou} alt={'thank you'} />
+                <img src={thankYou} alt={'thank you'}/>
                 <Typography className='dialogHead'>
                     Thank you for your feedback!
                 </Typography>
                 <Typography className='dialogDes'>
-                    We appreciate your time and look forward to connecting with you soon.
+                    Your feedback helps us improve our service and offer you a better experience.
                 </Typography>
             </Box>
         </Box>

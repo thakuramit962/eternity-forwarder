@@ -1,29 +1,18 @@
-import React, { ChangeEvent, KeyboardEventHandler, useState } from 'react'
+import React, {ChangeEvent, KeyboardEventHandler, useState} from 'react'
 import NewPageContainer from "../../components/new-page-container";
 import {
-    alpha,
     Box,
-    Button,
-    Checkbox, FormControl,
-    FormControlLabel, FormLabel,
-    InputAdornment, lighten, MenuItem, Stack,
-    Tab,
-    Tabs,
-    TextField,
+    Checkbox, FormControl, FormLabel, Stack,
     Typography,
     useTheme
 } from "@mui/material";
-import map from "../../assets/images/map.png";
-import Toolbar from "@mui/material/Toolbar";
-import { Attachment, MyLocation, Password, PhoneRounded, Place } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
-import { Controller, useForm } from "react-hook-form";
-import { ThemeTextField } from "../../components/inputs/theme-text-field";
-import { LoadingButton } from "@mui/lab";
-import bg from "../../assets/images/hero-banner-1.jpg";
+import {Link, useNavigate} from "react-router-dom";
+import {Controller, useForm} from "react-hook-form";
+import {ThemeTextField} from "../../components/inputs/theme-text-field";
+import {LoadingButton} from "@mui/lab";
 import ConnectivityMap from "./connectivity-map";
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
-import axios from 'axios';
+import axios from "axios";
 
 
 export default function ContactUs() {
@@ -32,7 +21,7 @@ export default function ContactUs() {
     const navigate = useNavigate()
     const [submiting, setSubmiting] = useState(false)
     const [submitted, setSubmitted] = useState(false)
-    const { control, handleSubmit, reset, formState: { errors } } = useForm()
+    const {control, handleSubmit, reset, formState: {errors}} = useForm()
     const [consent, setConsent] = useState(false)
 
 
@@ -42,7 +31,7 @@ export default function ContactUs() {
 
     const onSubmit = (data: any) => {
 
-        const newData = { ...data, consent }
+        const newData = {...data, consent}
         console.log(newData)
 
         setSubmiting(true)
@@ -73,7 +62,7 @@ export default function ContactUs() {
                 alignItems: 'stretch',
                 flex: 1,
                 minHeight: 'min(90vh, 700px)',
-                px: { xs: 0, sm: 2 },
+                px: {xs: 0, sm: 2},
                 py: 2,
             }}>
 
@@ -83,7 +72,7 @@ export default function ContactUs() {
                     flexFlow: 'column',
                     alignItems: 'flex-start',
                     textAlign: 'center',
-                    p: { xs: 0, sm: 2, md: 3 },
+                    p: {xs: 0, sm: 2, md: 3},
                     '& .headDes': {
                         textAlign: 'left',
                         textIndent: '1.5rem',
@@ -96,21 +85,21 @@ export default function ContactUs() {
                     },
                 }}>
                     <Typography className={'heading'} variant={'h3'} data-aos="fade-up"
-                        data-aos-anchor-placement="center-bottom"
-                        style={{ margin: '0 0 1rem' }}>
+                                data-aos-anchor-placement="center-bottom"
+                                style={{margin: '0 0 1rem'}}>
                         Our Locations
                     </Typography>
                     <Typography variant={'body2'} className={'headDes'}>
                         Established in 2012, Eternity is dedicated to revolutionizing the logistics landscape in
                         India by leveraging digital solutions.
                     </Typography>
-                    <ConnectivityMap />
+                    <ConnectivityMap/>
                     {/*<img src={map} alt={'connectivity map'} className={'animate__animated animate__fadeIn'}/>*/}
                 </Box>
 
                 <Box className={'animate__animated animate__fadeIn '} sx={{
                     flex: '2 1 300px',
-                    minHeight: { xs: '80vh', sm: 'auto' },
+                    minHeight: {xs: '80vh', sm: 'auto'},
                     borderRadius: '20px',
                     background: '#fff',
                     boxShadow: `0 0 17px -3px #83838370`,
@@ -143,7 +132,8 @@ export default function ContactUs() {
                             fontSize: '1rem',
                         },
                     }}>
-                        <Typography className={'blockHead animate__animated animate__fadeInUp'}>We'd love to connect</Typography>
+                        <Typography className={'blockHead animate__animated animate__fadeInUp'}>We'd love to
+                            connect</Typography>
                         <Typography className={'blockDes animate__animated animate__fadeInUp'}>
                             Reach out and we'll get in touch within 24 hrs.
                         </Typography>
@@ -154,16 +144,16 @@ export default function ContactUs() {
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: true, message: 'Required' }
-                                }} render={({ field }) => (
-                                    <ThemeTextField
-                                        {...field} required
-                                        error={Boolean(errors?.fullName)}
-                                        helperText={(errors?.fullName?.message ?? '').toString()}
-                                        size={'small'} label={'Full Name'}
-                                        sx={{ flex: '1 1 400px' }}
-                                        placeholder={'Your Name'} />
-                                )} />
+                                    required: {value: true, message: 'Required'}
+                                }} render={({field}) => (
+                                <ThemeTextField
+                                    {...field} required
+                                    error={Boolean(errors?.fullName)}
+                                    helperText={(errors?.fullName?.message ?? '').toString()}
+                                    size={'small'} label={'Full Name'}
+                                    sx={{flex: '1 1 400px'}}
+                                    placeholder={'Your Name'}/>
+                            )}/>
 
 
                             <Controller
@@ -171,110 +161,111 @@ export default function ContactUs() {
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: true, message: 'Required' },
-                                    pattern: { value: /^[6-9]\d{9}$/, message: 'Enter valid phone number' }
+                                    required: {value: true, message: 'Required'},
+                                    pattern: {value: /^[6-9]\d{9}$/, message: 'Enter valid phone number'}
                                 }}
-                                render={({ field }) => (
+                                render={({field}) => (
                                     <ThemeTextField
-                                        {...field} required
+                                        {...field} required type={'tel'}
                                         error={Boolean(errors?.phone)}
                                         helperText={(errors?.phone?.message ?? '').toString()}
                                         size={'small'} label={'Phone'}
-                                        sx={{ flex: '1 1 200px' }}
+                                        inputProps={{ maxLength: 10 }}
+                                        sx={{flex: '1 1 200px'}}
                                         placeholder={'XXXX XXX XXX'}
                                     />
-                                )} />
+                                )}/>
 
                             <Controller
                                 name={`email`}
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: false, message: 'Required' },
+                                    required: {value: false, message: 'Required'},
                                     pattern: {
                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                         message: 'Enter valid email address'
                                     }
-                                }} render={({ field }) => (
-                                    <ThemeTextField
-                                        {...field}
-                                        error={Boolean(errors?.email)}
-                                        helperText={(errors?.email?.message ?? '').toString()}
-                                        size={'small'} label={'Email'}
-                                        sx={{ flex: '1 1 200px' }}
-                                        placeholder={'your@email.address'} />
-                                )} />
+                                }} render={({field}) => (
+                                <ThemeTextField
+                                    {...field}
+                                    error={Boolean(errors?.email)}
+                                    helperText={(errors?.email?.message ?? '').toString()}
+                                    size={'small'} label={'Email'}
+                                    sx={{flex: '1 1 200px'}}
+                                    placeholder={'your@email.address'}/>
+                            )}/>
 
                             <Controller
                                 name={`companyName`}
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: false, message: 'Required' },
-                                }} render={({ field }) => (
-                                    <ThemeTextField
-                                        {...field}
-                                        error={Boolean(errors?.companyName)}
-                                        helperText={(errors?.companyName?.message ?? '').toString()}
-                                        size={'small'} label={'Company Name'}
-                                        sx={{ flex: '1 1 200px' }}
-                                        placeholder={'company name'} />
-                                )} />
+                                    required: {value: false, message: 'Required'},
+                                }} render={({field}) => (
+                                <ThemeTextField
+                                    {...field}
+                                    error={Boolean(errors?.companyName)}
+                                    helperText={(errors?.companyName?.message ?? '').toString()}
+                                    size={'small'} label={'Company Name'}
+                                    sx={{flex: '1 1 200px'}}
+                                    placeholder={'company name'}/>
+                            )}/>
                             <Controller
                                 name={`companyWebsite`}
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: false, message: 'Required' },
-                                }} render={({ field }) => (
-                                    <ThemeTextField
-                                        {...field} type={'url'}
-                                        error={Boolean(errors?.companyWebsite)}
-                                        helperText={(errors?.companyWebsite?.message ?? '').toString()}
-                                        size={'small'} label={'Company Website'}
-                                        sx={{ flex: '1 1 200px' }}
-                                        placeholder={'eg.- company.domain'} />
-                                )} />
+                                    required: {value: false, message: 'Required'},
+                                }} render={({field}) => (
+                                <ThemeTextField
+                                    {...field} type={'url'}
+                                    error={Boolean(errors?.companyWebsite)}
+                                    helperText={(errors?.companyWebsite?.message ?? '').toString()}
+                                    size={'small'} label={'Company Website'}
+                                    sx={{flex: '1 1 200px'}}
+                                    placeholder={'eg.- company.domain'}/>
+                            )}/>
                             <Controller
                                 name={`serviceType`}
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: true, message: 'Required' },
-                                }} render={({ field }) => (
-                                    <ThemeTextField
-                                        {...field} required 
-                                        // select
-                                        error={Boolean(errors?.serviceType)}
-                                        helperText={(errors?.serviceType?.message ?? '').toString()}
-                                        size={'small'} label={'Service Type'}
-                                        sx={{ flex: '1 1 200px' }}
-                                        placeholder={'type of service'}/>
-                                        //<MenuItem value={'option1'}>Option 1</MenuItem>
-                                        //<MenuItem value={'option2'}>Option 2</MenuItem>
-                                        //</><MenuItem value={'option3'}>Option 3</MenuItem>
-                                    //</ThemeTextField> 
-                                )} />
+                                    required: {value: true, message: 'Required'},
+                                }} render={({field}) => (
+                                <ThemeTextField
+                                    {...field} required
+                                    // select
+                                    error={Boolean(errors?.serviceType)}
+                                    helperText={(errors?.serviceType?.message ?? '').toString()}
+                                    size={'small'} label={'Service Type'}
+                                    sx={{flex: '1 1 200px'}}
+                                    placeholder={'type of service'}/>
+                                //<MenuItem value={'option1'}>Option 1</MenuItem>
+                                //<MenuItem value={'option2'}>Option 2</MenuItem>
+                                //</><MenuItem value={'option3'}>Option 3</MenuItem>
+                                //</ThemeTextField>
+                            )}/>
                             <Controller
                                 name={`state`}
                                 defaultValue={''}
                                 control={control}
                                 rules={{
-                                    required: { value: true, message: 'Required' },
-                                }} render={({ field }) => (
-                                    <ThemeTextField
-                                        {...field} required 
-                                        // select
-                                        error={Boolean(errors?.state)}
-                                        helperText={(errors?.state?.message ?? '').toString()}
-                                        size={'small'} label={'State or Region'}
-                                        sx={{ flex: '1 1 200px' }}
-                                        placeholder={'Select state'}/>
-                                       //<MenuItem value={'option1'}>Option 1</MenuItem>
-                                        //<MenuItem value={'option2'}>Option 2</MenuItem>
-                                        //</><MenuItem value={'option3'}>Option 3</MenuItem>
-                                    //</ThemeTextField> 
-                                )} />
+                                    required: {value: true, message: 'Required'},
+                                }} render={({field}) => (
+                                <ThemeTextField
+                                    {...field} required
+                                    // select
+                                    error={Boolean(errors?.state)}
+                                    helperText={(errors?.state?.message ?? '').toString()}
+                                    size={'small'} label={'State or Region'}
+                                    sx={{flex: '1 1 200px'}}
+                                    placeholder={'Select state'}/>
+                                //<MenuItem value={'option1'}>Option 1</MenuItem>
+                                //<MenuItem value={'option2'}>Option 2</MenuItem>
+                                //</><MenuItem value={'option3'}>Option 3</MenuItem>
+                                //</ThemeTextField>
+                            )}/>
 
 
                             <FormControl>
@@ -285,15 +276,15 @@ export default function ContactUs() {
                                     defaultValue={''}
                                     control={control}
                                     rules={{
-                                        required: { value: true, message: 'Required' },
-                                    }} render={({ field }) => (
-                                        <ThemeTextField
-                                            {...field} required type={'url'}
-                                            error={Boolean(errors?.connectionPreference)}
-                                            helperText={(errors?.connectionPreference?.message ?? '').toString()}
-                                            size={'small'}
-                                            placeholder={'eg.- phone call or email'} />
-                                    )} />
+                                        required: {value: true, message: 'Required'},
+                                    }} render={({field}) => (
+                                    <ThemeTextField
+                                        {...field} required type={'url'}
+                                        error={Boolean(errors?.connectionPreference)}
+                                        helperText={(errors?.connectionPreference?.message ?? '').toString()}
+                                        size={'small'}
+                                        placeholder={'eg.- phone call or email'}/>
+                                )}/>
                             </FormControl>
 
                             <Stack direction={'row'} sx={{
@@ -304,7 +295,8 @@ export default function ContactUs() {
                                 },
 
                             }}>
-                                <Checkbox size={'small'} checked={consent} onChange={(e) => setConsent(e.target.checked)} />
+                                <Checkbox size={'small'} checked={consent}
+                                          onChange={(e) => setConsent(e.target.checked)}/>
                                 <Typography variant={'caption'}>
                                     By submitting this form, you consent to the collection and processing of your
                                     personal data for the purpose of addressing your logistics inquiry. Please tick
@@ -329,7 +321,7 @@ export default function ContactUs() {
                 </Box>
 
             </Box>
-            {submitted && <ThankYouDialog open={submitted} handleClose={onDialogClose} />}
+            {submitted && <ThankYouDialog open={submitted} handleClose={onDialogClose}/>}
 
         </>
     )
