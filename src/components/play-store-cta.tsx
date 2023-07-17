@@ -56,8 +56,9 @@ export default function PlayStoreCta() {
                 },
             }}>
                 <Typography variant={'h4'}>Download the App<br/>for ease of access</Typography>
-                <Typography variant={'body2'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod</Typography>
+                <Typography variant={'body2'}>
+
+                </Typography>
 
                 <Box sx={{
                     mt: 4,
@@ -67,16 +68,20 @@ export default function PlayStoreCta() {
                     alignItems: 'center',
                     justifyContent: {xs: 'center', md: 'flex-start'},
                     rowGap: 1,
+                    '& a':{
+                        textAlign: 'center',
+                        width :'175px',
+                    },
                     '& .MuiDivider-root': {
                         width: '60px',
                         order: {xs: -1, sm: 2},
                     },
                     '& .qr': {
                         order: {xs: -2, sm: 3},
-                        height: '100px'
+                        height: '100px',
                     },
                 }}>
-                    <img src={appStoreButton} className={'appStoreButton'} alt={'play store button'}/>
+                    <a href={'https://play.google.com/store/apps/details?id=com.shadow.driverapp'} target={'_blank'}><img src={appStoreButton} className={'appStoreButton'} alt={'play store button'}/></a>
                     <Divider>OR</Divider>
                     <img src={qr} className={'qr'} alt={'play store link qr'}/>
                 </Box>
