@@ -12,9 +12,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {alpha, useTheme} from "@mui/material";
 import {
+    AutoAwesomeRounded,
     BusinessRounded,
     DeblurRounded,
-    Diversity2Rounded,
+    Diversity2Rounded, HandshakeRounded,
     Home,
     SupportAgentRounded,
     TimelineRounded
@@ -29,10 +30,10 @@ export default function MobileSidebarItems(props: MobileSidebarItemsProps) {
 
     const drawerMenus = [
         {name: 'Home', icon: Home, link: '',},
-        {name: 'Services', icon: Home, link: 'services/logistic-solutions',},
-        {name: 'Partner With Us', icon: Home, link: 'partner-with-us',},
+        {name: 'Services', icon: AutoAwesomeRounded, link: 'services/logistic-solutions',},
+        {name: 'Partner With Us', icon: Diversity2Rounded, link: 'partner-with-us',},
         {name: 'About Company', icon: DeblurRounded, link: 'about-us',},
-        {name: 'Contact Us', icon: Diversity2Rounded, link: 'about-us/contact'},
+        {name: 'Contact Us', icon: HandshakeRounded, link: 'about-us/contact'},
         {name: 'Ship Now', icon: SupportAgentRounded, link: 'book-service',},
         {name: 'Track', icon: TimelineRounded, link: 'track',},
     ]
@@ -77,13 +78,13 @@ export default function MobileSidebarItems(props: MobileSidebarItemsProps) {
                         width: '1.5rem',
                         p: '5px',
                         borderRadius: '4px',
-                        color: theme.palette.primary.dark,
+                        color: theme.palette.primary.main,
                     },
                 },
                 '& .active': {
                     '& .MuiListItemButton-root': {
                         color: theme.palette.secondary.contrastText,
-                        background: theme.palette.primary.dark,
+                        background: theme.palette.primary.main,
                         '&:hover': {
                             background: alpha(theme.palette.background.default, 0.5),
                             boxShadow: `inset 2px 4px 10px ${alpha(theme.palette.text.secondary, 0.1)}, inset -2px -3px 10px ${alpha(theme.palette.background.default, 0.5)}`,

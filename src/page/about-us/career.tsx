@@ -27,6 +27,7 @@ import joinUs from "../../assets/images/aboutIllustrationNew.png";
 import thankYou from "../../assets/images/earn.svg";
 import axios from 'axios'
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
+import {serverRoute} from "../../utils/app-helper";
 
 
 export default function Career() {
@@ -59,7 +60,7 @@ export default function Career() {
         console.log(newData)
 
         setSubmiting(true)
-        const url = "https://app.shiprider.in/api/career"
+        const url = `${serverRoute}/career`
         axios.post(url, newData, {
             headers: {
                 "Content-Type": "multipart/form-data",

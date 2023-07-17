@@ -21,6 +21,9 @@ import LoadingElement from "../../components/loading-element/loading-element";
 import { MyLocation, Password, PhoneRounded, Place } from "@mui/icons-material";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import OTPInput from "./otp-inputs";
+import {serverRoute} from "../../utils/app-helper";
+import axios from "axios";
+import {LoadingButton} from "@mui/lab";
 
 
 export default function BookService() {
@@ -37,6 +40,7 @@ export default function BookService() {
     const [checking, setChecking] = useState(false)
     const [consent, setConsent] = useState(false)
     const [otp, setOtp] = useState<string>()
+    const [submitting, setSubmitting] = useState(false)
 
     const [formState, setFormState] = useState<'pinCodeEntries' | 'mobileEntry' | 'otpEntry' | 'submitted'>(location.state?.pickPin ? 'mobileEntry' : 'pinCodeEntries')
 
@@ -138,8 +142,22 @@ export default function BookService() {
         if (phone.value.length > 0) {
             if (/^[6789][0-9]{9}$/.test(phone.value) == true) {
                 console.log({ ...pinCodes, phone: phone.value })
-                // setFormState('otpEntry')
-                setFormState('submitted')
+                setSubmitting(true)
+                const url = `${serverRoute}/shipnow`
+                axios.post(url, { ...pinCodes, phone: phone.value, otp }, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "crossorigin": "anonymous"
+                    }
+                })
+                    .then((res) => {
+                        if (res.data.status == true) {
+                            console.log(res)
+                            setFormState('submitted')
+                        } else alert('Some error occured')
+                    })
+                    .catch((err) => console.error(JSON.stringify(err)))
+                    .finally(() => setSubmitting(false))
 
             } else { setPhone({ ...phone, helperText: 'Invalid Phone number', error: true }) }
         }
@@ -436,14 +454,19 @@ export default function BookService() {
                                                 </Stack>
 
 
-                                                <Button disableRipple variant={'contained'} fullWidth
+                                                <LoadingButton
+                                                    loading={submitting}
+                                                    loadingPosition={'end'}
+                                                    endIcon={<></>}
+                                                    disableRipple
+                                                    variant={'contained'} fullWidth
                                                     disabled={
                                                         (phone.value?.length < 10 || !consent)
                                                     }
                                                     className={'animate__animated animate__fadeInUp'}
                                                     onClick={onClickSendOtp}>
                                                     Proceed
-                                                </Button>
+                                                </LoadingButton>
                                             </Box>
 
                                         </Box>
@@ -556,7 +579,7 @@ export default function BookService() {
                                                             Thanks!
                                                         </Typography>
                                                         <Typography className='dialogDes'>
-                                                            We appreciate your time and look forward to connecting with you soon.
+                                                            Thank you for submitting your interest, our team will get in touch with you shortly.
                                                         </Typography>
                                                     </Box>
                                                 </Box>

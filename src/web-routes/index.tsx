@@ -86,7 +86,7 @@ export default function WebRoutes() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [location])
+    }, [location.pathname])
 
 
     return (

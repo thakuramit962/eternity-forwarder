@@ -17,6 +17,7 @@ import { ThemeTextField } from "../../components/inputs/theme-text-field";
 import { LoadingButton } from "@mui/lab";
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
 import axios from "axios";
+import {serverRoute} from "../../utils/app-helper";
 
 
 export default function LastMilePartner() {
@@ -55,7 +56,8 @@ export default function LastMilePartner() {
         setLoading(true)
         console.log(errors)
 
-        const url = "https://app.shiprider.in/api/lastmile-partner"
+        const url = `${serverRoute}/lastmile-partner`
+        // const url = "https://app.shiprider.in/api/lastmile-partner"
         axios.post(url, { specialDeliveryConsideration, ...data }, {
             headers: {
                 "Content-Type": "application/json",

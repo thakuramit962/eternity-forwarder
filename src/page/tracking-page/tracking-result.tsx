@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-
 import {Box, Button, CircularProgress, Toolbar, Typography, useTheme} from "@mui/material"
 import NewPageContainer from "../../components/new-page-container";
 import {useParams} from "react-router-dom";
@@ -7,6 +6,7 @@ import moment from "moment"
 import noDataIllustration from '../../assets/illustrations/no-data.svg'
 import {Block, StarBorderRounded, StarRounded} from '@mui/icons-material'
 import thankYou from '../../assets/illustrations/success.svg'
+import {serverRoute} from "../../utils/app-helper";
 
 
 export default function TrackingResult() {
@@ -23,7 +23,8 @@ export default function TrackingResult() {
 
     useEffect(() => {
         setFetching(true)
-        fetch(`https://app.shiprider.in/api/get-lrtimeline/${trackId}`)
+        window.scrollTo(0, 0)
+        fetch(`${serverRoute}/get-lrtimeline/${trackId}`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok')
                 return response.json()
@@ -45,6 +46,7 @@ export default function TrackingResult() {
             .finally(() => setFetching(false))
     }, [trackId])
 
+
     return (
         <NewPageContainer>
             <Toolbar disableGutters sx={{
@@ -58,7 +60,7 @@ export default function TrackingResult() {
                 '& .emptyContainer': {
                     display: 'grid',
                     placeItems: 'center',
-                    minHeight: 'min(70vh, 500px)',
+                    minHeight: 'min(90vh, 500px)',
                     '& img': {
                         maxHeight: '300px',
                         objectFit: "contain",
@@ -524,7 +526,8 @@ const TrackingData = (props: any) => {
                     <Box className="dateBlock">
                         <span
                             className="day">{data.delivery_date ? moment(data.delivery_date).format('dddd') : moment(data.created_at).format('dddd')}</span>
-                        <span className='statusDate'>{moment().format('DD MMMM YYYY')}</span>
+                        <span
+                            className='statusDate'>{data.delivery_date ? moment(data.delivery_date).format('DD MMMM YYYY') : moment(data.created_at).format('DD MMMM YYYY')}</span>
 
                         {/* <span className="month">{data.delivery_date ? moment(data.delivery_date).format('MMMM') : moment(data.created_at).format('MMMM')}</span>
                         <Box className="date">
@@ -589,28 +592,43 @@ const TrackingData = (props: any) => {
                     <Box className="timelineBlock">
 
                         {
-                            data.delivery_status != 'Cancel' &&
-                            timelineData?.reverse().map((timeline: any, index: number) => (
-                                <Box className="timeline">
-                                    <Box className="timeBlock">
-                                        <Box className="timeStamp">
-                                            <Box className="date">{moment(timeline.create_at).format('DD MMM')}</Box>
-                                            <Box className="time">{moment(timeline.create_at).format('hh:mm a')}</Box>
+                            data.delivery_status != 'Cancel' ?
+                                timelineData?.reverse()?.map((timeline: any, index: number) => (
+                                    <Box className="timeline">
+                                        <Box className="timeBlock">
+                                            <Box className="timeStamp">
+                                                <Box
+                                                    className="date">{moment(timeline.create_at).format('DD MMM')}</Box>
+                                                <Box
+                                                    className="time">{moment(timeline.create_at).format('hh:mm a')}</Box>
+                                            </Box>
+                                            <Box className="badge"/>
                                         </Box>
-                                        <Box className="badge"/>
+                                        <Box className="description">
+                                            <Box className="activity">
+                                                <span className="activityHeading">Activity : </span>
+                                                {timeline.desc}
+                                            </Box>
+                                            <Box className="location">
+                                                <span className="activityHeading">Location : </span>
+                                                {timeline.location}
+                                            </Box>
+                                        </Box>
                                     </Box>
-                                    <Box className="description">
-                                        <Box className="activity">
-                                            <span className="activityHeading">Activity : </span>
-                                            {timeline.desc}
-                                        </Box>
-                                        <Box className="location">
-                                            <span className="activityHeading">Location : </span>
-                                            {timeline.location}
-                                        </Box>
-                                    </Box>
+                                ))
+                                : <Box sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    '& img': {
+                                        maxHeight: '120px',
+                                        objectFit: 'contain',
+                                    },
+                                }}>
+                                    <img src={noDataIllustration} alt='no data'
+                                         className='animate__animated animate__fadeIn'/>
                                 </Box>
-                            ))}
+                        }
                     </Box>
                 </Box>
             </Box>
@@ -750,7 +768,7 @@ const ReviewSubmittedView = () => {
             }}>
                 <img src={thankYou} alt={'thank you'}/>
                 <Typography className='dialogHead'>
-                    Thank you for your feedback!
+                    Thank you for sharing your feedback!
                 </Typography>
                 <Typography className='dialogDes'>
                     Your feedback helps us improve our service and offer you a better experience.

@@ -13,6 +13,7 @@ import {LoadingButton} from "@mui/lab";
 import ConnectivityMap from "./connectivity-map";
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
 import axios from "axios";
+import {serverRoute} from "../../utils/app-helper";
 
 
 export default function ContactUs() {
@@ -35,7 +36,7 @@ export default function ContactUs() {
         console.log(newData)
 
         setSubmiting(true)
-        const url = "https://app.shiprider.in/api/career";
+        const url = `${serverRoute}/contact-us`
         axios.post(url, newData, {
             headers: {
                 "Content-Type": "application/json",

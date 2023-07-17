@@ -15,7 +15,7 @@ import partnerWithUs from "../../assets/images/aboutIllustrationNew.png";
 import { useForm, Controller } from "react-hook-form";
 import { ThemeTextField } from "../../components/inputs/theme-text-field";
 import { LoadingButton } from "@mui/lab";
-import { getFirstErrorMessage } from "../../utils/app-helper";
+import {getFirstErrorMessage, serverRoute} from "../../utils/app-helper";
 import ThankYouDialog from '../../components/dialog-box/thank-you-dialog';
 import axios from "axios";
 
@@ -57,7 +57,8 @@ export default function Carrier() {
         setLoading(true)
         console.log(errors)
 
-        const url = "https://app.shiprider.in/api/driver-partner"
+        const url = `${serverRoute}/driver-partner`
+        // const url = "https://app.shiprider.in/api/driver-partner"
         axios.post(url, { validLicense, ...data }, {
             headers: {
                 "Content-Type": "application/json",
