@@ -44,7 +44,7 @@ export default function ContactUs() {
             }
         })
             .then((res) => {
-                if (res.data.success == true) {
+                if (res.data.status == true) {
                     reset()
                     setConsent(false)
                     console.log(res)

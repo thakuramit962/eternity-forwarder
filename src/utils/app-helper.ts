@@ -39,5 +39,5 @@ export const assetStatuses = [
     {label: 'Ready to Scrap', code: 9},
 ]
 
-// export const serverRoute = 'http://192.168.5.230:8000/api'
-export const serverRoute = 'https://app.shiprider.in/api'
+export const serverRoute = 'http://192.168.5.230:8000/api'
+// export const serverRoute = 'https://app.shiprider.in/api'

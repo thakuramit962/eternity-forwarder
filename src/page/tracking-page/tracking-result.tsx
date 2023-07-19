@@ -7,6 +7,7 @@ import noDataIllustration from '../../assets/illustrations/no-data.svg'
 import {Block, StarBorderRounded, StarRounded} from '@mui/icons-material'
 import thankYou from '../../assets/illustrations/success.svg'
 import {serverRoute} from "../../utils/app-helper";
+import axios from "axios";
 
 
 export default function TrackingResult() {
@@ -20,6 +21,7 @@ export default function TrackingResult() {
     const [noData, setNoData] = useState(false)
     const [trackingResult, setTrackingResult] = useState({})
     const [timelineTrail, setTimelineTrail] = useState([])
+    const [deliveryRating, setDeliveryRating] = useState<{} | null>(null)
 
     useEffect(() => {
         setFetching(true)
@@ -34,6 +36,7 @@ export default function TrackingResult() {
                     console.log(data)
                     setTrackingResult(data?.data)
                     setTimelineTrail(data?.driver_trail)
+                    setDeliveryRating(data?.delivery_rating)
                 } else {
                     setNoData(true)
                     console.log('some error')
@@ -486,7 +489,8 @@ export default function TrackingResult() {
                 {
                     fetching ? <FetchingView/>
                         : noData ? <NoDataView/>
-                        : <TrackingData data={trackingResult} timelineData={timelineTrail}/>
+                        : <TrackingData data={trackingResult} timelineData={timelineTrail}
+                                        deliveryRating={deliveryRating}/>
                 }
             </Box>
         </NewPageContainer>
@@ -514,9 +518,9 @@ const NoDataView = () => {
 
 const TrackingData = (props: any) => {
 
-    const {data, timelineData} = props
+    const {data, timelineData, deliveryRating} = props
 
-    const [reviewSubmitted, setReviewSubmitted] = useState(false)
+    const [reviewSubmitted, setReviewSubmitted] = useState(deliveryRating != null)
 
     return (
         <Box className="content">
@@ -673,7 +677,7 @@ const TrackingData = (props: any) => {
 
                 <Box className="reviewBlock">
                     {!reviewSubmitted
-                        ? <ReviewForm setReviewSubmitted={setReviewSubmitted}/>
+                        ? <ReviewForm setReviewSubmitted={setReviewSubmitted} lrNumber={data.id}/>
                         : <ReviewSubmittedView/>
                     }
 
@@ -685,15 +689,31 @@ const TrackingData = (props: any) => {
 
 const ReviewForm = (props: any) => {
 
-    const {setReviewSubmitted} = props
+    const {setReviewSubmitted, lrNumber} = props
 
     const [formData, setFormData] = useState({rating: 0, feedback: ''})
+    const [submitting, setSubmitting] = useState(false)
 
     const onReviewSubmit = () => {
         if (formData.rating == 0) alert('rating is required')
         else {
-            console.log(formData)
-            setReviewSubmitted(true)
+            setSubmitting(true)
+            const newData = {...formData, lr_id: lrNumber}
+            const url = `${serverRoute}/delivery-rating`
+            axios.post(url, newData, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "crossorigin": "anonymous"
+                }
+            })
+                .then((res) => {
+                    if (res.data.status == true) {
+                        console.log(res)
+                        setReviewSubmitted(true)
+                    } else alert('Some error occured')
+                })
+                .catch((err) => console.error(JSON.stringify(err)))
+                .finally(() => setSubmitting(false))
         }
     }
 

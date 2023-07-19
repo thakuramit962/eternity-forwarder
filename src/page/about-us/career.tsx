@@ -235,6 +235,7 @@ export default function Career() {
                                         {...field} required
                                         error={Boolean(errors?.phone)}
                                         helperText={(errors?.phone?.message ?? '').toString()}
+                                        inputProps={{ maxLength: 10 }}
                                         size={'small'} label={'Phone'}
                                         sx={{ flex: '1 1 300px' }}
                                         placeholder={'XXXX XXX XXX'}
@@ -255,7 +256,6 @@ export default function Career() {
                                     <ThemeTextField
                                         {...field} required type={'tel'}
                                         error={Boolean(errors?.email)}
-                                        inputProps={{ maxLength: 10 }}
                                         helperText={(errors?.email?.message ?? '').toString()}
                                         size={'small'} label={'Email'}
                                         sx={{ flex: '1 1 300px' }}
